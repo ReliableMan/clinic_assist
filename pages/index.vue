@@ -79,6 +79,10 @@ export default {
     }
 
     &__block-2 {
+      width: 770px;
+      height: 747px;
+      background-image: url('@/assets/images/mobiles.png');
+      // box-shadow: 0px 4px 30px 0px rgba(5, 142, 110, 0.14);
     }
   }
 }
