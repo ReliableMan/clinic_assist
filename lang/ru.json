@@ -1,6 +1,8 @@
 {
   "common": {
-    "signin_signup": "Вход | Регистрация"
+    "signin_signup": "Вход | Регистрация",
+    "urgent_consultation": "Срочная консультация",
+    "scheduled_consultation": "Плановая консультация"
   },
   "system": {},
   "validation": {
