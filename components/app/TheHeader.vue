@@ -2,34 +2,21 @@
   <header class="header">
     <div class="header__panel">
       <div class="header__inner">
-        <ui-container>
-          <div class="d-flex content-space-between items-center">
-            <div class="d-flex items-center">
-              <img
-                class="img-logo" 
-                src="@/assets/images/clinic-assist-logo.svg" 
-                alt="clinic-assist-logo"
-              />
-            </div>
+        <!-- <ui-container> header__inner__navigation -->
+          <div class="header__inner-navigation">
+              <div class="header__inner-img-logo" >
+                <img
+                  src="@/assets/images/clinic-assist-logo.svg" 
+                  alt="clinic-assist-logo"
+                  />
+              </div>
 
-            <client-only>
-              <transition name="fade" mode="out-in">
-                <div>
-                  <!-- <the-header-user-widget /> -->
-                </div>
-                <div class="header__button">
-                  <ui-button
-                    color="primary"
-                    fluid
-                    
-                  >
-                    Button
-                  </ui-button>
-                </div>
-              </transition>
-            </client-only>
+              <div class="header__inner-button">
+                <button>button</button>
+              </div>
+
           </div>
-        </ui-container>
+        <!-- </ui-container> -->
       </div>
     </div>
   </header>
@@ -68,6 +55,18 @@ export default {
 
   &__inner
     flex: 1
+
+  &__inner-navigation  
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+  &__inner-img-logo 
+    transform: translateX(223px)
+
+  &__inner-button 
+    transform: translateX(-235px)
+
 
   &__button
     width: 194px

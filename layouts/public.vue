@@ -2,11 +2,11 @@
   <!-- <layout-with-sticky-footer> -->
     <div>
 
-      <template id="header">
+      <template name="header">
         <the-header />
       </template>
 
-    <template id="body">
+    <template name="body">
       <main>
         <nuxt />
       </main>
@@ -14,8 +14,8 @@
       <!-- <v-modal-target /> -->
     </template>
     
-    <template id="footer" >
-      <the-footer />
+    <template name="footer">
+      <!-- <the-footer /> -->
     </template>
   </div>
   <!-- </layout-with-sticky-footer> -->

@@ -31,7 +31,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    '@qapsula-frontend/qapsula-ui/nuxt-module',
+    // '@qapsula-frontend/qapsula-ui/nuxt-module',
     // '@qapsula-frontend/qapsula-any/nuxt-module',
     // '@qapsula-frontend/qapsula-wamp/nuxt-module',
     // '@nuxtjs/eslint-module',
