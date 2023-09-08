@@ -50,7 +50,7 @@ export default {
   line-height: 22px;
 }
 .main-page {
-  padding: 79px 130px 27px 238px;
+  padding: 79px 130px 27px 226px;
 
   &__container {
     display: flex;
@@ -62,6 +62,7 @@ export default {
         font-style: normal;
         font-weight: 500;
         line-height: 50px;
+        margin-left: 18px;
 
         &__green {
           color: $color-green;
@@ -72,6 +73,8 @@ export default {
         display: flex;
         margin-top: 21px;
         gap: 13px;
+        margin-bottom: 10px;
+        margin-left: 18px;
       }
     }
 
