@@ -1,5 +1,7 @@
 {
-  "common": {},
+  "common": {
+    "signin_signup": "Вход | Регистрация"
+  },
   "system": {},
   "validation": {
     "required": "Пожалуйста, заполните это поле",
