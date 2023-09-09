@@ -23,7 +23,18 @@
         </div>
         <main-slider />
       </div>
-      <div class="main-page__container__block-2"></div>
+      <div class="main-page__container__block-2">
+        <img
+          class="main-page__container__block-2__img-patient"
+          src="@/assets/images/patient-mobile.png"
+          alt="img-patient-mobile"
+        />
+        <img
+          class="main-page__container__block-2__img-doctor"
+          src="@/assets/images/doctor-mobile.png"
+          alt="img-doctor-mobile"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -81,8 +92,24 @@ export default {
     &__block-2 {
       width: 770px;
       height: 747px;
-      background-image: url('@/assets/images/mobiles.png');
-      // box-shadow: 0px 4px 30px 0px rgba(5, 142, 110, 0.14);
+      position: relative;
+
+      &__img-patient {
+        position: absolute;
+        top: 68px;
+        left: 100px;
+        box-shadow: -25px 75px 37px -8px rgba(5, 142, 110, 0.14),
+          189px 23px 87px 15px rgba(5, 142, 110, 0.14);
+        border-radius: 52px;
+        transform: rotate(-13.054deg);
+      }
+      &__img-doctor {
+        position: absolute;
+        top: 92px;
+        left: 347px;
+        border-radius: 52px;
+        transform: rotate(12.743deg);
+      }
     }
   }
 }
