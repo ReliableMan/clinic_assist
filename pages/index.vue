@@ -147,6 +147,34 @@
         </span>
       </div>
     </div>
+    <div class="main-page__container-4">
+      <!-- avatar -->
+      <img
+        class="main-page__container-4__img-avatar"
+        src="@/assets/images/avatar-doctor.png"
+        alt="avatar-doctor"
+      />
+      <div class="online-doctor-i main-page__container-4__online-icon"></div>
+      <!-- bio -->
+      <div class="main-page__container-4__bio">
+        <p class="main-page__container-4__bio__name">
+          Коваль Ольга Валентиновна
+        </p>
+        <p class="main-page__container-4__bio__specialist">Травматолог</p>
+        <div class="main-page__container-4__bio__degree">
+          <span class="green-hat-icon mr-10"></span>
+          Высшая категория, кандидат медицинских наук
+        </div>
+        <div class="main-page__container-4__bio__experience">
+          <span class="green-plus-icon mr-10"></span>
+          Стаж: 5 лет
+        </div>
+      </div>
+      <!-- schedule -->
+      <div class="main-page__container-4__schedule">
+        <p class="main-page__container-4__schedule__text">Доступные даты</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -412,6 +440,82 @@ export default {
       }
     }
   }
+
+  &__container-4 {
+    position: relative;
+    width: 100%;
+    display: flex;
+    margin-top: 56px;
+
+    &__img-avatar {
+      width: 165px;
+      height: 165px;
+      border-radius: 15px;
+    }
+
+    &__online-icon {
+      position: absolute;
+      bottom: 20px;
+      left: 140px;
+      z-index: 2;
+    }
+
+    &__bio {
+      margin-left: 45px;
+      display: flex;
+      flex-direction: column;
+
+      &__name {
+        width: 379px;
+        height: 20px;
+        color: #333;
+        font-family: $base-font-family;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        margin-bottom: 11px;
+      }
+
+      &__specialist {
+        width: 123px;
+        height: 20px;
+        color: #333;
+        font-family: $base-font-family;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 20px;
+        margin-bottom: 25px;
+      }
+
+      &__degree,
+      &__experience {
+        color: #333;
+        font-family: $base-font-family;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+        height: 30px;
+      }
+    }
+
+    &__schedule {
+      margin-left: 268px;
+      display: flex;
+      flex-direction: column;
+
+      &__text {
+        color: #333;
+        font-family: $base-font-family;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 16px;
+      }
+    }
+  }
 }
 
 .right-vect-i-orange {
@@ -450,5 +554,28 @@ export default {
   font-style: normal;
   font-weight: 600;
   line-height: 16px;
+}
+
+.green-hat-icon {
+  display: inline-block;
+  width: 18px;
+  height: 15px;
+  background-image: url('@/assets/images/svg/vector-green-hat.svg');
+  background-repeat: no-repeat;
+}
+.green-plus-icon {
+  display: inline-block;
+  width: 17px;
+  height: 15px;
+  background-image: url('@/assets/images/svg/vector-green-plus.svg');
+  background-repeat: no-repeat;
+}
+.online-doctor-i {
+  display: inline-block;
+  border-radius: 50%;
+  width: 21px;
+  height: 18px;
+  background-image: url('@/assets/images/online-doctor-icon.png');
+  background-repeat: no-repeat;
 }
 </style>

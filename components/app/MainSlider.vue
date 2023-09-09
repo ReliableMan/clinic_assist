@@ -142,7 +142,7 @@ export default {
     height: 108px
     border-radius: 16px
     background-color: $color-white
-    box-shadow: 0px 4px 30px 0px rgba(5, 142, 110, 0.14)
+    box-shadow: 0px 4px 23px 0px rgba(5, 142, 110, 0.14)
     display: flex
     align-items: center
 
