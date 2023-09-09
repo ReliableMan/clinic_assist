@@ -98,34 +98,51 @@
         </div>
       </div>
       <div class="main-page__container-3__block-3">
-        <img
-          width="92"
-          height="46"
-          src="@/assets/images/svg/gender-icon.svg"
-          alt="gender-icon"
-        />
+        <!-- item 1 -->
+        <div class="mr-120">
+          <img
+            width="92"
+            height="46"
+            src="@/assets/images/svg/gender-icon.svg"
+            alt="gender-icon"
+          />
+        </div>
+        <!-- item 2 -->
         <div class="main-page__container-3__block-3__checkbox">
           <ui-checkbox v-model="value" />
           <span class="main-page__container-3__block-3__checkbox__name">
             Доступен сегодня
           </span>
         </div>
+        <!-- item 3 -->
         <div class="main-page__container-3__block-3__checkbox">
           <ui-checkbox v-model="value2" />
           <span class="main-page__container-3__block-3__checkbox__name">
             Дата/Время
           </span>
         </div>
+        <!-- item 4 -->
         <ui-button color="warning"> Найти </ui-button>
-        <img
-          width="130"
-          height="60"
-          src="@/assets/images/svg/group_doctors.svg"
-          alt="group_doctors"
-        />
+        <!-- item 5 -->
+        <div>
+          <img
+            width="130"
+            height="60"
+            src="@/assets/images/svg/group_doctors.svg"
+            alt="group_doctors"
+          />
+        </div>
       </div>
       <div class="main-page__container-3__block-4">
         <span class="main-page__container-3__block-4__text">
+          Дежурный терапевт
+        </span>
+        <span class="main-page__container-3__block-4__text">
+          Дежурный педиатр
+        </span>
+      </div>
+      <div class="main-page__container-3__block-5">
+        <span class="main-page__container-3__block-5__text">
           Сбросить фильтры
         </span>
       </div>
@@ -286,6 +303,7 @@ export default {
   }
 
   &__container-3 {
+    position: relative;
     margin-top: 51px;
     max-width: 1225px;
     height: 268px;
@@ -296,6 +314,7 @@ export default {
 
     &__block-1 {
       width: 100%;
+      height: 60px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -315,7 +334,7 @@ export default {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
-        transform: translateX(355px);
+        transform: translateX(340px);
         font-family: $base-font-family;
         font-family: Segoe UI;
         color: #fff;
@@ -332,7 +351,7 @@ export default {
       justify-content: space-evenly;
 
       &__input {
-        width: 32vw;
+        width: 542px;
       }
     }
 
@@ -341,7 +360,7 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0px 65px 0 65px;
+      padding: 0px 30px 0 44px;
 
       &__checkbox {
         display: flex;
@@ -360,6 +379,26 @@ export default {
     }
 
     &__block-4 {
+      position: absolute;
+      bottom: 40px;
+      right: 50px;
+      display: flex;
+      gap: 5px;
+
+      &__text {
+        display: block;
+        width: 43px;
+        color: #fff;
+        text-align: center;
+        font-family: $base-font-family;
+        font-size: 8px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 8px;
+      }
+    }
+
+    &__block-5 {
       text-align: center;
 
       &__text {

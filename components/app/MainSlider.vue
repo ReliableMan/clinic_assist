@@ -111,7 +111,7 @@ export default {
 
 <style lang="sass" scoped>
 .main-slider
-  width: 555px
+  width: 545px
 
   &__slide
     display: flex
