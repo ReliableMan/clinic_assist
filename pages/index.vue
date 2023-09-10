@@ -147,32 +147,69 @@
         </span>
       </div>
     </div>
-    <div class="main-page__container-4">
-      <!-- avatar -->
-      <img
-        class="main-page__container-4__img-avatar"
-        src="@/assets/images/avatar-doctor.png"
-        alt="avatar-doctor"
-      />
-      <div class="online-doctor-i main-page__container-4__online-icon"></div>
-      <!-- bio -->
-      <div class="main-page__container-4__bio">
-        <p class="main-page__container-4__bio__name">
-          Коваль Ольга Валентиновна
-        </p>
-        <p class="main-page__container-4__bio__specialist">Травматолог</p>
-        <div class="main-page__container-4__bio__degree">
-          <span class="green-hat-icon mr-10"></span>
-          Высшая категория, кандидат медицинских наук
+    <div v-for="(n, i) in 3" :key="i">
+      <div class="main-page__container-4">
+        <!-- avatar -->
+        <img
+          class="main-page__container-4__img-avatar"
+          src="@/assets/images/avatar-doctor.png"
+          alt="avatar-doctor"
+        />
+        <div class="online-doctor-i main-page__container-4__online-icon"></div>
+        <!-- bio -->
+        <div class="main-page__container-4__bio">
+          <p class="main-page__container-4__bio__name">
+            Коваль Ольга Валентиновна
+          </p>
+          <p class="main-page__container-4__bio__specialist">Травматолог</p>
+          <div class="main-page__container-4__bio__degree">
+            <span class="green-hat-icon mr-10"></span>
+            Высшая категория, кандидат медицинских наук
+          </div>
+          <div class="main-page__container-4__bio__experience">
+            <span class="green-plus-icon mr-10"></span>
+            Стаж: 5 лет
+          </div>
         </div>
-        <div class="main-page__container-4__bio__experience">
-          <span class="green-plus-icon mr-10"></span>
-          Стаж: 5 лет
+        <!-- schedule -->
+        <div class="main-page__container-4__schedule">
+          <p class="main-page__container-4__schedule__text">Доступные даты</p>
+          <div class="main-page__container-4__schedule__days">
+            <div
+              v-for="day in days"
+              :key="day.id"
+              class="main-page__container-4__schedule__cont"
+            >
+              <span class="text-style-days">{{ day.name }}</span>
+              <ui-button
+                class="main-page__container-4__schedule__btns"
+                color="success"
+                outlined
+              >
+                {{ day.date }}
+              </ui-button>
+            </div>
+            <img
+              width="25px"
+              height="25px"
+              src="@/assets/images/svg/right-vector-icon-2.svg"
+              alt="vector-right-vector"
+            />
+          </div>
+          <div class="main-page__container-4__schedule__price">
+            <ui-button
+              class="main-page__container-4__schedule__price__btn"
+              light-shadow
+            >
+              <span class="rub-number-2">2400</span>
+              <img
+                src="@/assets/images/svg/vector-rub-dark.svg"
+                alt="ru-icon-dark"
+              />
+            </ui-button>
+            <ui-button width="185px" color="warning"> Записаться </ui-button>
+          </div>
         </div>
-      </div>
-      <!-- schedule -->
-      <div class="main-page__container-4__schedule">
-        <p class="main-page__container-4__schedule__text">Доступные даты</p>
       </div>
     </div>
   </div>
@@ -191,6 +228,19 @@ export default {
       value: false,
       value2: false,
     }
+  },
+  computed: {
+    days() {
+      return [
+        { id: 1, name: 'ср', date: 12 },
+        { id: 2, name: 'чт', date: 15 },
+        { id: 3, name: 'пт', date: 19 },
+        { id: 4, name: 'сб', date: 20 },
+        { id: 5, name: 'вс', date: 21 },
+        { id: 6, name: 'пн', date: 22 },
+        { id: 7, name: 'вт', date: 25 },
+      ]
+    },
   },
 }
 </script>
@@ -212,6 +262,15 @@ export default {
   font-weight: 600;
   line-height: 24px;
   letter-spacing: 0.09px;
+}
+.text-style-days {
+  color: #999;
+  text-align: center;
+  font-family: Segoe UI;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 12px;
 }
 .main-page {
   padding: 79px 130px 27px 226px;
@@ -502,7 +561,7 @@ export default {
     }
 
     &__schedule {
-      margin-left: 268px;
+      margin-left: 232px;
       display: flex;
       flex-direction: column;
 
@@ -513,6 +572,37 @@ export default {
         font-style: normal;
         font-weight: 600;
         line-height: 16px;
+      }
+
+      &__days {
+        margin-top: 5px;
+        width: 25vw;
+        margin-left: -10px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      &__cont {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &__btns {
+        margin-top: 5px;
+        margin-left: 2px;
+        width: 36px;
+        height: 36px;
+      }
+
+      &__price {
+        margin-top: 15px;
+
+        &__btn {
+          width: 136px;
+          text-align: center;
+          margin-right: 20px;
+        }
       }
     }
   }
@@ -539,6 +629,14 @@ export default {
   font-style: normal;
   font-weight: 600;
   line-height: 16px;
+}
+.rub-number-2 {
+  color: #333;
+  font-family: $head-font-family;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
 }
 .ru-icon {
   width: 8px;
