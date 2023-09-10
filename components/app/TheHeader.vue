@@ -6,7 +6,7 @@
         <div class="header__inner-navigation">
           <div class="header__inner-img-logo">
             <img
-              src="@/assets/images/clinic-assist-logo.svg"
+              src="@/assets/images/svg/clinic-assist-logo.svg"
               alt="clinic-assist-logo"
             />
           </div>

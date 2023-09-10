@@ -21,7 +21,7 @@
             </span>
           </ui-button>
         </div>
-        <main-slider />
+        <main-slider v-if="isActiveSlider" />
       </div>
       <div class="main-page__container__block-2">
         <img
@@ -227,6 +227,7 @@ export default {
     return {
       value: false,
       value2: false,
+      isActiveSlider: false,
     }
   },
   computed: {
@@ -241,6 +242,9 @@ export default {
         { id: 7, name: 'вт', date: 25 },
       ]
     },
+  },
+  mounted() {
+    this.isActiveSlider = true
   },
 }
 </script>
