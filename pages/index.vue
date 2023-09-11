@@ -211,6 +211,15 @@
           </div>
         </div>
       </div>
+      <button type="button" class="rating-btn">
+        <img
+          width="15px"
+          height="15px"
+          src="@/assets/images/svg/mini-star-icon.svg"
+          alt="mini-star-icon"
+        />
+        <span class="rating-btn__number">5</span>
+      </button>
     </div>
   </div>
 </template>
@@ -277,7 +286,7 @@ export default {
   line-height: 12px;
 }
 .main-page {
-  padding: 79px 130px 27px 226px;
+  padding: 79px 15vw 27px 15vw;
 
   &__container {
     display: flex;
@@ -442,7 +451,7 @@ export default {
       justify-content: space-evenly;
 
       &__input {
-        width: 542px;
+        width: 29vw;
       }
     }
 
@@ -565,7 +574,7 @@ export default {
     }
 
     &__schedule {
-      margin-left: 232px;
+      margin-left: 10vw;
       display: flex;
       flex-direction: column;
 
@@ -580,7 +589,7 @@ export default {
 
       &__days {
         margin-top: 5px;
-        width: 25vw;
+        width: 22vw;
         margin-left: -10px;
         display: flex;
         justify-content: space-around;
@@ -679,5 +688,29 @@ export default {
   height: 18px;
   background-image: url('@/assets/images/online-doctor-icon.png');
   background-repeat: no-repeat;
+}
+
+.rating-btn {
+  width: 104px;
+  height: 31px;
+  margin-top: 5px;
+  margin-left: 30px;
+  border-radius: 50px;
+  border: 1px solid #fcb016;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  gap: 7px;
+
+  &__number {
+    color: #6f7173;
+    font-family: $head-font-family;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+  }
 }
 </style>
