@@ -49,6 +49,16 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-around;
+    transition: all 1s;
+
+    @media (max-width: 1300px) {
+      padding: 55px 100px 0 80px;
+      transition: all 1s;
+    }
+    @media (max-width: 1100px) {
+      padding: 55px 50px 0 20px;
+      transition: all 1s;
+    }
 
     &__img-logo {
       width: 165px;

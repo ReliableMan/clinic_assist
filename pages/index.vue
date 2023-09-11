@@ -3,12 +3,33 @@
     <div class="main-page__container">
       <div class="main-page__container__block-1">
         <h2 class="main-page__container__block-1__title">
-          Консультация <br />
+          Консультация <br class="adapt-size" />
           врача
           <span class="main-page__container__block-1__title__green"
             >онлайн</span
           >
         </h2>
+        <!-- tablet or mobile version for photos ??-->
+        <!-- <h2 class="main-page__container__block-1-mob__title">
+          Консультация <br />
+          врача
+          <span class="main-page__container__block-1-mob__title__green"
+            >онлайн</span
+          >
+        </h2> -->
+
+        <div class="main-page__container__block-2-mob">
+          <img
+            class="main-page__container__block-2-mob__img-patient"
+            src="@/assets/images/patient-mobile.png"
+            alt="img-patient-mobile"
+          />
+          <img
+            class="main-page__container__block-2-mob__img-doctor"
+            src="@/assets/images/doctor-mobile.png"
+            alt="img-doctor-mobile"
+          />
+        </div>
         <div class="main-page__container__block-1__group-btns">
           <ui-button color="warning">
             <span class="text-btn-1">
@@ -99,7 +120,7 @@
       </div>
       <div class="main-page__container-3__block-3">
         <!-- item 1 -->
-        <div class="mr-120">
+        <div class="main-page__container-3__block-3__img-gender-i">
           <img
             width="92"
             height="46"
@@ -207,7 +228,12 @@
                 alt="ru-icon-dark"
               />
             </ui-button>
-            <ui-button width="185px" color="warning"> Записаться </ui-button>
+            <ui-button
+              class="main-page__container-4__schedule__to-sign"
+              color="warning"
+            >
+              Записаться
+            </ui-button>
           </div>
         </div>
       </div>
@@ -287,9 +313,25 @@ export default {
 }
 .main-page {
   padding: 79px 15vw 27px 15vw;
+  transition: all 1s;
+
+  @media (max-width: 1600px) {
+    padding-left: 10vw;
+    padding-right: 10vw;
+    transition: all 1s;
+  }
+  @media (max-width: 1500px) {
+    padding-left: 8vw;
+    padding-right: 8vw;
+    transition: all 1s;
+  }
 
   &__container {
     display: flex;
+
+    @media (max-width: 1100px) {
+      justify-content: center;
+    }
 
     &__block-1 {
       &__title {
@@ -299,6 +341,13 @@ export default {
         font-weight: 500;
         line-height: 50px;
         margin-left: 18px;
+        transition: all 1s;
+
+        @media (max-width: 1100px) {
+          transition: all 1s;
+          font-size: 39px;
+          margin-left: 0;
+        }
 
         &__green {
           color: $color-green;
@@ -311,6 +360,37 @@ export default {
         gap: 13px;
         margin-bottom: 10px;
         margin-left: 18px;
+      }
+    }
+
+    &__block-2-mob {
+      display: none;
+      position: relative;
+
+      @media (max-width: 1100px) {
+        margin-top: 20px;
+        margin-left: 80px;
+        margin-bottom: 20px;
+        display: block;
+        width: 284px;
+        height: 320px;
+      }
+
+      &__img-patient {
+        height: 300px;
+        box-shadow: -25px 75px 37px -8px rgba(5, 142, 110, 0.14),
+          70px -11px 60px 0px rgba(5, 142, 110, 0.14);
+        border-radius: 30px;
+        transform: rotate(-13.054deg);
+      }
+
+      &__img-doctor {
+        height: 300px;
+        position: absolute;
+        top: 13px;
+        left: 124px;
+        border-radius: 30px;
+        transform: rotate(12.743deg);
       }
     }
 
@@ -327,6 +407,22 @@ export default {
           213px -11px 60px 0px rgba(5, 142, 110, 0.14);
         border-radius: 52px;
         transform: rotate(-13.054deg);
+        transition: all 1s;
+
+        @media (max-width: 1400px) {
+          height: 500px;
+          width: 230px;
+          box-shadow: -25px 75px 37px -8px rgba(5, 142, 110, 0.14),
+            88px -11px 60px 0px rgba(5, 142, 110, 0.14);
+          transition: all 1s;
+        }
+        @media (max-width: 1200px) {
+          height: 430px;
+          width: 200px;
+          top: 99px;
+          left: 20px;
+          border-radius: 30px;
+        }
       }
       &__img-doctor {
         position: absolute;
@@ -334,6 +430,23 @@ export default {
         left: 347px;
         border-radius: 52px;
         transform: rotate(12.743deg);
+
+        @media (max-width: 1400px) {
+          height: 500px;
+          width: 230px;
+          top: 99px;
+          left: 299px;
+        }
+        @media (max-width: 1200px) {
+          height: 430px;
+          width: 200px;
+          top: 120px;
+          left: 185px;
+          border-radius: 30px;
+        }
+      }
+      @media (max-width: 1100px) {
+        display: none;
       }
     }
   }
@@ -342,6 +455,11 @@ export default {
     margin-top: 28px;
     display: flex;
     gap: 47px;
+
+    @media (max-width: 1000px) {
+      flex-direction: column;
+      align-items: center;
+    }
 
     &__block {
       width: 590px;
@@ -362,6 +480,12 @@ export default {
         font-style: normal;
         font-weight: 700;
         line-height: 22px;
+        transition: all 1s;
+
+        @media (max-width: 1100px) {
+          transform: translateX(28px) translateY(10px);
+          transition: all 1s;
+        }
       }
 
       &__list {
@@ -369,6 +493,16 @@ export default {
         color: #fff;
         @extend .text-style-1;
         list-style-type: disc;
+        transition: all 1s;
+
+        @media (max-width: 1200px) {
+          transform: translateX(80px) translateY(5px);
+          transition: all 1s;
+        }
+        @media (max-width: 1100px) {
+          transform: translateX(48px) translateY(10px);
+          transition: all 1s;
+        }
       }
 
       &__href {
@@ -442,6 +576,13 @@ export default {
         font-style: normal;
         font-weight: 400;
         line-height: 16px;
+
+        @media (max-width: 1350px) {
+          transform: translateX(20vw);
+        }
+        @media (max-width: 1000px) {
+          transform: translateX(10vw);
+        }
       }
     }
 
@@ -461,6 +602,14 @@ export default {
       justify-content: space-between;
       align-items: center;
       padding: 0px 30px 0 44px;
+
+      &__img-gender-i {
+        margin-right: 120px;
+
+        @media (max-width: 1300px) {
+          margin-right: 40px;
+        }
+      }
 
       &__checkbox {
         display: flex;
@@ -577,6 +726,16 @@ export default {
       margin-left: 10vw;
       display: flex;
       flex-direction: column;
+      transition: all 1s;
+
+      @media (max-width: 1300px) {
+        transition: all 1s;
+        margin-left: 5vw;
+      }
+      @media (max-width: 1000px) {
+        transition: all 1s;
+        margin-left: 0;
+      }
 
       &__text {
         color: #333;
@@ -594,6 +753,10 @@ export default {
         display: flex;
         justify-content: space-around;
         align-items: center;
+
+        @media (max-width: 1200px) {
+          width: unset;
+        }
       }
 
       &__cont {
@@ -615,6 +778,18 @@ export default {
           width: 136px;
           text-align: center;
           margin-right: 20px;
+
+          @media (max-width: 1200px) {
+            width: 100px;
+          }
+        }
+      }
+
+      &__to-sign {
+        width: 185px;
+
+        @media (max-width: 1200px) {
+          width: 120px;
         }
       }
     }
@@ -711,6 +886,12 @@ export default {
     font-style: normal;
     font-weight: 700;
     line-height: 16px;
+  }
+}
+
+.adapt-size {
+  @media (max-width: 1100px) {
+    display: none;
   }
 }
 </style>
