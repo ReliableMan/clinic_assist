@@ -9,15 +9,15 @@
             >онлайн</span
           >
         </h2>
-        <!-- tablet or mobile version for photos ??-->
-        <!-- <h2 class="main-page__container__block-1-mob__title">
+        <!-- tablet or mobile version-->
+        <h2 class="main-page__container__block-1__title-mob">
           Консультация <br />
           врача
-          <span class="main-page__container__block-1-mob__title__green"
+          <span class="main-page__container__block-1__title-mob__green"
             >онлайн</span
           >
-        </h2> -->
-
+        </h2>
+        <!-- images doctor and patient for tablet and mobile devices -->
         <div class="main-page__container__block-2-mob">
           <img
             class="main-page__container__block-2-mob__img-patient"
@@ -58,7 +58,7 @@
       </div>
     </div>
     <div class="main-page__container-2">
-      <!-- 1 карточка -->
+      <!-- 1 карточка orange block-->
       <div class="main-page__container-2__block">
         <p class="main-page__container-2__block__title">Срочная консультация</p>
         <ul class="main-page__container-2__block__list" type="disc">
@@ -71,7 +71,7 @@
           <p class="right-vect-i-orange"></p>
         </a>
       </div>
-      <!-- 2 карточка -->
+      <!-- 2 карточка green block-->
       <div class="main-page__container-2__block-2">
         <p class="main-page__container-2__block__title">
           Плановая консультация
@@ -87,87 +87,24 @@
         </a>
       </div>
     </div>
-    <div class="main-page__container-3">
-      <div class="main-page__container-3__block-1">
-        <p class="main-page__container-3__block-1__text">
-          Выберите параметры поиска
-        </p>
-        <div class="main-page__container-3__block-1__rub-text">
-          ваш баланс:
-          <p class="rub-number">100</p>
-          <p class="ru-icon"></p>
+
+    <search-doctor-desktop class="desktop" />
+    <search-doctor-mobile class="mobile" />
+
+    <select-doctor-mobile class="mobile" />
+
+    <div class="mobile">
+      <ui-container>
+        <div class="row gutter-10 mb-18">
+          <div class="col-12">
+            <ui-sorting v-model="value3" :items="items" label="Сортировать">
+              <span>Сортировать</span>
+            </ui-sorting>
+          </div>
         </div>
-      </div>
-      <div class="main-page__container-3__block-2">
-        <div>
-          <ui-input-label>
-            <span class="ui-label">Специализация</span>
-            <ui-input
-              class="main-page__container-3__block-2__input"
-              placeholder="Педиатр, терпевт, невролог"
-            />
-          </ui-input-label>
-        </div>
-        <div>
-          <ui-input-label>
-            <span class="ui-label">ФИО</span>
-            <ui-input
-              class="main-page__container-3__block-2__input"
-              placeholder="Сидоров Иван Петрович"
-            />
-          </ui-input-label>
-        </div>
-      </div>
-      <div class="main-page__container-3__block-3">
-        <!-- item 1 -->
-        <div class="main-page__container-3__block-3__img-gender-i">
-          <img
-            width="92"
-            height="46"
-            src="@/assets/images/svg/gender-icon.svg"
-            alt="gender-icon"
-          />
-        </div>
-        <!-- item 2 -->
-        <div class="main-page__container-3__block-3__checkbox">
-          <ui-checkbox v-model="value" />
-          <span class="main-page__container-3__block-3__checkbox__name">
-            Доступен сегодня
-          </span>
-        </div>
-        <!-- item 3 -->
-        <div class="main-page__container-3__block-3__checkbox">
-          <ui-checkbox v-model="value2" />
-          <span class="main-page__container-3__block-3__checkbox__name">
-            Дата/Время
-          </span>
-        </div>
-        <!-- item 4 -->
-        <ui-button color="warning"> Найти </ui-button>
-        <!-- item 5 -->
-        <div>
-          <img
-            width="130"
-            height="60"
-            src="@/assets/images/svg/group_doctors.svg"
-            alt="group_doctors"
-          />
-        </div>
-      </div>
-      <div class="main-page__container-3__block-4">
-        <span class="main-page__container-3__block-4__text">
-          Дежурный терапевт
-        </span>
-        <span class="main-page__container-3__block-4__text">
-          Дежурный педиатр
-        </span>
-      </div>
-      <div class="main-page__container-3__block-5">
-        <span class="main-page__container-3__block-5__text">
-          Сбросить фильтры
-        </span>
-      </div>
+      </ui-container>
     </div>
+
     <card-doctor-desktop class="desktop" />
     <card-doctor-mobile class="mobile" />
   </div>
@@ -177,12 +114,18 @@
 import MainSlider from '@/components/app/MainSlider.vue'
 import CardDoctorDesktop from '@/components/app/CardDoctorDesktop.vue'
 import CardDoctorMobile from '@/components/app/CardDoctorMobile.vue'
+import SearchDoctorDesktop from '@/components/app/SearchDoctorDesktop.vue'
+import SearchDoctorMobile from '@/components/app/SearchDoctorMobile.vue'
+import SelectDoctorMobile from '@/components/app/SelectDoctorMobile.vue'
 
 export default {
   components: {
     MainSlider,
     CardDoctorDesktop,
     CardDoctorMobile,
+    SearchDoctorDesktop,
+    SearchDoctorMobile,
+    SelectDoctorMobile,
   },
   layout: 'public',
   data() {
@@ -190,6 +133,18 @@ export default {
       value: false,
       value2: false,
       isActiveSlider: false,
+
+      value3: [null, null],
+      items: [
+        {
+          key: 'date',
+          label: 'Дата',
+        },
+        {
+          key: 'popularity',
+          label: 'Популярность',
+        },
+      ],
     }
   },
   mounted() {
@@ -207,6 +162,13 @@ export default {
   font-style: normal;
   font-weight: 600;
   line-height: 22px;
+  transition: all 1s;
+
+  @media (max-width: 600px) {
+    transition: all 1s;
+    font-size: 10px;
+    line-height: 16px;
+  }
 }
 .text-style-1 {
   font-family: $base-font-family;
@@ -261,17 +223,46 @@ export default {
           margin-left: 0;
         }
 
+        @media (max-width: 600px) {
+          display: none;
+        }
+
         &__green {
           color: $color-green;
           font-weight: 700;
         }
       }
+
+      &__title-mob {
+        display: none;
+
+        @media (max-width: 600px) {
+          display: block;
+          text-align: center;
+          font-family: $head-font-family;
+          font-size: 24px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 26px;
+        }
+
+        &__green {
+          color: $color-green;
+          font-weight: 600;
+        }
+      }
+
       &__group-btns {
         display: flex;
         margin-top: 21px;
         gap: 13px;
         margin-bottom: 10px;
         margin-left: 18px;
+
+        @media (max-width: 1000px) {
+          transition: all 1s;
+          justify-content: center;
+        }
       }
     }
 
@@ -281,11 +272,21 @@ export default {
 
       @media (max-width: 1100px) {
         margin-top: 20px;
-        margin-left: 80px;
+        margin-left: 100px;
         margin-bottom: 20px;
         display: block;
         width: 284px;
         height: 320px;
+      }
+
+      @media (max-width: 600px) {
+        transition: all 1s;
+        margin-left: 25%;
+      }
+
+      @media (max-width: 450px) {
+        transition: all 1s;
+        margin-left: 15%;
       }
 
       &__img-patient {
@@ -367,6 +368,13 @@ export default {
     margin-top: 28px;
     display: flex;
     gap: 47px;
+    transition: all 1s;
+
+    @media (max-width: 600px) {
+      padding-left: 14px;
+      transition: all 1s;
+      gap: 12px;
+    }
 
     @media (max-width: 1000px) {
       flex-direction: column;
@@ -384,6 +392,12 @@ export default {
         rgba(255, 138, 33, 0.91) 97.52%
       );
 
+      @media (max-width: 600px) {
+        transition: all 1s;
+        width: 100%;
+        height: 130px;
+      }
+
       &__title {
         transform: translateX(48px) translateY(10px);
         color: #fff;
@@ -396,6 +410,11 @@ export default {
 
         @media (max-width: 1100px) {
           transform: translateX(28px) translateY(10px);
+          transition: all 1s;
+        }
+        @media (max-width: 600px) {
+          transform: translateX(18px) translateY(10px);
+          font-size: 16px;
           transition: all 1s;
         }
       }
@@ -415,12 +434,24 @@ export default {
           transform: translateX(48px) translateY(10px);
           transition: all 1s;
         }
+        @media (max-width: 600px) {
+          transform: translateX(45px);
+          font-size: 12px;
+          font-style: normal;
+          line-height: 16px;
+          letter-spacing: 0.06px;
+          transition: all 1s;
+        }
       }
 
       &__href {
         display: flex;
         justify-content: flex-end;
         align-items: center;
+
+        @media (max-width: 600px) {
+          transform: translateY(-20px);
+        }
       }
 
       &__href-text {
@@ -431,6 +462,13 @@ export default {
         text-align: end;
         margin-right: 26px;
         text-decoration-line: underline;
+
+        @media (max-width: 600px) {
+          font-size: 10px;
+          letter-spacing: 0.05px;
+          margin-top: 3px;
+          margin-right: 13px;
+        }
       }
     }
 
@@ -445,131 +483,11 @@ export default {
         #469c79 92.77%
       );
       box-shadow: 0px 2px 8px 0px rgba(51, 51, 51, 0.15);
-    }
-  }
 
-  &__container-3 {
-    position: relative;
-    margin-top: 51px;
-    max-width: 1225px;
-    height: 268px;
-    border-radius: 10px;
-    background-image: url('@/assets/images/background-img-1.png');
-    display: flex;
-    flex-direction: column;
-
-    &__block-1 {
-      width: 100%;
-      height: 60px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-
-      &__text {
-        font-family: $base-font-family;
-        color: #fff;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 30px;
-      }
-
-      &__rub-text {
-        width: 120px;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        transform: translateX(340px);
-        font-family: $base-font-family;
-        font-family: Segoe UI;
-        color: #fff;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 16px;
-
-        @media (max-width: 1350px) {
-          transform: translateX(20vw);
-        }
-        @media (max-width: 1000px) {
-          transform: translateX(10vw);
-        }
-      }
-    }
-
-    &__block-2 {
-      max-width: 1225px;
-      display: flex;
-      justify-content: space-evenly;
-
-      &__input {
-        width: 29vw;
-      }
-    }
-
-    &__block-3 {
-      margin-top: 18px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0px 30px 0 44px;
-
-      &__img-gender-i {
-        margin-right: 120px;
-
-        @media (max-width: 1300px) {
-          margin-right: 40px;
-        }
-      }
-
-      &__checkbox {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-
-        &__name {
-          color: #fff;
-          font-family: $base-font-family;
-          font-size: 18px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: 22px;
-        }
-      }
-    }
-
-    &__block-4 {
-      position: absolute;
-      bottom: 40px;
-      right: 50px;
-      display: flex;
-      gap: 5px;
-
-      &__text {
-        display: block;
-        width: 43px;
-        color: #fff;
-        text-align: center;
-        font-family: $base-font-family;
-        font-size: 8px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 8px;
-      }
-    }
-
-    &__block-5 {
-      text-align: center;
-
-      &__text {
-        color: #fff;
-        font-family: $base-font-family;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 16px;
-        text-decoration-line: underline;
+      @media (max-width: 600px) {
+        transition: all 1s;
+        width: 100%;
+        height: 130px;
       }
     }
   }
@@ -581,6 +499,15 @@ export default {
   margin-right: 29px;
   background-image: url('@/assets/images/svg/right-vector-icon.svg');
   background-repeat: no-repeat;
+
+  @media (max-width: 600px) {
+    width: 16px;
+    height: 16px;
+    padding-top: 2px;
+    margin-right: 18px;
+    background-image: url('@/assets/images/mobile/svg/right-vector-icon-orange.svg');
+    background-repeat: no-repeat;
+  }
 }
 .right-vect-i-green {
   width: 26px;
@@ -588,6 +515,15 @@ export default {
   margin-right: 29px;
   background-image: url('@/assets/images/svg/right-vector-icon-2.svg');
   background-repeat: no-repeat;
+
+  @media (max-width: 600px) {
+    width: 16px;
+    height: 16px;
+    padding-top: 2px;
+    margin-right: 18px;
+    background-image: url('@/assets/images/mobile/svg/right-vector-icon-green.svg');
+    background-repeat: no-repeat;
+  }
 }
 .rub-number {
   color: #fff;

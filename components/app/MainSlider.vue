@@ -109,87 +109,135 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-slider
-  width: 545px
+<style lang="scss" scoped>
+@import '@/assets/styles/_variables.sass';
 
-  &__slide
-    display: flex
-    flex-direction: column
-    width: 100px
+.main-slider {
+  width: 545px;
 
-  &__textarea
-    width: 509px
+  @media (max-width: 600px) {
+    width: 95vw;
+  }
 
-  &__text
-    text-align: center
-    font-family: $head-font-family
-    font-size: 22px
-    font-style: normal
-    font-weight: 600
-    line-height: 26px
-    height: 95px
-    display: flex
-    align-items: center
-    justify-content: center
+  &__slide {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+  }
 
-  &__container
-    margin-left: 18px
-    margin-bottom: 15px
-    padding-left: 20px
-    gap: 49px
-    width: 509px
-    height: 108px
-    border-radius: 16px
-    background-color: $color-white
-    box-shadow: 0px 4px 23px 0px rgba(5, 142, 110, 0.14)
-    display: flex
-    align-items: center
+  &__textarea {
+    width: 100%;
+  }
 
-  &__image
-    display: block
-    background-image: url('../../assets/images/svg/main-slaider/Ellipse-green-fill.svg')
-    background-repeat: no-repeat
+  &__text {
+    text-align: center;
+    font-family: $head-font-family;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 26px;
+    height: 95px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 1s;
 
-  &__title
-    width: 350px
-    font-family: $base-font-family
-    font-size: 18px
-    font-style: normal
-    font-weight: 400
-    line-height: 24px
+    @media (max-width: 600px) {
+      transition: all 1s;
+      font-size: 12px;
+      line-height: 18px;
+      height: 70px;
+    }
+  }
 
-  & ::v-deep
-    .ui-swiper-pagination
-      justify-content: flex-start !important
+  &__container {
+    margin-left: 18px;
+    margin-bottom: 15px;
+    padding-left: 20px;
+    gap: 49px;
+    width: 509px;
+    height: 108px;
+    border-radius: 16px;
+    background-color: $color-white;
+    box-shadow: 0px 4px 23px 0px rgba(5, 142, 110, 0.14);
+    display: flex;
+    align-items: center;
+    transition: all 1s;
 
-    .swiper-pagination-bullet
-      opacity: 1 !important
-      position: relative
-      transition: all $transition-timing
-      background-color: $color-grey-lighten-4 !important
+    @media (max-width: 600px) {
+      width: 90%;
+      height: 90px;
+      gap: 26px;
+      transition: all 1s;
+    }
+  }
 
-      &.swiper-pagination-bullet-active
-        background-color: $color-orange !important
+  &__image {
+    display: block;
+    background-image: url('../../assets/images/svg/main-slaider/Ellipse-green-fill.svg');
+    background-repeat: no-repeat;
+  }
 
-      &::before
-        content: ""
-        width: 100%
-        height: 100%
-        position: absolute
-        top: 0
-        left: 0
-        border: 2px solid $color-orange
-        visibility: hidden
-        opacity: 0
-        border-radius: 100%
-        transition: all $transition-timing
-        box-sizing: border-box
+  &__title {
+    width: 350px;
+    font-family: $base-font-family;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    transition: all 1s;
 
-      &:not(.swiper-pagination-bullet-active):hover
-        &::before
-          visibility: visible
-          opacity: 1
+    @media (max-width: 600px) {
+      width: 230px;
+      font-size: 12px;
+      line-height: 16px;
+      transition: all 1s;
+    }
+    @media (max-width: 400px) {
+      width: 180px;
+      font-size: 12px;
+      line-height: 16px;
+      transition: all 1s;
+    }
+  }
+
+  & ::v-deep {
+    .ui-swiper-pagination {
+      justify-content: flex-start !important;
+    }
+
+    .swiper-pagination-bullet {
+      opacity: 1 !important;
+      position: relative;
+      transition: all $transition-timing;
+      background-color: $color-grey-lighten-4 !important;
+    }
+
+    &.swiper-pagination-bullet-active {
+      background-color: $color-orange !important;
+    }
+
+    &::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 2px solid $color-orange;
+      visibility: hidden;
+      opacity: 0;
+      border-radius: 100%;
+      transition: all $transition-timing;
+      box-sizing: border-box;
+    }
+
+    &:not(.swiper-pagination-bullet-active):hover &::before {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
 </style>
 
 <style>
@@ -205,6 +253,11 @@ export default {
   width: 509px;
   display: flex;
   justify-content: center;
+}
+@media (max-width: 600px) {
+  .pagination {
+    width: 100%;
+  }
 }
 .ui-swiper-pagination__right,
 .ui-swiper-pagination__left {
