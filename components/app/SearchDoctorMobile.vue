@@ -64,7 +64,6 @@ export default {
   flex-direction: column;
 
   @media (max-width: 600px) {
-    margin-left: 16px;
     margin-top: 12px;
   }
 
@@ -92,16 +91,10 @@ export default {
     flex-direction: column;
     padding-right: 18px;
     padding-left: 18px;
-    // justify-content: space-evenly;
-
-    &__input {
-      // width: 80%;
-    }
   }
 
   &__block-3 {
     display: flex;
-    // justify-content: space-between;
     margin-top: 24px;
     padding-right: 18px;
     padding-left: 18px;

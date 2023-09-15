@@ -13,6 +13,10 @@
           src="@/assets/images/mobile/svg/doctor-2.svg"
           alt="doctor-2"
         />
+        <div class="choose-doctor__label">
+          <span>терапевт</span>
+          <span>педиатор</span>
+        </div>
       </div>
     </div>
   </div>
@@ -36,10 +40,6 @@ export default {
   border-radius: 10px;
   background-image: url('@/assets/images/background-img-1.png');
 
-  @media (max-width: 600px) {
-    margin-left: 16px;
-  }
-
   &__content {
     width: 100%;
     height: 83px;
@@ -50,7 +50,7 @@ export default {
     &__text {
       color: #fff;
       font-family: $base-font-family;
-      font-size: 16px;
+      font-size: 10px;
       font-style: normal;
       font-weight: 400;
       line-height: 16px;
@@ -79,6 +79,20 @@ export default {
         height: 56px;
       }
     }
+  }
+
+  &__label {
+    margin-top: 50px;
+    margin-left: 5px;
+    display: flex;
+    gap: 13px;
+    color: #fff;
+    text-align: center;
+    font-family: $base-font-family;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 8px;
   }
 }
 </style>

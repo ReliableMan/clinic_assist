@@ -91,19 +91,8 @@
     <search-doctor-desktop class="desktop" />
     <search-doctor-mobile class="mobile" />
 
-    <select-doctor-mobile class="mobile" />
-
-    <div class="mobile">
-      <ui-container>
-        <div class="row gutter-10 mb-18">
-          <div class="col-12">
-            <ui-sorting v-model="value3" :items="items" label="Сортировать">
-              <span>Сортировать</span>
-            </ui-sorting>
-          </div>
-        </div>
-      </ui-container>
-    </div>
+    <select-doctor-mobile class="mobile-sm" />
+    <sort-doctor-parametrs class="mobile-sm" />
 
     <card-doctor-desktop class="desktop" />
     <card-doctor-mobile class="mobile" />
@@ -117,6 +106,7 @@ import CardDoctorMobile from '@/components/app/CardDoctorMobile.vue'
 import SearchDoctorDesktop from '@/components/app/SearchDoctorDesktop.vue'
 import SearchDoctorMobile from '@/components/app/SearchDoctorMobile.vue'
 import SelectDoctorMobile from '@/components/app/SelectDoctorMobile.vue'
+import SortDoctorParametrs from '@/components/app/SortDoctorParametrs.vue'
 
 export default {
   components: {
@@ -126,6 +116,7 @@ export default {
     SearchDoctorDesktop,
     SearchDoctorMobile,
     SelectDoctorMobile,
+    SortDoctorParametrs,
   },
   layout: 'public',
   data() {
@@ -133,18 +124,6 @@ export default {
       value: false,
       value2: false,
       isActiveSlider: false,
-
-      value3: [null, null],
-      items: [
-        {
-          key: 'date',
-          label: 'Дата',
-        },
-        {
-          key: 'popularity',
-          label: 'Популярность',
-        },
-      ],
     }
   },
   mounted() {
@@ -194,10 +173,11 @@ export default {
     transition: all 1s;
   }
   @media (max-width: 600px) {
-    padding: 30px 0 0 0;
+    padding: 30px 10px 27px 10px;
     margin-left: auto;
     margin-right: auto;
     transition: all 1s;
+    overflow: hidden;
   }
 
   &__container {
@@ -370,15 +350,14 @@ export default {
     gap: 47px;
     transition: all 1s;
 
-    @media (max-width: 600px) {
-      padding-left: 14px;
-      transition: all 1s;
-      gap: 12px;
-    }
-
     @media (max-width: 1000px) {
       flex-direction: column;
       align-items: center;
+    }
+
+    @media (max-width: 600px) {
+      transition: all 1s;
+      gap: 12px;
     }
 
     &__block {
@@ -566,6 +545,12 @@ export default {
 .mobile {
   display: none;
   @media (max-width: 1000px) {
+    display: block;
+  }
+}
+.mobile-sm {
+  display: none;
+  @media (max-width: 600px) {
     display: block;
   }
 }

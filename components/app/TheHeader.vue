@@ -46,11 +46,46 @@
             />
           </div>
           <!-- burger-icon -->
-          <div class="header__inner-mob__burger-icon">
-            <img
-              src="@/assets/images/mobile/svg/burger-icon.svg"
-              alt="burger-icon-mob"
-            />
+          <div>
+            <ui-button
+              class="header__inner-mob__burger-icon"
+              @click="drawer = true"
+            >
+              <img
+                src="@/assets/images/mobile/svg/burger-icon.svg"
+                alt="burger-icon-mob"
+              />
+            </ui-button>
+            <ui-drawer v-model="drawer">
+              <ui-drawer-inner>
+                <p class="text-mob-drawer-1">Меню:</p>
+                <div class="mob-drawer-content">
+                  <!-- 1 -->
+                  <div class="mob-drawer-content__block-1">
+                    <ui-icon class="hdr-icons" name="search" />
+                    <span class="hdr-mobile-text"> Поиск врача </span>
+                  </div>
+                  <!-- 2 -->
+                  <div class="mob-drawer-content__block-2">
+                    <ui-icon class="hdr-icons" name="warning" />
+                    <span class="hdr-mobile-text"> Помощь </span>
+                  </div>
+                  <!-- 3 -->
+                  <div class="mob-drawer-content__block-3">
+                    <ui-icon class="hdr-icons" name="like" />
+                    <span class="hdr-mobile-text"> Обратная связь </span>
+                  </div>
+                </div>
+                <!-- button -->
+                <ui-button
+                  class="mt-40"
+                  color="success"
+                  :to="localePath({ name: 'sign-in' })"
+                >
+                  {{ $t('common.signin_signup') }}
+                </ui-button>
+              </ui-drawer-inner>
+            </ui-drawer>
           </div>
         </div>
       </div>
@@ -72,11 +107,26 @@ export default {
       $_zIndex: 110,
     }
   },
+  data() {
+    return {
+      drawer: false,
+      leftDrawer: false,
+    }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 @import '@/assets/styles/_variables.sass';
+
+.text-mob-drawer-1 {
+  color: var(--primary-2, #333);
+  font-family: $head-font-family;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+}
 
 .header {
   height: $public-header-height-md;
@@ -113,17 +163,17 @@ export default {
       width: 100vw;
       display: flex;
       justify-content: space-between;
-      padding-left: 20px;
-      padding-right: 20px;
       align-items: center;
     }
 
     &__img-logo {
+      margin-top: 5px;
       margin-left: 20px;
     }
 
     &__profile-icon {
-      width: 50px;
+      margin-top: 11px;
+      width: 45px;
       height: 20px;
       border-right: solid #dcfef0;
     }
@@ -182,5 +232,51 @@ export default {
   &__button {
     width: 194px;
   }
+}
+
+.mob-drawer-content {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+
+  &__block-1 {
+    display: flex;
+    gap: 12px;
+    padding-bottom: 27px;
+    border-bottom: 1px solid #469c79;
+  }
+
+  &__block-2,
+  &__block-3 {
+    margin-top: 22px;
+    display: flex;
+    gap: 12px;
+  }
+}
+
+.hdr-icons {
+  width: 24px;
+  height: 24px;
+  color: #469c79;
+}
+.hdr-mobile-text {
+  color: var(--primary-2, #333);
+  font-family: $base-font-family;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+}
+</style>
+
+<style>
+.ui-button--text-primary {
+  color: #469c79 !important;
+}
+.ui-button--success:not(.ui-button--outlined) {
+  background-color: #469c79 !important;
+}
+.ui-button--outlined {
+  color: #469c79 !important;
 }
 </style>
