@@ -531,12 +531,14 @@ export default {
 }
 
 .adapt-size {
+  display: block;
   @media (max-width: 1100px) {
     display: none;
   }
 }
 
 .desktop {
+  display: block;
   @media (max-width: 1000px) {
     display: none;
   }
