@@ -96,6 +96,10 @@ export default {
   display: flex;
   flex-direction: column;
 
+  @media (max-width: 1000px) {
+    display: none;
+  }
+
   &__block-1 {
     width: 100%;
     height: 60px;

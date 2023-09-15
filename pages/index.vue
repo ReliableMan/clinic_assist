@@ -504,31 +504,6 @@ export default {
     background-repeat: no-repeat;
   }
 }
-.rub-number {
-  color: #fff;
-  font-family: $base-font-family;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 16px;
-}
-
-.ru-icon {
-  width: 8px;
-  height: 10px;
-  background-image: url('@/assets/images/svg/vector-rub.svg');
-  background-repeat: no-repeat;
-}
-
-.ui-label {
-  padding-left: 20px;
-  color: #fff !important;
-  font-family: $base-font-family;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 16px;
-}
 
 .adapt-size {
   display: block;
