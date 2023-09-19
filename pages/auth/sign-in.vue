@@ -120,13 +120,6 @@ export default {
 }
 </script>
 
-<router>
-  {
-    path: '/sign-in',
-    name: 'sign-in',
-  }
-</router>
-
 <style lang="scss" scoped>
 @import '@/assets/styles/_variables.sass';
 .sign-link {
@@ -148,3 +141,10 @@ export default {
   color: #469c79 !important;
 }
 </style>
+
+<router>
+    {
+      path: '/sign-in',
+      name: 'sign-in',
+    }
+  </router>

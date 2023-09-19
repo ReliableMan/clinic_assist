@@ -7,7 +7,14 @@
     "signup": "Регистрация",
     "email": "Email",
     "password": "Пароль",
-    "login": "Войти"
+    "login": "Войти",
+    "personal_data": "Личные данные",
+    "last_name": "Фамилия",
+    "name": "Имя",
+    "middle_name": "Отчество",
+    "small_star_text": "*",
+    "date": "дд.мм.гггг"
+
   },
   "system": {
     "auth": {
