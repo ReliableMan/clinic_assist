@@ -2,14 +2,13 @@
   <header class="header">
     <div class="header__panel">
       <div class="header__inner">
-        <!-- <ui-container> header__inner__navigation -->
         <div class="header__inner-navigation">
-          <div class="header__inner-img-logo">
+          <NuxtLink to="/" class="header__inner-img-logo">
             <img
               src="@/assets/images/svg/clinic-assist-logo.svg"
               alt="clinic-assist-logo"
             />
-          </div>
+          </NuxtLink>
 
           <div class="header__inner-button">
             <div class="header__inner-settings">
@@ -26,17 +25,16 @@
             </ui-button>
           </div>
         </div>
-        <!-- </ui-container> -->
       </div>
       <!-- styles for mobile -->
       <div class="header__inner-mob">
         <!-- logo -->
-        <div class="header__inner-mob__img-logo">
+        <NuxtLink to="/" class="header__inner-mob__img-logo">
           <img
             src="@/assets/images/mobile/png/clinic-assist-logo-mob.png"
             alt="clinic-assist-logo-mob"
           />
-        </div>
+        </NuxtLink>
         <div class="d-flex">
           <!-- profile-icon -->
           <div class="header__inner-mob__profile-icon">
@@ -73,17 +71,21 @@
                   <!-- 3 -->
                   <div class="mob-drawer-content__block-3">
                     <ui-icon class="hdr-icons" name="like" />
-                    <span class="hdr-mobile-text"> Обратная связь </span>
+                    <span class="hdr-mobile-text" @click="drawer = false">
+                      Обратная связь
+                    </span>
                   </div>
                 </div>
                 <!-- button -->
-                <ui-button
-                  class="mt-40"
-                  color="success"
-                  :to="localePath({ name: 'sign-in' })"
-                >
-                  {{ $t('common.signin_signup') }}
-                </ui-button>
+                <div @click="drawer = false">
+                  <ui-button
+                    class="mt-40"
+                    color="success"
+                    :to="localePath({ name: 'sign-in' })"
+                  >
+                    {{ $t('common.signin_signup') }}
+                  </ui-button>
+                </div>
               </ui-drawer-inner>
             </ui-drawer>
           </div>
@@ -173,7 +175,7 @@ export default {
 
     &__profile-icon {
       margin-top: 11px;
-      width: 45px;
+      width: 50px;
       height: 20px;
       border-right: solid #dcfef0;
     }

@@ -2,9 +2,24 @@
   "common": {
     "signin_signup": "Вход | Регистрация",
     "urgent_consultation": "Срочная консультация",
-    "scheduled_consultation": "Плановая консультация"
+    "scheduled_consultation": "Плановая консультация",
+    "signin": "Вход",
+    "signup": "Регистрация",
+    "email": "Email",
+    "password": "Пароль",
+    "login": "Войти"
   },
-  "system": {},
+  "system": {
+    "auth": {
+      "forgot_password": {
+        "text1": "Забыли пароль?",
+        "text2": "Его легко {link}",
+        "links": [
+          "восстановить"
+        ]
+      }
+    }
+  },
   "validation": {
     "required": "Пожалуйста, заполните это поле",
     "email": "Пожалуйста, проверьте, что введены только латинские символы без пробелов",
