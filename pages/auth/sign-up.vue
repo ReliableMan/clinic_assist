@@ -82,9 +82,70 @@
               />
             </ui-input-label>
           </ui-validator>
+
+          <div class="checkbox-gender">
+            <ui-validator
+              v-slot="{ error }"
+              rules="required"
+              :custom-messages="{
+                required: $t('validation.required_radio'),
+              }"
+              class="mb-18"
+            >
+              <ui-input-label label="Пол" black bold>
+                <div class="checkbox-radio-btn mt-5">
+                  <input
+                    :id="fields.gender.man"
+                    v-model="fields.valueGender"
+                    :error="error"
+                    type="radio"
+                    :value="fields.gender.man"
+                  />
+                  <label
+                    class="man-svg-icon"
+                    name="radio"
+                    :for="fields.gender.man"
+                  >
+                    {{ fields.gender.man }}
+                  </label>
+                </div>
+                <div class="checkbox-radio-btn mt-5">
+                  <input
+                    :id="fields.gender.woman"
+                    v-model="fields.valueGender"
+                    type="radio"
+                    :value="fields.gender.woman"
+                  />
+                  <label
+                    class="woman-svg-icon"
+                    name="radio"
+                    :for="fields.gender.woman"
+                  >
+                    {{ fields.gender.woman }}
+                  </label>
+                </div>
+              </ui-input-label>
+            </ui-validator>
+          </div>
+          <!-- Данные для входа -->
+          <div class="d-flex-row">
+            <auth-label
+              icon="user"
+              :label="$t('common.login_details')"
+              class="mb-20"
+              :icon-size="[17, 20]"
+            />
+            <auth-label
+              icon=""
+              :label="$t('common.small_star_text')"
+              class="mb-20"
+              style="color: red"
+              :icon-size="[17, 20]"
+            />
+          </div>
         </div>
 
-        <div class="mb-36">
+        <!-- <div class="mb-36">
           <auth-label
             icon="phone"
             :label="$t('common.phone')"
@@ -99,9 +160,9 @@
           >
             <ui-input-local-phone v-model="fields.phone" :error="error" />
           </ui-validator>
-        </div>
+        </div> -->
 
-        <div class="mb-36">
+        <!-- <div class="mb-36">
           <auth-label
             icon="door"
             :label="$t('common.login_details')"
@@ -145,17 +206,7 @@
               :placeholder="$t('common.promo_if_available')"
             />
           </ui-validator>
-        </div>
-
-        <div>
-          <div>
-            value: {{ value }}
-            <ui-custom-checkbox v-slot="{ checked }" v-model="value">
-              <div :class="{ 'text-primary': checked }">XXX</div>
-            </ui-custom-checkbox>
-          </div>
-        </div>
-
+        </div> -->
         <ui-button
           color="primary"
           fluid
@@ -185,7 +236,6 @@ export default {
   data() {
     return {
       loading: false,
-      value: '',
       fields: {
         surname: '', // фамилия
         name: '', // имя
@@ -197,7 +247,11 @@ export default {
         email: '', // почта
         password: '', // пароль
         promoCode: '',
-        agree: true,
+        gender: {
+          man: 'Мужской',
+          woman: 'Женский',
+        },
+        valueGender: '',
       },
     }
   },
@@ -255,9 +309,68 @@ export default {
 </style>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/_variables.sass';
+
+// .title {
+//   color: var(--primary-2, #333);
+//   margin-bottom: 20px;
+//   font-family: $base-font-family;
+//   font-size: 14px;
+//   font-style: normal;
+//   font-weight: 400;
+//   line-height: 20px;
+// }
+
 .d-flex-row {
   display: flex;
   justify-content: center;
+}
+.checkbox-gender {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.checkbox-radio-btn {
+  display: inline-block;
+}
+.checkbox-radio-btn input[type='radio'] {
+  display: none;
+}
+.checkbox-radio-btn label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 137px;
+  height: 46px;
+  padding: 0px 15px;
+  line-height: 34px;
+  border-radius: 10px;
+  user-select: none;
+  padding-left: 35px;
+  font-family: $base-font-family;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+}
+.checkbox-radio-btn input[type='radio']:checked + label {
+  box-shadow: 0px 0px 0px 2px #469c79;
+}
+
+.man-svg-icon {
+  width: 18px;
+  height: 20px;
+  background-image: url('@/assets/images/svg/regAndAuth/vector-man.svg');
+  background-repeat: no-repeat;
+  background-position: left 15px top 10px;
+}
+.woman-svg-icon {
+  width: 15px;
+  height: 24px;
+  background-image: url('@/assets/images/svg/regAndAuth/vector-woman.svg');
+  background-repeat: no-repeat;
+  background-position: left 15px top 10px;
 }
 </style>
 

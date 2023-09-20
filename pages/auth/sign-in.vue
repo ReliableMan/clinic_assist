@@ -140,6 +140,9 @@ export default {
 .ui-button--text-blue-light-2 {
   color: #469c79 !important;
 }
+.ui-input--focus {
+  border-color: #469c79 !important;
+}
 </style>
 
 <router>

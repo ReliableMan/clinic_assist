@@ -8,6 +8,7 @@
     "email": "Email",
     "password": "Пароль",
     "login": "Войти",
+    "login_details": "Данные для входа",
     "personal_data": "Личные данные",
     "last_name": "Фамилия",
     "name": "Имя",
