@@ -49,7 +49,7 @@ export default {
 
 <style lang="sass" scoped>
 .auth-layout
-  padding: 120px 0
+  padding: 40px 0 40px 0
 
   &__button
     font-family: $head-font-family !important

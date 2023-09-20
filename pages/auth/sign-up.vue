@@ -1,8 +1,8 @@
 <template>
   <div>
-    <ui-container size="xxs" class="mb-8">
-      <ui-form ref="form" v-slot="{ failed }" @submit="submit">
-        <div class="mb-36">
+    <ui-form ref="form" v-slot="{ failed }" @submit="submit">
+      <ui-container size="xxs" class="mb-8">
+        <div class="mb-30">
           <!-- секция личные данные -->
           <div class="d-flex-row">
             <auth-label
@@ -19,7 +19,6 @@
               :icon-size="[17, 20]"
             />
           </div>
-
           <!-- Фамилия -->
           <ui-validator
             v-slot="{ error }"
@@ -130,7 +129,7 @@
           <!-- Данные для входа -->
           <div class="d-flex-row">
             <auth-label
-              icon="user"
+              icon="door"
               :label="$t('common.login_details')"
               class="mb-20"
               :icon-size="[17, 20]"
@@ -143,84 +142,106 @@
               :icon-size="[17, 20]"
             />
           </div>
-        </div>
-
-        <!-- <div class="mb-36">
-          <auth-label
-            icon="phone"
-            :label="$t('common.phone')"
-            class="mb-20"
-            :icon-size="[16, 16]"
-          />
 
           <ui-validator
             v-slot="{ error }"
+            class="mb-20"
             rules="required|phone"
             :custom-messages="{ required: $t('validation.required_phone') }"
           >
-            <ui-input-local-phone v-model="fields.phone" :error="error" />
+            <ui-input-local-phone
+              v-model="fields.phone"
+              :error="error"
+              placeholder="Телефон"
+            />
           </ui-validator>
-        </div> -->
+          <!-- check mobile phone -->
+          <ui-button
+            color="success"
+            fluid
+            :disabled="failed"
+            :loading="loading"
+            type="button"
+          >
+            {{ $t('common.confirm') }}
+          </ui-button>
+        </div>
+      </ui-container>
 
-        <!-- <div class="mb-36">
-          <auth-label
-            icon="door"
-            :label="$t('common.login_details')"
-            class="mb-20"
-            :icon-size="[15, 20]"
+      <!-- Ожидайте СМС, чтобы подтвердить ваш номер телефона -->
+      <div class="d-flex-row">
+        <i18n
+          path="common.wait_sms_to_confirm_number_phone"
+          tag="div"
+          class="text-center fs-14 text-style"
+        ></i18n>
+        <auth-label
+          icon=""
+          :label="$t('common.small_star_text')"
+          class="mb-20"
+          style="color: red"
+          :icon-size="[17, 20]"
+        />
+      </div>
+      <!-- next container -->
+      <ui-container size="xxs">
+        <!-- Код из смс -->
+        <div class="mt-10 mb-20">
+          <ui-input-sms
+            append-icon="time"
+            :confirmed.sync="confirmed"
+            :confirm-sms-method="confirm"
+            :placeholder="$t('common.code_from_sms')"
+          >
+            <template #text-sms-incorrectly> Код введён неверно </template>
+
+            <template #append>
+              <ui-icon class="vector_ok" name="check" />
+            </template>
+          </ui-input-sms>
+        </div>
+        <!-- Пароль -->
+        <ui-validator
+          v-slot="{ error }"
+          rules="required"
+          :custom-messages="{ required: $t('validation.required_password') }"
+          class="mb-24"
+        >
+          <ui-input-password
+            v-model.trim="fields.password"
+            :placeholder="$t('common.password')"
+            :error="error || server_error"
           />
 
-          <ui-validator
-            v-slot="{ error }"
-            rules="required|email"
-            vid="email"
-            :custom-messages="{ required: $t('validation.required_email') }"
-            class="mb-18"
-          >
-            <ui-input
-              v-model.trim="fields.email"
-              :error="error"
-              :placeholder="$t('common.email')"
-            />
-          </ui-validator>
+          <ui-transition-collapse>
+            <div v-if="invalid_credentials">
+              <ui-error-message>
+                {{ $t('validation.login_or_password') }}
+              </ui-error-message>
+            </div>
+            <div v-else-if="not_confirmed_or_block">
+              <ui-error-message>
+                {{ $t('validation.not_confirmed_or_block') }}
+              </ui-error-message>
+            </div>
+          </ui-transition-collapse>
+        </ui-validator>
 
-          <ui-validator-password
-            v-slot="{ error }"
-            :custom-messages="{
-              required: $t('validation.required_new_password'),
-            }"
-            class="mb-18"
-          >
-            <ui-input-password
-              v-model.trim="fields.password"
-              autocomplete="new-password"
-              :error="error"
-              :placeholder="$t('common.pick_a_password')"
-            />
-          </ui-validator-password>
-
-          <ui-validator v-slot="{ error }" vid="promoCode" class="mb-24">
-            <ui-input
-              v-model="fields.promoCode"
-              :error="error"
-              :placeholder="$t('common.promo_if_available')"
-            />
-          </ui-validator>
-        </div> -->
         <ui-button
-          color="primary"
+          color="warning"
           fluid
           :disabled="failed"
           :loading="loading"
           type="submit"
         >
-          {{ $t('common.to_register') }}
+          {{ $t('common.next_step') }}
         </ui-button>
-      </ui-form>
-    </ui-container>
-    <ui-container size="sm">
-      <!-- <auth-registration-agree /> -->
-    </ui-container>
+      </ui-container>
+
+      <!--  -->
+
+      <!--  -->
+    </ui-form>
   </div>
 </template>
 
@@ -246,7 +267,6 @@ export default {
         phone: '', // телефон
         email: '', // почта
         password: '', // пароль
-        promoCode: '',
         gender: {
           man: 'Мужской',
           woman: 'Женский',
@@ -286,17 +306,33 @@ export default {
         this.$toast.error(this.$t('common.an_unexpected_error_occurred'))
       }
     },
-    async submit() {
+    // async submit () {
+    submit() {
       this.loading = true
 
-      const { agree, ...payload } = this.fields
+      // const { ...payload } = this.fields
 
-      await this.$axios
-        .post('/registration', payload)
-        .then(this.onSuccess)
-        .catch(this.onError)
+      // await this.$axios
+      //   .post('/registration', payload)
+      //   .then(this.onSuccess)
+      //   .catch(this.onError)
 
       this.loading = false
+
+      // redirect on next page registration
+      this.$router.push('/')
+    },
+
+    confirm(sms) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (+sms % 2) {
+            reject(new Error('error'))
+          } else {
+            resolve()
+          }
+        }, 1000)
+      })
     },
   },
 }
@@ -371,6 +407,10 @@ export default {
   background-image: url('@/assets/images/svg/regAndAuth/vector-woman.svg');
   background-repeat: no-repeat;
   background-position: left 15px top 10px;
+}
+.vector_ok {
+  margin-right: 14px;
+  color: #469c79;
 }
 </style>
 

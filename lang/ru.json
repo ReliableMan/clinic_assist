@@ -14,7 +14,11 @@
     "name": "Имя",
     "middle_name": "Отчество",
     "small_star_text": "*",
-    "date": "дд.мм.гггг"
+    "date": "дд.мм.гггг",
+    "confirm": "Подвердить",
+    "wait_sms_to_confirm_number_phone": "Ожидайте СМС, чтобы подтвердить ваш номер телефона",
+    "code_from_sms": "Код из СМС",
+    "next_step": "Далее"
 
   },
   "system": {
