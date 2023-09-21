@@ -18,7 +18,15 @@
     "confirm": "Подвердить",
     "wait_sms_to_confirm_number_phone": "Ожидайте СМС, чтобы подтвердить ваш номер телефона",
     "code_from_sms": "Код из СМС",
-    "next_step": "Далее"
+    "next_step": "Далее",
+    "pick_a_password": "Придумайте пароль",
+    "select_country": "Укажите страну",
+    "locality": "Населённый пункт",
+    "placeholder_locality": "Укажите населённый пункт",
+    "country": "Страна",
+    "allergy": "Аллергии",
+    "placeholder_allergy": "Укажите аллергию"
+
 
   },
   "system": {

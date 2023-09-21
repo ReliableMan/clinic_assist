@@ -11,13 +11,11 @@
               class="mb-20"
               :icon-size="[17, 20]"
             />
-            <auth-label
-              icon=""
-              :label="$t('common.small_star_text')"
-              class="mb-20"
-              style="color: red"
-              :icon-size="[17, 20]"
-            />
+            <i18n
+              path="common.small_star_text"
+              tag="span"
+              class="small_star_after_text"
+            ></i18n>
           </div>
           <!-- Фамилия -->
           <ui-validator
@@ -134,13 +132,11 @@
               class="mb-20"
               :icon-size="[17, 20]"
             />
-            <auth-label
-              icon=""
-              :label="$t('common.small_star_text')"
-              class="mb-20"
-              style="color: red"
-              :icon-size="[17, 20]"
-            />
+            <i18n
+              path="common.small_star_text"
+              tag="span"
+              class="small_star_after_text"
+            ></i18n>
           </div>
 
           <ui-validator
@@ -175,13 +171,11 @@
           tag="div"
           class="text-center fs-14 text-style"
         ></i18n>
-        <auth-label
-          icon=""
-          :label="$t('common.small_star_text')"
-          class="mb-20"
-          style="color: red"
-          :icon-size="[17, 20]"
-        />
+        <i18n
+          path="common.small_star_text"
+          tag="span"
+          class="small_star_after_text"
+        ></i18n>
       </div>
       <!-- next container -->
       <ui-container size="xxs">
@@ -200,6 +194,7 @@
             </template>
           </ui-input-sms>
         </div>
+
         <!-- Пароль -->
         <ui-validator
           v-slot="{ error }"
@@ -210,21 +205,8 @@
           <ui-input-password
             v-model.trim="fields.password"
             :placeholder="$t('common.password')"
-            :error="error || server_error"
+            :error="error"
           />
-
-          <ui-transition-collapse>
-            <div v-if="invalid_credentials">
-              <ui-error-message>
-                {{ $t('validation.login_or_password') }}
-              </ui-error-message>
-            </div>
-            <div v-else-if="not_confirmed_or_block">
-              <ui-error-message>
-                {{ $t('validation.not_confirmed_or_block') }}
-              </ui-error-message>
-            </div>
-          </ui-transition-collapse>
         </ui-validator>
 
         <ui-button
@@ -246,17 +228,17 @@
 </template>
 
 <script>
-// import AuthRegistrationAgree from '@/components/app/AuthRegistrationAgree.vue'
 import AuthLabel from '@/components/app/AuthLabel.vue'
 
 export default {
   components: {
-    // AuthRegistrationAgree,
     AuthLabel,
   },
   data() {
     return {
       loading: false,
+      confirmed: false,
+      value: '',
       fields: {
         surname: '', // фамилия
         name: '', // имя
@@ -277,13 +259,6 @@ export default {
   },
   methods: {
     onSuccess() {
-      // this.$router.push({
-      //   path: this.localePath({ name: 'signup-check-email' }),
-      //   query: {
-      //     email: this.fields.email,
-      //   },
-      // })
-
       const options = {
         auth: {
           username: this.fields.email,
@@ -297,10 +272,6 @@ export default {
       if (error.response.data.email) {
         this.$refs.form.setErrors({
           email: this.$t('validation.email_already_exist'),
-        })
-      } else if (error.response.data.promoCode) {
-        this.$refs.form.setErrors({
-          promoCode: this.$t('validation.promo_code'),
         })
       } else {
         this.$toast.error(this.$t('common.an_unexpected_error_occurred'))
@@ -320,7 +291,7 @@ export default {
       this.loading = false
 
       // redirect on next page registration
-      this.$router.push('/')
+      this.$router.push('/sign-up-2')
     },
 
     confirm(sms) {
@@ -411,6 +382,11 @@ export default {
 .vector_ok {
   margin-right: 14px;
   color: #469c79;
+}
+.small_star_after_text {
+  margin-top: -3px;
+  margin-left: 3px;
+  color: red;
 }
 </style>
 
