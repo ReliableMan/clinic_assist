@@ -18,7 +18,7 @@
     "@nuxtjs/proxy": "^2.1.0",
     "@nuxtjs/pwa": "^3.3.5",
     "@qapsula-frontend/qapsula-any": "^1.0.5",
-    "@qapsula-frontend/qapsula-ui": "^1.2.5",
+    "@qapsula-frontend/qapsula-ui": "^1.2.9",
     "@qapsula-frontend/qapsula-wamp": "^1.0.4",
     "cookie-universal-nuxt": "^2.2.2",
     "core-js": "^3.15.1",
@@ -26,6 +26,7 @@
     "nuxt-auth-server-init": "^1.0.3",
     "nuxt-i18n": "^6.27.2",
     "nuxt-vue-multiselect": "^1.0.4",
+    "swiper": "^6.8.4",
     "vuex-map-fields": "^1.4.1"
   },
   "devDependencies": {

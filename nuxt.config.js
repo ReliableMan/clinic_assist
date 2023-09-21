@@ -63,7 +63,7 @@ export default {
     '@nuxt/content',
     'nuxt-auth-server-init',
     '@nuxtjs/auth-next',
-    // 'nuxt-vue-multiselect',
+    'nuxt-vue-multiselect',
   ],
 
   i18n: {

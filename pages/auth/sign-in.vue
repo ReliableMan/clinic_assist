@@ -143,6 +143,10 @@ export default {
 .ui-input--focus {
   border-color: #469c79 !important;
 }
+.ui-input {
+  background-color: #f3f3f3 !important;
+  border: none !important;
+}
 </style>
 
 <router>
