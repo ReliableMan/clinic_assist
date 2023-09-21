@@ -147,6 +147,11 @@ export default {
   background-color: #f3f3f3 !important;
   border: none !important;
 }
+.ui-input--error {
+  border: 1px solid !important;
+  background-color: #fdf2f2 !important;
+  border-color: #eca5a5 !important;
+}
 </style>
 
 <router>

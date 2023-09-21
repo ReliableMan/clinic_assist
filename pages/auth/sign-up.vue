@@ -79,7 +79,7 @@
               />
             </ui-input-label>
           </ui-validator>
-
+          <!-- Гендер -->
           <div class="checkbox-gender">
             <ui-validator
               v-slot="{ error }"
