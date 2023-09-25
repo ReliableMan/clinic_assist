@@ -28,7 +28,7 @@
         </ui-input-label>
       </div>
     </div>
-    <ui-container class="container-3__block-3">
+    <div class="container-3__block-3">
       <div class="block-3">
         <!-- item 1 -->
         <div class="container-3__block-3__img-gender-i">
@@ -65,7 +65,7 @@
           />
         </div>
       </div>
-    </ui-container>
+    </div>
     <div class="container-3__block-4">
       <span class="container-3__block-4__text"> Дежурный терапевт </span>
       <span class="container-3__block-4__text"> Дежурный педиатр </span>
