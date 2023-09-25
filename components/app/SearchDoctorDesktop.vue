@@ -201,7 +201,7 @@ export default {
     gap: 5px;
 
     @media (min-width: 1430px) {
-      right: 6%;
+      right: 5%;
     }
 
     &__text {
@@ -245,8 +245,12 @@ export default {
   width: 33vw;
   display: flex;
   justify-content: space-between;
-  margin-left: 25px;
-  padding-right: 40px;
+  // padding-right: 40px;
+
+  @media (min-width: 1100px) {
+    // margin-left: 3%;
+    padding-right: 5vw;
+  }
 }
 .block-3-1 {
   width: 33vw;
