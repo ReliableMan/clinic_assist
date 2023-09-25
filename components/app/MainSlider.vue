@@ -127,6 +127,13 @@ export default {
 
   &__textarea {
     width: 100%;
+
+    @media (max-width: 1400px) {
+      width: 85%;
+    }
+    @media (max-width: 500px) {
+      width: 100%;
+    }
   }
 
   &__text {
@@ -163,6 +170,11 @@ export default {
     display: flex;
     align-items: center;
     transition: all 1s;
+
+    @media (max-width: 1400px) {
+      width: 80%;
+      gap: 25px;
+    }
 
     @media (max-width: 600px) {
       width: 90%;

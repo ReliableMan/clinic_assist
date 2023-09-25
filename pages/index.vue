@@ -241,7 +241,12 @@ export default {
 
         @media (max-width: 1000px) {
           transition: all 1s;
+          margin-left: 39px;
+        }
+        @media (max-width: 600px) {
+          transition: all 1s;
           justify-content: center;
+          margin-left: 0;
         }
       }
     }
@@ -305,6 +310,7 @@ export default {
         @media (max-width: 1400px) {
           height: 500px;
           width: 230px;
+          left: 10px;
           box-shadow: -25px 75px 37px -8px rgba(5, 142, 110, 0.14),
             88px -11px 60px 0px rgba(5, 142, 110, 0.14);
           transition: all 1s;
@@ -328,7 +334,7 @@ export default {
           height: 500px;
           width: 230px;
           top: 99px;
-          left: 299px;
+          left: 208px;
         }
         @media (max-width: 1200px) {
           height: 430px;

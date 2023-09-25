@@ -2,24 +2,26 @@
   <div>
     <div v-for="(n, i) in 3" :key="i">
       <div class="container-4">
-        <!-- avatar -->
-        <img
-          class="container-4__img-avatar"
-          src="@/assets/images/avatar-doctor.png"
-          alt="avatar-doctor"
-        />
-        <div class="online-doctor-i container-4__online-icon"></div>
-        <!-- bio -->
-        <div class="container-4__bio">
-          <p class="container-4__bio__name">Коваль Ольга Валентиновна</p>
-          <p class="container-4__bio__specialist">Травматолог</p>
-          <div class="container-4__bio__degree">
-            <span class="green-hat-icon mr-10"></span>
-            Высшая категория, кандидат медицинских наук
-          </div>
-          <div class="container-4__bio__experience">
-            <span class="green-plus-icon mr-10"></span>
-            Стаж: 5 лет
+        <div class="block-1">
+          <!-- avatar -->
+          <img
+            class="container-4__img-avatar"
+            src="@/assets/images/avatar-doctor.png"
+            alt="avatar-doctor"
+          />
+          <div class="online-doctor-i container-4__online-icon"></div>
+          <!-- bio -->
+          <div class="container-4__bio">
+            <p class="container-4__bio__name">Коваль Ольга Валентиновна</p>
+            <p class="container-4__bio__specialist">Травматолог</p>
+            <div class="container-4__bio__degree">
+              <span class="green-hat-icon mr-10"></span>
+              Высшая категория, кандидат медицинских наук
+            </div>
+            <div class="container-4__bio__experience">
+              <span class="green-plus-icon mr-10"></span>
+              Стаж: 5 лет
+            </div>
           </div>
         </div>
         <!-- schedule -->
@@ -111,6 +113,7 @@ export default {
   position: relative;
   width: 100%;
   display: flex;
+  justify-content: space-between;
   margin-top: 56px;
 
   &__img-avatar {
@@ -168,19 +171,9 @@ export default {
   }
 
   &__schedule {
-    margin-left: 10vw;
     display: flex;
     flex-direction: column;
     transition: all 1s;
-
-    @media (max-width: 1300px) {
-      transition: all 1s;
-      margin-left: 5vw;
-    }
-    @media (max-width: 1000px) {
-      transition: all 1s;
-      margin-left: 0;
-    }
 
     &__text {
       color: #333;
@@ -193,15 +186,11 @@ export default {
 
     &__days {
       margin-top: 5px;
-      width: 22vw;
-      margin-left: -10px;
+      width: auto;
+      margin-left: -5px;
       display: flex;
       justify-content: space-around;
       align-items: center;
-
-      @media (max-width: 1200px) {
-        width: unset;
-      }
     }
 
     &__cont {
@@ -238,6 +227,10 @@ export default {
       }
     }
   }
+}
+
+.block-1 {
+  display: flex;
 }
 
 .online-doctor-i {

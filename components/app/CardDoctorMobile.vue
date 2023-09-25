@@ -148,6 +148,10 @@ export default {
   box-shadow: 0px 2px 20px 0px rgba(51, 51, 51, 0.1);
   padding: 22px 20px 24px 18px;
 
+  @media (max-width: 450px) {
+    padding: 22px 20px 24px 35px;
+  }
+
   &__img-avatar {
     width: 100px;
     height: 100px;
@@ -159,6 +163,10 @@ export default {
     left: 95px;
     top: 95px;
     z-index: 2;
+
+    @media (max-width: 450px) {
+      left: 110px;
+    }
   }
 
   &__bio {

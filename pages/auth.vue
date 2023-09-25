@@ -47,13 +47,20 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.auth-layout
-  padding: 80px 0 160px 0
+<style lang="scss" scoped>
+@import '@/assets/styles/_variables.sass';
+.auth-layout {
+  padding: 80px 0 160px 0;
 
-  &__button
-    font-family: $head-font-family !important
-    font-size: 20px !important
-    line-height: 11px !important
-    font-weight: 700 !important
+  @media (max-width: 450px) {
+    padding: 40px 0 80px 0;
+  }
+
+  &__button {
+    font-family: $head-font-family !important;
+    font-size: 20px !important;
+    line-height: 11px !important;
+    font-weight: 700 !important;
+  }
+}
 </style>

@@ -318,16 +318,6 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/styles/_variables.sass';
 
-// .title {
-//   color: var(--primary-2, #333);
-//   margin-bottom: 20px;
-//   font-family: $base-font-family;
-//   font-size: 14px;
-//   font-style: normal;
-//   font-weight: 400;
-//   line-height: 20px;
-// }
-
 .d-flex-row {
   display: flex;
   justify-content: center;

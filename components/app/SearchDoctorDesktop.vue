@@ -28,40 +28,44 @@
         </ui-input-label>
       </div>
     </div>
-    <div class="container-3__block-3">
-      <!-- item 1 -->
-      <div class="container-3__block-3__img-gender-i">
-        <img
-          width="92"
-          height="46"
-          src="@/assets/images/svg/gender-icon.svg"
-          alt="gender-icon"
-        />
+    <ui-container class="container-3__block-3">
+      <div class="block-3">
+        <!-- item 1 -->
+        <div class="container-3__block-3__img-gender-i">
+          <img
+            width="92"
+            height="46"
+            src="@/assets/images/svg/gender-icon.svg"
+            alt="gender-icon"
+          />
+        </div>
+        <!-- item 2 -->
+        <div class="container-3__block-3__checkbox">
+          <ui-checkbox v-model="value" />
+          <span class="container-3__block-3__checkbox__name">
+            Доступен сегодня
+          </span>
+        </div>
       </div>
-      <!-- item 2 -->
-      <div class="container-3__block-3__checkbox">
-        <ui-checkbox v-model="value" />
-        <span class="container-3__block-3__checkbox__name">
-          Доступен сегодня
-        </span>
+      <div class="block-3-1">
+        <!-- item 3 -->
+        <div class="container-3__block-3__checkbox">
+          <ui-checkbox v-model="value2" />
+          <span class="container-3__block-3__checkbox__name"> Дата/Время </span>
+        </div>
+        <!-- item 4 -->
+        <ui-button color="warning"> Найти </ui-button>
+        <!-- item 5 -->
+        <div>
+          <img
+            width="130"
+            height="60"
+            src="@/assets/images/svg/group_doctors.svg"
+            alt="group_doctors"
+          />
+        </div>
       </div>
-      <!-- item 3 -->
-      <div class="container-3__block-3__checkbox">
-        <ui-checkbox v-model="value2" />
-        <span class="container-3__block-3__checkbox__name"> Дата/Время </span>
-      </div>
-      <!-- item 4 -->
-      <ui-button color="warning"> Найти </ui-button>
-      <!-- item 5 -->
-      <div>
-        <img
-          width="130"
-          height="60"
-          src="@/assets/images/svg/group_doctors.svg"
-          alt="group_doctors"
-        />
-      </div>
-    </div>
+    </ui-container>
     <div class="container-3__block-4">
       <span class="container-3__block-4__text"> Дежурный терапевт </span>
       <span class="container-3__block-4__text"> Дежурный педиатр </span>
@@ -143,10 +147,18 @@ export default {
   &__block-2 {
     max-width: 1225px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 10vw;
 
     &__input {
-      width: 29vw;
+      width: 33vw;
+
+      @media (min-width: 1500px) {
+        width: 32vw;
+      }
+      @media (min-width: 1600px) {
+        width: 450px;
+      }
     }
   }
 
@@ -223,5 +235,26 @@ export default {
   font-style: normal;
   font-weight: 600;
   line-height: 16px;
+}
+
+.block-3 {
+  width: 33vw;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 25px;
+  padding-right: 40px;
+}
+.block-3-1 {
+  width: 33vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+}
+.ru-icon {
+  width: 8px;
+  height: 10px;
+  background-image: url('@/assets/images/svg/vector-rub.svg');
+  background-repeat: no-repeat;
 }
 </style>

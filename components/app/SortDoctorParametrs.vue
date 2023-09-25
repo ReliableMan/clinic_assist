@@ -1,14 +1,8 @@
 <template>
   <div class="mt-20">
-    <ui-container>
-      <div class="row gutter-10 mb-18">
-        <div class="col-12">
-          <ui-sorting v-model="value" :items="items" label="Сортировать:">
-            <span>Сортировать</span>
-          </ui-sorting>
-        </div>
-      </div>
-    </ui-container>
+    <ui-sorting v-model="value" :items="items" label="Сортировать:">
+      <span>Сортировать</span>
+    </ui-sorting>
   </div>
 </template>
 

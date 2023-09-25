@@ -104,6 +104,7 @@ export default {
 
     &__block-3 {
       display: flex;
+      justify-content: space-between;
       margin-top: 24px;
       padding-right: 18px;
       padding-left: 18px;
