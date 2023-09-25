@@ -196,9 +196,13 @@ export default {
   &__block-4 {
     position: absolute;
     bottom: 40px;
-    right: 50px;
+    right: 55px;
     display: flex;
     gap: 5px;
+
+    @media (min-width: 1430px) {
+      right: 6%;
+    }
 
     &__text {
       display: block;
