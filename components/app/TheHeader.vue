@@ -3,12 +3,16 @@
     <div class="header__panel">
       <div class="header__inner">
         <div class="header__inner-navigation">
-          <NuxtLink to="/" class="header__inner-img-logo">
-            <img
+          <!-- <NuxtLink to="/" class="header__inner-img-logo"> -->
+          <!-- <img
               src="@/assets/images/svg/clinic-assist-logo.svg"
               alt="clinic-assist-logo"
-            />
-          </NuxtLink>
+            /> -->
+          <!-- </NuxtLink> -->
+
+          <div class="header__inner-img-logo">
+            <logo-stamp />
+          </div>
 
           <div class="header__inner-button">
             <div class="header__inner-settings">
@@ -16,13 +20,30 @@
               <img src="@/assets/images/svg/arrow-down.svg" alt="arrow-down" />
               <p class="header__inner-lang">Русский</p>
             </div>
-            <ui-button
+
+            <client-only>
+              <transition name="fade" mode="out-in">
+                <div v-if="$auth.loggedIn" key="auth">
+                  <the-header-user-widget />
+                </div>
+                <div v-else key="guest" class="header__button">
+                  <ui-button
+                    color="primary"
+                    fluid
+                    :to="localePath({ name: 'sign-in' })"
+                  >
+                    {{ $t('common.signin_signup') }}
+                  </ui-button>
+                </div>
+              </transition>
+            </client-only>
+            <!-- <ui-button
               color="success"
               outlined
               :to="localePath({ name: 'sign-in' })"
             >
               {{ $t('common.signin_signup') }}
-            </ui-button>
+            </ui-button> -->
           </div>
         </div>
       </div>
@@ -96,13 +117,13 @@
 </template>
 
 <script>
-// import LogoStamp from '@/components/app/LogoStamp.vue'
-// import TheHeaderUserWidget from '@/components/app/TheHeaderUserWidget.vue'
+import LogoStamp from '@/components/app/LogoStamp.vue'
+import TheHeaderUserWidget from '@/components/app/TheHeaderUserWidget.vue'
 
 export default {
   components: {
-    // LogoStamp,
-    // TheHeaderUserWidget,
+    LogoStamp,
+    TheHeaderUserWidget,
   },
   provide() {
     return {

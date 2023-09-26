@@ -1,11 +1,8 @@
 <template>
   <footer class="footer">
     <div class="footer__content">
-      <img
-        class="footer__content__img-logo"
-        src="@/assets/images/svg/clinic-assist-logo-dark.svg"
-        alt="clinic-assist-logo"
-      />
+      <logo-stamp-footer />
+
       <div class="footer__content__about">
         <span class="text-ftr-1">О нас</span>
         <span class="text-ftr-2">Правовая информация</span>
@@ -18,6 +15,7 @@
         <span class="text-ftr-1">Врачам</span>
         <span class="text-ftr-2">Обратная связь</span>
       </div>
+
       <div class="footer__content__contacts">
         <div class="d-flex-al-it-center">
           <ui-icon class="ftr-icons mr-10" name="location" />
@@ -121,7 +119,12 @@
 </template>
 
 <script>
+import LogoStampFooter from '@/components/app/LogoStampFooter.vue'
+
 export default {
+  components: {
+    LogoStampFooter,
+  },
   data() {
     return {
       value: false,
