@@ -3,13 +3,6 @@
     <div class="header__panel">
       <div class="header__inner">
         <div class="header__inner-navigation">
-          <!-- <NuxtLink to="/" class="header__inner-img-logo"> -->
-          <!-- <img
-              src="@/assets/images/svg/clinic-assist-logo.svg"
-              alt="clinic-assist-logo"
-            /> -->
-          <!-- </NuxtLink> -->
-
           <div class="header__inner-img-logo">
             <logo-stamp />
           </div>
@@ -28,7 +21,7 @@
                 </div>
                 <div v-else key="guest" class="header__button">
                   <ui-button
-                    color="primary"
+                    color="success"
                     fluid
                     :to="localePath({ name: 'sign-in' })"
                   >

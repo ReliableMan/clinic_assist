@@ -89,10 +89,21 @@ export default {
     margin-right: 12px
 
   &__chevron
-    color: $color-primary
+    color: #469c79
     transition: transform $transition-timing
 
   &__link
     padding-top: 9px !important
     padding-bottom: 9px !important
+  &__link:hover
+    background-color: #469c79 !important
+</style>
+
+<style>
+.menu-link__icon {
+  color: #469c79 !important;
+}
+.user-widget__link:hover > .menu-link__icon {
+  color: #fff !important;
+}
 </style>

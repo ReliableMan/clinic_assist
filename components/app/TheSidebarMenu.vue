@@ -5,7 +5,7 @@
         <ui-button
           :icon="link.icon"
           :fluid="expanded"
-          :color="isCurrent(link) ? 'primary' : ''"
+          :color="isCurrent(link) ? 'success' : ''"
           :to="localePath(link.route)"
           :label-class="expanded ? 'd-flex items-center' : ''"
           :static="expanded ? '' : 'md'"

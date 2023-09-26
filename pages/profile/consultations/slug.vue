@@ -1,5 +1,6 @@
 <template>
-  <consultation-list :items="items" />
+  <!-- <consultation-list :items="items" /> -->
+  <consultation-list />
 
   <!-- <consultation-empty /> -->
 </template>

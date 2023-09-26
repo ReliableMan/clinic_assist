@@ -38,8 +38,14 @@
     "family_inheritance": "Семейная наследственность",
     "placeholder_family_inheritance": "Укажите наследственность",
     "bad_habits": "Вредные привычки",
-    "placeholder_bad_habits": "Укажите вредные привычки"
-
+    "placeholder_bad_habits": "Укажите вредные привычки",
+    "consultations": "Консультации",
+    "profile": "Профиль",
+    "searchDoctor": "Поиск врача",
+    "dialogues": "Диалоги",
+    "settings": "Настройки",
+    "councils": "Консилиумы",
+    "exit": "Выход"
   },
   "system": {
     "auth": {

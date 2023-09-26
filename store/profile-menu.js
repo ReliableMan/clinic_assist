@@ -3,21 +3,21 @@ export const state = () => ({
     key: 'consultations',
     route: { name: 'consultations' },
     children: ['consultation', 'consultation-create', 'consultation-council'],
-    icon: 'list-outlined',
+    icon: 'message-circle',
     locale: 'common.consultations',
   },
   profile: {
     key: 'profile',
     route: { name: 'profile' },
     children: ['profile'],
-    icon: 'list-outlined',
+    icon: 'user-outline',
     locale: 'common.profile',
   },
   searchDoctor: {
     key: 'searchDoctor',
     route: { name: 'searchDoctor' },
     children: ['searchDoctor'],
-    icon: 'message-circle',
+    icon: 'search',
     locale: 'common.searchDoctor',
   },
   dialogues: {
@@ -30,7 +30,7 @@ export const state = () => ({
   settings: {
     key: 'settings',
     route: { name: 'settings' },
-    children: ['settings-schedule'],
+    children: ['settings'],
     icon: 'settings',
     locale: 'common.settings',
   },
@@ -49,6 +49,7 @@ export const state = () => ({
   },
   exit: {
     key: 'exit',
+    route: '$auth.logout()',
     icon: 'exit',
     locale: 'common.exit',
     exit: true,

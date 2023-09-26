@@ -14,6 +14,20 @@
         />
       </ui-validator>
 
+      <!-- вместо почты там телефон, раскомментить и закомментить почту -->
+      <!-- <ui-validator
+        v-slot="{ error }"
+        class="mb-20"
+        rules="required|phone"
+        :custom-messages="{ required: $t('validation.required_phone') }"
+      >
+        <ui-input-local-phone
+          v-model="fields.phone"
+          :error="error"
+          placeholder="Телефон"
+        />
+      </ui-validator> -->
+
       <ui-validator
         v-slot="{ error }"
         rules="required"

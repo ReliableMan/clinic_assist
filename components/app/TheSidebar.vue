@@ -8,7 +8,7 @@
         />
       </div>
 
-      <ui-divider class="text-blue-light-1 mv-36" horizontal />
+      <ui-divider class="green-line mv-36" horizontal />
 
       <div class="d-flex content-center mb-36">
         <ui-doctor-avatar :avatar="$store.getters['user/avatar']" />
@@ -18,26 +18,11 @@
           style="min-width: 1px"
         >
           <div class="text-ellipsis">{{ $auth.user.profile.name }}</div>
-          <div class="text-ellipsis">{{ $auth.user.profile.surname }}</div>
+          <!-- <div class="text-ellipsis">{{ $auth.user.profile.surname }}</div> -->
         </div>
       </div>
 
       <the-sidebar-menu :expanded="expanded" @collapse="$emit('collapse')">
-        <template v-if="dialogues_notify_count" #dialogues>
-          <ui-circle-notify bg="primary">
-            {{ $auth.user.profile.name }}
-          </ui-circle-notify>
-        </template>
-        <template v-if="councils_notify_count" #councils>
-          <ui-circle-notify bg="primary">
-            {{ $auth.user.profile.name }}
-          </ui-circle-notify>
-        </template>
-        <template v-if="consultations_notify_count" #consultations>
-          <ui-circle-notify bg="primary">
-            {{ $auth.user.profile.name }}
-          </ui-circle-notify>
-        </template>
       </the-sidebar-menu>
     </div>
 
@@ -102,3 +87,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.green-line {
+  color: #b4e2c7;
+}
+</style>

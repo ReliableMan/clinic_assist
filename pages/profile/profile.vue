@@ -1,8 +1,6 @@
 <template>
   <section class="pv-40 ph-36">
-    <h2>{{ $t('common.profiel') }}</h2>
-
-    <ui-divider class="text-blue-light-1 mt-34 mb-36" horizontal />
+    <h2>{{ $t('common.profile') }}</h2>
   </section>
 </template>
 
