@@ -1,23 +1,21 @@
 <template>
-  <!-- <layout-with-sticky-footer> -->
-  <div>
-    <template name="header">
+  <layout-with-sticky-footer>
+    <template #header>
       <the-header />
     </template>
 
-    <template name="body">
+    <template #body>
       <main>
         <nuxt />
       </main>
 
-      <!-- <v-modal-target /> -->
+      <v-modal-target />
     </template>
 
-    <template name="footer">
+    <template #footer>
       <the-footer />
     </template>
-  </div>
-  <!-- </layout-with-sticky-footer> -->
+  </layout-with-sticky-footer>
 </template>
 
 <script>
