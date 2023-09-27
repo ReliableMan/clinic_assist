@@ -5,7 +5,8 @@
         <ui-button
           :icon="link.icon"
           :fluid="expanded"
-          :color="isCurrent(link) ? 'success' : ''"
+          :class="{ styleBtn: value }"
+          :color="isCurrent(link) ? 'primary' : ''"
           :to="localePath(link.route)"
           :label-class="expanded ? 'd-flex items-center' : ''"
           :static="expanded ? '' : 'md'"
@@ -17,7 +18,9 @@
           <ui-rect size="xs">
             <ui-icon :name="link.icon" no-transition />
           </ui-rect>
-          <span v-if="expanded" class="ml-16">{{ $t(link.locale) }}</span>
+          <span v-if="expanded" class="ml-16 text-style">
+            {{ $t(link.locale) }}
+          </span>
         </ui-button>
 
         <transition name="fade-scale">
@@ -30,6 +33,20 @@
         </transition>
       </li>
     </ul>
+
+    <ui-divider class="green-line mv-36" horizontal />
+
+    <ui-button hover-shadow>
+      <div class="d-flex">
+        <img
+          src="@/assets/images/svg/notification.svg"
+          alt="notifications-icon"
+        />
+        <span class="text-style ml-16">{{ $t('common.notifications') }}</span>
+      </div>
+    </ui-button>
+
+    <p class="text-style-2">{{ $t('common.not_active_notifications') }}</p>
   </nav>
 </template>
 
@@ -56,6 +73,11 @@ export default {
     isCurrent(link) {
       const children = link.children || []
       const base_route = this.getRouteBaseName()
+      // const incl = base_route.includes(link)
+
+      // console.log('link', link)
+      // console.log('base-route', base_route)
+      // console.log('incl', incl)
 
       return (
         this.$helpers.isEqualsRoute(link.route, base_route) ||
@@ -83,4 +105,29 @@ export default {
     top: 0
     bottom: 0
     right: -30px
+
+.green-line
+  color: #b4e2c7
+
+.text-style
+  font-family: $base-font-family
+  font-size: 16px
+  font-style: normal
+  font-weight: 400
+  line-height: 22px
+
+.text-style-2
+  font-family: $base-font-family
+  font-size: 12px
+  font-style: normal
+  font-weight: 400
+  line-height: 16px
+  color: #999
+</style>
+
+<style scoped>
+/* .nuxt-link-exact-active {
+  background-image: url('@/assets/images/svg/button-gradient-menu.svg') !important;
+  color: #fff !important;
+} */
 </style>

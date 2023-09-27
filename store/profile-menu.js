@@ -49,7 +49,7 @@ export const state = () => ({
   },
   exit: {
     key: 'exit',
-    route: '$auth.logout()',
+    route: '/',
     icon: 'exit',
     locale: 'common.exit',
     exit: true,

@@ -67,7 +67,7 @@
         </ui-expansion>
       </div>
       <!-- 4 -->
-      <div class="pt-80">
+      <div class="pt-80 d-none">
         <ui-expansion v-model="value4" class="white-color trigger-center">
           <template #trigger>
             <img

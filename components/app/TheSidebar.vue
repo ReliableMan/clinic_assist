@@ -10,7 +10,7 @@
 
       <ui-divider class="green-line mv-36" horizontal />
 
-      <div class="d-flex content-center mb-36">
+      <div class="d-flex content-center mb-100">
         <ui-doctor-avatar :avatar="$store.getters['user/avatar']" />
         <div
           v-if="expanded"
@@ -25,47 +25,16 @@
       <the-sidebar-menu :expanded="expanded" @collapse="$emit('collapse')">
       </the-sidebar-menu>
     </div>
-
-    <div v-if="expanded" class="mt-12">
-      <div class="d-flex content-center">
-        <nuxt-link :to="localePath('terms-of-use')" class="d-flex items-center">
-          <ui-icon name="file" class="mr-6" :size="[10, 12]" />
-          <span class="fs-10 lh-12 text-bold">{{
-            $t('common.legal_information')
-          }}</span>
-        </nuxt-link>
-      </div>
-
-      <ui-divider class="text-blue-light-1 mv-36" horizontal />
-
-      <div class="text-center">
-        <div class="d-flex content-center">
-          <div>
-            <div class="mb-6 d-flex content-center">
-              <logo-qapsula />
-            </div>
-            <div class="fs-10 lh-13">
-              Реализация проекта при поддержке <br />
-              ООО "Новартис Фарма"
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
 import LogoStamp from '@/components/app/LogoStamp.vue'
-// import LogoBase from '@/components/app/LogoBase.vue'
-import LogoQapsula from '@/components/app/LogoQapsula.vue'
 import TheSidebarMenu from '@/components/app/TheSidebarMenu'
 
 export default {
   components: {
     LogoStamp,
-    // LogoBase,
-    LogoQapsula,
     TheSidebarMenu,
   },
   props: {

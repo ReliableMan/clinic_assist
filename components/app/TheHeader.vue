@@ -234,8 +234,9 @@ export default {
   }
 
   &__inner-settings {
-    display: flex;
-    gap: 10px;
+    // display: flex;
+    display: none;
+    // gap: 10px;
   }
 
   &__inner-lang {

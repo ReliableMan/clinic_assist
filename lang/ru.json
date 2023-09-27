@@ -45,7 +45,15 @@
     "dialogues": "Диалоги",
     "settings": "Настройки",
     "councils": "Консилиумы",
-    "exit": "Выход"
+    "exit": "Выход",
+    "notifications": "Уведомления",
+    "not_active_notifications": "Сейчас у вас нет активных уведомлений",
+    "med_card_item": "Мед. карта",
+    "scheduled_consultation_item": "Запланированные консультации",
+    "med_documents": "Мед. документы",
+    "balance_subscriptions_item": "Баланс и подписки",
+    "promo_code_item": "Промокоды",
+    "your_product_item": "Ваш продукт"
   },
   "system": {
     "auth": {
