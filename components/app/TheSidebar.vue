@@ -18,7 +18,7 @@
           style="min-width: 1px"
         >
           <div class="text-ellipsis">{{ $auth.user.profile.name }}</div>
-          <!-- <div class="text-ellipsis">{{ $auth.user.profile.surname }}</div> -->
+          <div class="text-ellipsis">{{ $auth.user.profile.surname }}</div>
         </div>
       </div>
 
