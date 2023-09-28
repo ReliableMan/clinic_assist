@@ -14,7 +14,7 @@ export const state = () => ({
     locale: 'common.profile',
   },
   searchDoctor: {
-    key: 'searchDoctor',
+    key: 'search',
     route: { name: 'searchDoctor' },
     children: ['searchDoctor'],
     icon: 'search',
