@@ -94,4 +94,12 @@ export const getters = {
       state.exit,
     ]
   },
+  patient_page(state) {
+    return [
+      state.searchDoctor,
+      state.consultations,
+      state.settings,
+      state.profile,
+    ]
+  },
 }

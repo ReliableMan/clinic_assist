@@ -4,8 +4,12 @@
       <div class="pv-40 ph-36 mb-20">
         <h2>{{ $t('common.profile') }}</h2>
       </div>
-      <div v-for="(link, index) in submenu" :key="index">
-        <NuxtLink class="link-style" :to="localePath(link.route)">
+      <div v-for="(link, index) in submenu" :key="index" class="link-style">
+        <NuxtLink
+          class="link-href"
+          :class="{ styleBtn: path.includes(link.route.name) }"
+          :to="localePath(link.route)"
+        >
           <span class="text-style">
             {{ $t(link.locale) }}
           </span>
@@ -31,16 +35,44 @@ export default {
     submenu() {
       return this.$store.getters[`profile-submenu/menu`]
     },
+    path() {
+      const url = this.$route.path
+      return url
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
 @import '@/assets/styles/_variables.sass';
-.link-style {
+.link-href {
   width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  text-decoration: none;
+  transition: all 1s;
+}
+.text-style {
+  padding-left: 36px;
+  font-family: $base-font-family;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  color: #999;
+  transition: all 1s;
+}
+.styleBtn {
+  transition: all 1s;
+  background: #fff;
   height: 92px;
-  background-color: #e39595;
+}
+.styleBtn > .text-style {
+  color: #333;
+  transition: all 0.5s;
 }
 </style>
 

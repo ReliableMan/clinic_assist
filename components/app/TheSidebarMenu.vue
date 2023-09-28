@@ -5,8 +5,7 @@
         <ui-button
           :icon="link.icon"
           :fluid="expanded"
-          :class="{ styleBtn: value }"
-          :color="isCurrent(link) ? 'primary' : ''"
+          :class="{ styleBtn: path.includes(link.key) }"
           :to="localePath(link.route)"
           :label-class="expanded ? 'd-flex items-center' : ''"
           :static="expanded ? '' : 'md'"
@@ -66,18 +65,21 @@ export default {
       // временный костыль под пациента
       // с сервака приходит ключ-роль и в зависимости от него отрисовывается пункты меню
       // пункты меню настроить в сторе profile-menu.js
-      return this.$store.getters[`profile-menu/patient`]
+      return this.$store.getters[`profile-menu/patient_page`]
+    },
+    path() {
+      let url = this.$route.path.replace(/\//, '')
+      if (url.length > 13) {
+        url = url.split('/')[0]
+        return url
+      }
+      return url
     },
   },
   methods: {
     isCurrent(link) {
       const children = link.children || []
       const base_route = this.getRouteBaseName()
-      // const incl = base_route.includes(link)
-
-      // console.log('link', link)
-      // console.log('base-route', base_route)
-      // console.log('incl', incl)
 
       return (
         this.$helpers.isEqualsRoute(link.route, base_route) ||
@@ -126,8 +128,8 @@ export default {
 </style>
 
 <style scoped>
-/* .nuxt-link-exact-active {
+.styleBtn {
   background-image: url('@/assets/images/svg/button-gradient-menu.svg') !important;
   color: #fff !important;
-} */
+}
 </style>
