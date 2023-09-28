@@ -167,7 +167,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 30px 0 44px;
+    padding: 0px 2vw 0 4vw;
 
     &__img-gender-i {
       margin-right: 120px;
@@ -202,6 +202,9 @@ export default {
 
     @media (min-width: 1430px) {
       right: 5%;
+    }
+    @media (max-width: 1300px) {
+      right: 50px;
     }
 
     &__text {
@@ -257,7 +260,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 10px;
+  padding-right: 0.5vw;
 }
 .ru-icon {
   width: 8px;
