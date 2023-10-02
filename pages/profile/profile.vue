@@ -33,7 +33,7 @@ export default {
   },
   computed: {
     submenu() {
-      return this.$store.getters[`profile-submenu/menu`]
+      return this.$store.getters[`submenu/menu`]
     },
     path() {
       const url = this.$route.path

@@ -29,6 +29,16 @@ export const state = () => ({
     route: { name: 'your-product' },
     locale: 'common.your_product_item',
   },
+  account: {
+    key: 'account',
+    route: { name: 'account' },
+    locale: 'common.account',
+  },
+  system: {
+    key: 'system',
+    route: { name: 'system' },
+    locale: 'common.system',
+  },
 })
 
 export const getters = {
@@ -41,5 +51,8 @@ export const getters = {
       state.promoCode,
       state.yourProduct,
     ]
+  },
+  submenuSettings(state) {
+    return [state.account, state.system]
   },
 }

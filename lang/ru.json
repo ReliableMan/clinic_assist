@@ -58,7 +58,10 @@
     "max_size": "Максимальный размер:",
     "acceptable_formats": "Допустимые форматы:",
     "MB": "Мб",
-    "date_birth": "День рождения"
+    "date_birth": "День рождения",
+    "account": "Аккаунт",
+    "system": "Система",
+    "info_about_service": "Информация о сервисе"
   },
   "system": {
     "auth": {
