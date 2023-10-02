@@ -33,7 +33,7 @@
     "placeholder_medications": "Укажите лекарства",
     "chronic_diseases": "Хронические заболевания",
     "placeholder_chronic_diseases": "Укажите хронические заболевания",
-    "blood_type": "группа крови",
+    "blood_type": "Группа крови",
     "Rh_factor": "Резус-фактор",
     "family_inheritance": "Семейная наследственность",
     "placeholder_family_inheritance": "Укажите наследственность",
@@ -53,7 +53,12 @@
     "med_documents": "Мед. документы",
     "balance_subscriptions_item": "Баланс и подписки",
     "promo_code_item": "Промокоды",
-    "your_product_item": "Ваш продукт"
+    "your_product_item": "Ваш продукт",
+    "upload_photo": "Загрузите фото",
+    "max_size": "Максимальный размер:",
+    "acceptable_formats": "Допустимые форматы:",
+    "MB": "Мб",
+    "date_birth": "День рождения"
   },
   "system": {
     "auth": {
@@ -146,5 +151,12 @@
     "duration_seconds": "{duration} секунд назад | {duration} секунду назад | {duration} секунды назад | {duration} секунд назад",
     "duration_recently": "недавно",
     "yesterday": "вчера"
+  },
+  "placeholder": {
+    "surname": "Укажите фамилию",
+    "name": "Укажите имя",
+    "last_name": "Укажите отчество",
+    "country": "Укажите страну",
+    "town": "Укажите населённый пункт"
   }
 }

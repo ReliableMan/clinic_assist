@@ -2,22 +2,26 @@
   <div>
     <section-user v-if="sectionUser" />
     <section-no-user v-if="sectionNoUser" />
+    <section-edit-user v-if="sectionEditUser" />
   </div>
 </template>
 
 <script>
 import SectionUser from '@/components/app/ProfilePatientPage/SectionUser.vue'
 import SectionNoUser from '@/components/app/ProfilePatientPage/SectionNoUser.vue'
+import SectionEditUser from '@/components/app/ProfilePatientPage/SectionEditUser.vue'
 export default {
   name: 'MedCard',
   components: {
     SectionUser,
     SectionNoUser,
+    SectionEditUser,
   },
   data() {
     return {
       sectionUser: false,
-      sectionNoUser: true,
+      sectionNoUser: false,
+      sectionEditUser: true,
     }
   },
 }
