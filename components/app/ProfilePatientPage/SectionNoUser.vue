@@ -56,7 +56,7 @@
             <span class="med-card__main__personal-info__label">-</span>
           </div>
           <!-- edit-pensil -->
-          <div>
+          <div class="cursor" @click="$emit('editUser')">
             <img src="@/assets/images/edit-icon.png" alt="edit-icon" />
           </div>
         </div>
@@ -68,7 +68,12 @@
           <span class="med-card__container__text">
             У вас пока нет протоколов приемов!
           </span>
-          <ui-button width="300px" class="mt-30" color="warning">
+          <ui-button
+            width="300px"
+            class="mt-30"
+            color="warning"
+            @click="$emit('editUser')"
+          >
             Заполнить профиль
           </ui-button>
         </div>
@@ -94,7 +99,9 @@ export default {
   font-weight: 400;
   line-height: 16px;
 }
-
+.cursor {
+  cursor: pointer;
+}
 .med-card {
   padding: 36px;
   overflow: hidden;

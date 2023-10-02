@@ -1,8 +1,16 @@
 <template>
   <div>
-    <section-user v-if="sectionUser" />
-    <section-no-user v-if="sectionNoUser" />
-    <section-edit-user v-if="sectionEditUser" />
+    <ui-transition-slide>
+      <section-user v-if="sectionUser" @editUser="editUser" />
+    </ui-transition-slide>
+
+    <ui-transition-slide>
+      <section-no-user v-if="sectionNoUser" @editUser="editUser2" />
+    </ui-transition-slide>
+
+    <ui-transition-slide>
+      <section-edit-user v-if="sectionEditUser" @closeEdit="noEditUser" />
+    </ui-transition-slide>
   </div>
 </template>
 
@@ -20,9 +28,23 @@ export default {
   data() {
     return {
       sectionUser: false,
-      sectionNoUser: false,
-      sectionEditUser: true,
+      sectionNoUser: true,
+      sectionEditUser: false,
     }
+  },
+  methods: {
+    editUser() {
+      this.sectionEditUser = true
+      this.sectionUser = false
+    },
+    editUser2() {
+      this.sectionEditUser = true
+      this.sectionNoUser = false
+    },
+    noEditUser() {
+      this.sectionEditUser = false
+      this.sectionUser = true
+    },
   },
 }
 </script>

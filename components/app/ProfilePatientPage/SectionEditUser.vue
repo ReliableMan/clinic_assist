@@ -1,7 +1,9 @@
 <template>
   <section>
     <div class="edit-page">
-      <ui-icon class="edit-page__close-svg" name="close" />
+      <div class="edit-page__close-svg" @click="close">
+        <ui-icon name="close" />
+      </div>
       <div class="d-flex">
         <!-- avatar -->
         <ui-input-hidden-file v-model="image">
@@ -398,7 +400,11 @@ export default {
       ],
     }
   },
-  methods: {},
+  methods: {
+    close() {
+      this.$emit('closeEdit')
+    },
+  },
 }
 </script>
 
@@ -432,6 +438,8 @@ export default {
   position: relative;
 
   &__close-svg {
+    width: 17px;
+    height: 17px;
     position: absolute;
     top: 30px;
     right: 30px;

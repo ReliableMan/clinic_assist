@@ -71,7 +71,7 @@
             <span class="med-card__main-info__personal-info__label">Rh -</span>
           </div>
           <!-- edit-pensil -->
-          <div>
+          <div class="cursor" @click="$emit('editUser')">
             <img src="@/assets/images/edit-icon.png" alt="edit-icon" />
           </div>
         </div>
@@ -79,11 +79,13 @@
       <div class="med-card__main">
         <div class="d-flex items-center content-space-between">
           <span class="med-card__main__title">Основное</span>
-          <img
-            class="med-card__main__edit-icon"
-            src="@/assets/images/edit-icon.png"
-            alt="edit-icon"
-          />
+          <div class="cursor" @click="$emit('editUser')">
+            <img
+              class="med-card__main__edit-icon"
+              src="@/assets/images/edit-icon.png"
+              alt="edit-icon"
+            />
+          </div>
         </div>
         <div class="med-card__main__container">
           <!-- block allergy -->
@@ -201,6 +203,9 @@ export default {
   font-style: normal;
   font-weight: 400;
   line-height: 16px;
+}
+.cursor {
+  cursor: pointer;
 }
 .med-card {
   padding: 36px;
