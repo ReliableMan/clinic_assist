@@ -78,7 +78,7 @@ export default {
 .styleBtn {
   transition: all 1s;
   background: #fff;
-  height: 92px;
+  height: 70px;
 }
 .styleBtn > .text-style {
   color: #333;
