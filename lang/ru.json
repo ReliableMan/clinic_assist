@@ -173,7 +173,23 @@
     "timezone": "Часовой пояс",
     "remove_account": "Удаление аккаунта",
     "remove_account_text": "После удаления он становится недоступен для всех пользователей, но его еще можно восстановить в течение 1 года",
-    "delete_account": "Удалить аккаунт"
-
+    "delete_account": "Удалить аккаунт",
+    "confirm_phone": "Подтвердите телефон",
+    "confirmed_phone": "Номер телефона подтверждён",
+    "confirmed_password": "Пароль успешно изменён",
+    "cancel": "Отмена",
+    "current_password": "Текущий пароль",
+    "new_password": "Новый пароль",
+    "change_password": "Изменить пароль",
+    "password_changed_successfully": "Пароль успешно изменён"
+  },
+  "modals": {
+    "confirm_remove_account": "Вы уверены, что хотите {part0} аккаунт?",
+    "confirm_remove_account_parts": [
+      "удалить"
+    ],
+    "confirm_remove_account_text": "После удаления ваш аккаунт станет недоступен для всех пользователей, но вы сможете восстановить его в течение 1 года",
+    "delete": "Да, удалить",
+    "cancel": "Нет, вернуться"
   }
 }

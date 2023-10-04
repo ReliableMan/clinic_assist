@@ -158,8 +158,7 @@ export default {
   border-color: #469c79 !important;
 }
 .ui-input {
-  background-color: #f3f3f3 !important;
-  border: none !important;
+  background-color: #e7f4f1 !important;
 }
 .ui-input--error {
   border: 1px solid !important;
