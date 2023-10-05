@@ -35,12 +35,8 @@
 
 <script>
 export default {
+  name: 'Settings',
   layout: 'profile',
-  data() {
-    return {
-      value: true,
-    }
-  },
   computed: {
     submenu() {
       return this.$store.getters[`submenu/submenuSettings`]

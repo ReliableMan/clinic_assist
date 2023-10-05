@@ -61,7 +61,8 @@
     "date_birth": "День рождения",
     "account": "Аккаунт",
     "system": "Система",
-    "info_about_service": "Информация о сервисе"
+    "info_about_service": "Информация о сервисе",
+    "all_doctors": "Все врачи"
   },
   "system": {
     "auth": {

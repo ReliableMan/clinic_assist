@@ -39,6 +39,11 @@ export const state = () => ({
     route: { name: 'system' },
     locale: 'common.system',
   },
+  allDoctors: {
+    key: 'allDoctors',
+    route: { name: 'all-doctors' },
+    locale: 'common.all_doctors',
+  },
 })
 
 export const getters = {
@@ -54,5 +59,8 @@ export const getters = {
   },
   submenuSettings(state) {
     return [state.account, state.system]
+  },
+  submenuSearchDoctor(state) {
+    return [state.allDoctors]
   },
 }

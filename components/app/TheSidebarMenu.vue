@@ -35,13 +35,17 @@
 
     <ui-divider class="green-line mv-36" horizontal />
 
-    <ui-button hover-shadow>
+    <ui-button hover-shadow :class="{ 'size-btn': !expanded }">
       <div class="d-flex">
         <img
           src="@/assets/images/svg/notification.svg"
           alt="notifications-icon"
         />
-        <span class="text-style ml-16">{{ $t('common.notifications') }}</span>
+        <transition name="fade-scale">
+          <span v-if="expanded" class="text-style ml-16">
+            {{ $t('common.notifications') }}
+          </span>
+        </transition>
       </div>
     </ui-button>
 
@@ -118,6 +122,7 @@ export default {
   font-weight: 400
   line-height: 22px
 
+
 .text-style-2
   font-family: $base-font-family
   font-size: 12px
@@ -131,5 +136,8 @@ export default {
 .styleBtn {
   background-image: url('@/assets/images/svg/button-gradient-menu.svg') !important;
   color: #fff !important;
+}
+.size-btn {
+  width: 46px;
 }
 </style>

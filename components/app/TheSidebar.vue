@@ -2,10 +2,7 @@
   <div class="flex-1 d-flex flex-column">
     <div class="flex-1">
       <div class="d-flex content-center">
-        <logo-stamp
-          :large="expanded"
-          :label="expanded ? $t('system.stamp_logo_large') : ''"
-        />
+        <logo-stamp :large="expanded" />
       </div>
 
       <ui-divider class="green-line mv-36" horizontal />
