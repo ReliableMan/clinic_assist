@@ -103,7 +103,7 @@ export default {
 .text-style-days {
   color: #999;
   text-align: center;
-  font-family: Segoe UI;
+  font-family: $base-font-family;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
