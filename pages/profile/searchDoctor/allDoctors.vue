@@ -43,7 +43,7 @@
             />
             <!-- elem 2 -->
             <div class="search-doctor__params__block-3__checkbox">
-              <ui-checkbox v-model="value" />
+              <ui-checkbox v-model="value" class="checkbox" />
               <span class="search-doctor__params__block-3__checkbox__name">
                 Доступен сегодня
               </span>
@@ -267,6 +267,17 @@ export default {
 }
 .divider {
   color: #b4e2c7;
+}
+.checkbox {
+  & ::v-deep {
+    .ui-checkbox__input:checked + .ui-checkbox__box {
+      background-color: #ff9901;
+      border: none;
+    }
+    .ui-checkbox__box {
+      border: none;
+    }
+  }
 }
 </style>
 

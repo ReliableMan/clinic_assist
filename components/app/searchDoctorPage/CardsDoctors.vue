@@ -28,22 +28,25 @@
         <!-- schedule -->
         <div class="card__block-3">
           <p class="card__block-3__text">Доступные даты</p>
-          <div class="card__block-3__days">
-            <div v-for="day in days" :key="day.id" class="card__block-3__cont">
+          <!-- <div class="card__block-3__days"> -->
+          <!-- <div v-for="day in days" :key="day.id" class="card__block-3__cont">
               <span class="text-style-days">{{ day.name }}</span>
               <ui-button class="card__block-3__btns" color="success" outlined>
                 {{ day.date }}
               </ui-button>
-            </div>
-            <div class="mt-10">
+            </div> -->
+          <!-- <div class="mt-10">
               <img
                 width="25px"
                 height="25px"
                 src="@/assets/images/svg/right-vector-icon-2.svg"
                 alt="vector-right-vector"
               />
-            </div>
-          </div>
+            </div> -->
+          <!-- * days swiper -->
+          <days-swiper />
+
+          <!-- </div> -->
           <div class="card__block-3__price">
             <ui-button class="card__block-3__price__btn" light-shadow>
               <span class="rub-number-2">2400</span>
@@ -73,26 +76,18 @@
     </div>
   </div>
 </template>
+
 <script>
+import DaysSwiper from '@/components/ui/DaysSwiper.vue'
 export default {
   name: 'CardsDoctors',
+  components: {
+    DaysSwiper,
+  },
   data() {
     return {
       default: false,
     }
-  },
-  computed: {
-    days() {
-      return [
-        { id: 1, name: 'ср', date: 12 },
-        { id: 2, name: 'чт', date: 15 },
-        { id: 3, name: 'пт', date: 19 },
-        { id: 4, name: 'сб', date: 20 },
-        { id: 5, name: 'вс', date: 21 },
-        { id: 6, name: 'пн', date: 22 },
-        { id: 7, name: 'вт', date: 25 },
-      ]
-    },
   },
 }
 </script>
@@ -135,7 +130,7 @@ export default {
 
     &__icon {
       position: absolute;
-      bottom: 30px;
+      bottom: 36px;
       right: 2px;
     }
   }

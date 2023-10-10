@@ -34,13 +34,11 @@
               class="container-4__schedule__cont"
             >
               <span class="text-style-days">{{ day.name }}</span>
-              <ui-button
-                class="container-4__schedule__btns"
-                color="success"
-                outlined
-              >
-                {{ day.date }}
-              </ui-button>
+              <button class="container-4__schedule__btns" @click="setActive">
+                <span class="container-4__schedule__btns__text">
+                  {{ day.date }}
+                </span>
+              </button>
             </div>
             <img
               width="25px"
@@ -92,6 +90,20 @@ export default {
         { id: 6, name: 'пн', date: 22 },
         { id: 7, name: 'вт', date: 25 },
       ]
+    },
+  },
+  methods: {
+    setActive(el) {
+      const elem = el.target.closest('.container-4__schedule__btns')
+      const parentElems = document.querySelectorAll(
+        '.container-4__schedule__btns'
+      )
+      parentElems.forEach(function (elem) {
+        elem.classList.remove('active-dropdown-btn')
+      })
+      elem.classList.contains('active-dropdown-btn')
+        ? elem.classList.remove('active-dropdown-btn')
+        : elem.classList.add('active-dropdown-btn')
     },
   },
 }
@@ -203,6 +215,33 @@ export default {
       margin-left: 2px;
       width: 36px;
       height: 36px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 6px;
+      border: 2px solid #b4e2c7;
+      background: #fff;
+      cursor: pointer;
+
+      &__text {
+        color: #469c79;
+        text-align: center;
+        font-family: $head-font-family;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 16px;
+      }
+
+      &:hover {
+        transition: all 0.3s;
+        background: #ff9901a3;
+        box-shadow: 0px 2px 8px 0px rgba(51, 51, 51, 0.15);
+        border: none;
+      }
+      &:hover > &__text {
+        color: #fff;
+      }
     }
 
     &__price {
@@ -227,6 +266,15 @@ export default {
       }
     }
   }
+}
+
+.active-dropdown-btn {
+  box-shadow: 0px 2px 8px 0px rgba(51, 51, 51, 0.15);
+  background: #ff9901;
+  border: none;
+}
+.active-dropdown-btn > .container-4__schedule__btns__text {
+  color: #fff;
 }
 
 .block-1 {
