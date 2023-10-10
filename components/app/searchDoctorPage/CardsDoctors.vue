@@ -109,6 +109,15 @@ export default {
   font-family: $base-font-family;
   font-style: normal;
 }
+.text-style-days {
+  color: #999;
+  text-align: center;
+  font-family: $base-font-family;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 12px;
+}
 .card {
   width: 797px;
   margin-top: 24px;

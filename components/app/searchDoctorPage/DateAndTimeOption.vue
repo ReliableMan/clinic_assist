@@ -10,7 +10,10 @@
       :shown="value"
     >
       <template #portal>
-        <div class="dataDropdown__content">
+        <div
+          class="dataDropdown__content"
+          :class="{ 'add-height': allWorkingHours }"
+        >
           <span class="dataDropdown__content__title"> Дата/Время </span>
           <ui-swiper :swiper-options="options" class="date-slider">
             <ui-swiper-slide
@@ -31,13 +34,34 @@
               <ui-swiper-navigation position="horizontal" />
             </template>
           </ui-swiper>
-          <!-- <div class="mt-10">
-              <img
-                class="dataDropdown__content__right-btn"
-                src="@/assets/images/svg/right-vector-in-dropdown.svg"
-                alt="vector-right-vector"
-              />
-            </div> -->
+          <div v-if="!allWorkingHours">
+            <div class="dataDropdown__content__time">
+              <button
+                v-for="item in time1"
+                :key="item.id"
+                class="dataDropdown__content__time__item"
+              >
+                <span class="dataDropdown__content__time__item__text">
+                  {{ item.label }}
+                </span>
+              </button>
+              <button @click="allWorkingHours = !allWorkingHours">more</button>
+            </div>
+          </div>
+          <div v-else>
+            <div class="dataDropdown__content__time">
+              <button
+                v-for="item in time2"
+                :key="item.id"
+                class="dataDropdown__content__time__item"
+              >
+                <span class="dataDropdown__content__time__item__text">
+                  {{ item.label }}
+                </span>
+              </button>
+              <button @click="allWorkingHours = !allWorkingHours">less</button>
+            </div>
+          </div>
         </div>
       </template>
     </ui-dropdown>
@@ -58,12 +82,19 @@ export default {
           clickable: true,
         },
       },
-      value: false,
+      value: true,
+      allWorkingHours: false,
     }
   },
   computed: {
     days() {
       return this.$store.getters[`date-and-time/date`]
+    },
+    time1() {
+      return this.$store.getters[`date-and-time/time1`]
+    },
+    time2() {
+      return this.$store.getters[`date-and-time/time2`]
     },
   },
   methods: {
@@ -141,6 +172,7 @@ export default {
     padding: 10px;
     width: 307px;
     height: 253px;
+    transition: all 1s;
 
     &__title {
       @extend .text-style-black;
@@ -210,22 +242,51 @@ export default {
         box-shadow: 0px 2px 8px 0px rgba(51, 51, 51, 0.15);
       }
     }
+
+    &__time {
+      padding: 29px 0px 31px 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+
+      &__item {
+        width: 60px;
+        height: 30px;
+        border-radius: 6px;
+        border: 2px solid #b4e2c7;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        &__text {
+          @extend .text-style-black;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 20px;
+        }
+      }
+    }
   }
 }
 
 .date-slider {
+  transition: all 1s;
   & ::v-deep {
     .ui-swiper__inner {
-      margin-left: 21px;
-      width: 245px;
+      margin-left: 22px;
+      width: 240px;
     }
     .ui-swiper-navigation--horizontal .ui-swiper-navigation__left {
       top: 25px;
       border: 2px solid #469c79;
+      transition: all 0.7s;
     }
     .ui-swiper-navigation--horizontal .ui-swiper-navigation__right {
       top: 25px;
       border: 2px solid #469c79;
+      transition: all 0.7s;
     }
     .ui-button--static-sm {
       width: 21px;
@@ -238,6 +299,15 @@ export default {
     }
   }
 }
+.date-slider:has(.ui-swiper-navigation__left:disabled) {
+  transition: all 1s;
+  transform: translateX(-10px);
+}
+
+.date-slider:has(.ui-swiper-navigation__right:disabled) {
+  transition: all 1s;
+  transform: translateX(10px);
+}
 
 .active-dropdown-btn {
   background: #ff9901;
@@ -245,5 +315,10 @@ export default {
 }
 .active-dropdown-btn > .dataDropdown__content__btns__text {
   color: #fff;
+}
+
+.add-height {
+  transition: all 1s;
+  height: 330px;
 }
 </style>

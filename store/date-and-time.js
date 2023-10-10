@@ -16,10 +16,50 @@ export const state = () => ({
     { id: 14, name: 'вт', date: 25 },
     { id: 15, name: 'ср', date: 26 },
   ],
+  time1: [
+    { id: 1, label: '9:00' },
+    { id: 2, label: '9:30' },
+    { id: 3, label: '10:00' },
+    { id: 4, label: '10:30' },
+    { id: 5, label: '11:00' },
+    { id: 6, label: '11:30' },
+    { id: 7, label: '12:00' },
+    { id: 8, label: '12:30' },
+    { id: 9, label: '13:00' },
+    { id: 10, label: '13:30' },
+    { id: 11, label: '14:00' },
+  ],
+  time2: [
+    { id: 1, label: '9:00' },
+    { id: 2, label: '9:30' },
+    { id: 3, label: '10:00' },
+    { id: 4, label: '10:30' },
+    { id: 5, label: '11:00' },
+    { id: 6, label: '11:30' },
+    { id: 7, label: '12:00' },
+    { id: 8, label: '12:30' },
+    { id: 9, label: '13:00' },
+    { id: 10, label: '13:30' },
+    { id: 11, label: '14:00' },
+    { id: 12, label: '14:30' },
+    { id: 13, label: '15:00' },
+    { id: 14, label: '15:30' },
+    { id: 15, label: '16:00' },
+    { id: 16, label: '16:30' },
+    { id: 17, label: '17:00' },
+    { id: 18, label: '17:30' },
+    { id: 19, label: '18:00' },
+  ],
 })
 
 export const getters = {
   date(state) {
     return state.date
+  },
+  time1(state) {
+    return state.time1
+  },
+  time2(state) {
+    return state.time2
   },
 }
