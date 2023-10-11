@@ -159,7 +159,7 @@ export default {
 }
 
 .main-page {
-  padding: 79px 15vw 27px 15vw;
+  padding: 40px 15vw 27px 15vw;
   transition: all 1s;
 
   @media (max-width: 1600px) {

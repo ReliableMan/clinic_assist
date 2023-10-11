@@ -165,6 +165,9 @@ export default {
   background-color: #fdf2f2 !important;
   border-color: #eca5a5 !important;
 }
+.ui-input--filled {
+  border-color: #18924b !important;
+}
 </style>
 
 <router>

@@ -1,6 +1,10 @@
 <template>
   <div>
-    <div v-for="(n, i) in 3" :key="i">
+    <!-- 1 card online -->
+    <card-doctor-online />
+
+    <!-- 2 card doctor not online -->
+    <div>
       <div class="card">
         <!-- avatar -->
         <div class="card__block">
@@ -9,42 +13,32 @@
             src="@/assets/images/avatar-doctor.png"
             alt="avatar-doctor"
           />
-          <!-- green icon -->
-          <div class="online-doctor-i card__block__icon"></div>
+          <!-- offline icon -->
+          <div class="offline-doctor-i card__block__icon"></div>
+          <div class="card__block__not-online">
+            <span class="card__block__not-online__text">Был(-а) на сайте:</span>
+            <span class="card__block__not-online__time">16 июн в 22:54</span>
+          </div>
         </div>
         <!-- bio -->
         <div class="card__block-2">
-          <span class="card__block-2__name"> Коваль Ольга Валентиновна </span>
-          <span class="card__block-2__specialist"> Травматолог </span>
+          <span class="card__block-2__name"> Семенова Валерия Андреевна </span>
+          <span class="card__block-2__specialist"> Педиатор </span>
           <div class="card__block-2__degree">
             <span class="green-hat-icon mr-10"></span>
             Высшая категория, кандидат медицинских наук
           </div>
           <div class="card__block-2__experience">
             <span class="green-plus-icon mr-10"></span>
-            Стаж: 5 лет
+            Стаж: 3 года
           </div>
         </div>
         <!-- schedule -->
         <div class="card__block-3">
           <p class="card__block-3__text">Доступные даты</p>
-          <!-- <div class="card__block-3__days"> -->
-          <!-- <div v-for="day in days" :key="day.id" class="card__block-3__cont">
-              <span class="text-style-days">{{ day.name }}</span>
-              <ui-button class="card__block-3__btns" color="success" outlined>
-                {{ day.date }}
-              </ui-button>
-            </div> -->
-          <!-- <div class="mt-10">
-              <img
-                width="25px"
-                height="25px"
-                src="@/assets/images/svg/right-vector-icon-2.svg"
-                alt="vector-right-vector"
-              />
-            </div> -->
-          <!-- * days swiper -->
-          <days-swiper />
+
+          <!-- * days swiper with time -->
+          <days-swiper-with-time />
 
           <!-- </div> -->
           <div class="card__block-3__price">
@@ -78,11 +72,13 @@
 </template>
 
 <script>
-import DaysSwiper from '@/components/ui/DaysSwiper.vue'
+import DaysSwiperWithTime from '@/components/ui/DaysSwiperWithTime.vue'
+import CardDoctorOnline from './CardDoctorOnline.vue'
 export default {
   name: 'CardsDoctors',
   components: {
-    DaysSwiper,
+    DaysSwiperWithTime,
+    CardDoctorOnline,
   },
   data() {
     return {
@@ -131,7 +127,72 @@ export default {
     &__icon {
       position: absolute;
       bottom: 36px;
+      right: 4px;
+      z-index: 1;
+    }
+
+    &__is-online {
+      opacity: 0;
+      cursor: pointer;
+      position: absolute;
+      bottom: 30px;
       right: 2px;
+      width: 139px;
+      height: 26px;
+      border-radius: 15px;
+      filter: drop-shadow(0px 2px 8px rgba(51, 51, 51, 0.15));
+      background-color: #fff;
+      transition: all 0.5s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        transition: all 0.5s;
+        opacity: 1;
+      }
+
+      &__text {
+        @extend .text-style-black;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+      }
+    }
+
+    &__not-online {
+      opacity: 0;
+      cursor: pointer;
+      position: absolute;
+      bottom: 30px;
+      right: 2px;
+      width: 139px;
+      height: 40px;
+      border-radius: 15px;
+      filter: drop-shadow(0px 2px 8px rgba(51, 51, 51, 0.15));
+      background-color: #fff;
+      transition: all 0.5s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        transition: all 0.5s;
+        opacity: 1;
+      }
+
+      &__text {
+        @extend .text-style-days;
+        font-size: 10px;
+      }
+
+      &__time {
+        @extend .text-style-black;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+      }
     }
   }
 
@@ -146,6 +207,13 @@ export default {
       font-size: 20px;
       font-weight: 400;
       line-height: 24px;
+      transition: all 0.5s;
+
+      &:hover {
+        transition: all 0.5s;
+        cursor: pointer;
+        color: #469c79;
+      }
     }
 
     &__specialist {
@@ -228,6 +296,22 @@ export default {
   height: 18px;
   background-image: url('@/assets/images/online-doctor-icon.png');
   background-repeat: no-repeat;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+.offline-doctor-i {
+  display: inline-block;
+  border-radius: 50%;
+  width: 21px;
+  height: 18px;
+  background-image: url('@/assets/images/offline-doctor-icon.png');
+  background-repeat: no-repeat;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 .green-hat-icon {
   display: inline-block;

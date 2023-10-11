@@ -73,8 +73,8 @@ export default {
   transition: all 0.7s;
   & ::v-deep {
     .ui-swiper__inner {
-      margin-left: 22px;
-      width: 240px;
+      margin-left: 21px;
+      width: 245px;
     }
     .ui-swiper-navigation--horizontal .ui-swiper-navigation__left {
       top: 20px;
@@ -99,7 +99,7 @@ export default {
 }
 .date-slider:has(.ui-swiper-navigation__left:disabled) {
   transition: all 0.7s;
-  transform: translateX(-10px);
+  transform: translateX(-25px);
 }
 
 .date-slider:has(.ui-swiper-navigation__right:disabled) {
