@@ -4,10 +4,12 @@
       <div class="search-doctor__params">
         <div class="d-flex flex-column items-center">
           <div class="search-doctor__params__block-1">
-            <span class="title">Выберите параметры поиска</span>
+            <span class="title">
+              {{ $t('common.choose_parametrs_search') }}
+            </span>
             <div class="d-flex">
               <p class="title-balance">
-                Ваш баланс
+                {{ $t('common.your_balance') }}
                 <span class="title-balance-num">100</span>
                 <span class="ru-icon"></span>
               </p>
@@ -16,11 +18,29 @@
           <div class="search-doctor__params__block-2">
             <div>
               <ui-input-label>
-                <span class="ui-label">Специализация</span>
-                <ui-input
+                <span class="ui-label">{{ $t('common.specialization') }}</span>
+                <!-- <ui-input
+                 
+                 
+                /> -->
+                <multiselect
+                  v-model="specialization"
                   class="search-doctor__params__block-2__input"
-                  placeholder="Педиатр, терпевт, невролог"
-                />
+                  :placeholder="$t('placeholder.3_doctors')"
+                  label="name"
+                  track-by="code"
+                  :options="suggestionsSpecialization"
+                  :multiple="true"
+                  select-label="✔"
+                  selected-label="✔"
+                  deselect-label="✔"
+                >
+                  <span slot="noResult" class="noResult-text">
+                    Совпадений
+                    <span class="text-bold"> не найдено:</span>
+                    попробуйте изменить свой<br />запрос
+                  </span>
+                </multiselect>
               </ui-input-label>
             </div>
             <div>
@@ -28,7 +48,7 @@
                 <span class="ui-label">ФИО</span>
                 <ui-input
                   class="search-doctor__params__block-2__input"
-                  placeholder="Сидоров Иван Петрович"
+                  :placeholder="$t('placeholder.example_doctor')"
                 />
               </ui-input-label>
             </div>
@@ -45,13 +65,15 @@
             <div class="search-doctor__params__block-3__checkbox">
               <ui-checkbox v-model="value" class="checkbox" />
               <span class="search-doctor__params__block-3__checkbox__name">
-                Доступен сегодня
+                {{ $t('common.available_today') }}
               </span>
             </div>
             <!-- elem 3 -->
             <date-and-time-option />
             <!-- elem 4 -->
-            <ui-button color="warning"> Найти </ui-button>
+            <ui-button color="warning">
+              {{ $t('common.find') }}
+            </ui-button>
             <!-- elem 5 -->
             <div class="d-flex flex-column">
               <img
@@ -74,7 +96,7 @@
           </div>
           <div class="search-doctor__params__block-4">
             <span class="search-doctor__params__block-4__text">
-              Сбросить фильтры
+              {{ $t('common.reset_filters') }}
             </span>
           </div>
         </div>
@@ -102,6 +124,17 @@ export default {
   data() {
     return {
       value: false,
+      specialization: '',
+      suggestionsSpecialization: [
+        { name: 'Травматолог', code: 'travmatolog' },
+        { name: 'Ортопед', code: 'ortoped' },
+        { name: 'Нефролог', code: 'nefrolog' },
+        { name: 'Неонатолог', code: 'neonatolog' },
+        { name: 'Акушер-гинеколог', code: 'akusher-ginekolog' },
+        { name: 'Реаниматолог', code: 'reanimatolog' },
+        { name: 'Дерматовенеролог', code: 'dermatovenerolog' },
+        { name: 'Гинеколог', code: 'ginekolog' },
+      ],
     }
   },
   computed: {
@@ -161,10 +194,41 @@ export default {
 
       &__input {
         width: 360px;
-        height: 46px;
+        height: 47px;
         border-radius: 10px;
-        background: #fff;
+        background-color: #fff !important;
         box-shadow: 0px 4px 54px 0px rgba(68, 241, 166, 0.45);
+        & ::v-deep {
+          .multiselect__placeholder {
+            background-color: #fff;
+            @extend .text-style-black;
+            color: #999;
+            font-size: 16px;
+          }
+          .multiselect__tags {
+            min-height: 50px;
+            border-radius: 10px;
+            padding: 12px 40px 0 8px;
+            position: relative;
+            z-index: 2;
+          }
+          .multiselect__select {
+            top: 5px;
+          }
+          .multiselect__content-wrapper {
+            top: 75px;
+            position: absolute;
+            border-radius: 10px;
+            display: block;
+            background: #fff;
+            width: 100%;
+            max-height: 240px;
+            z-index: 50;
+          }
+          .multiselect__input::placeholder {
+            color: #999;
+          }
+        }
       }
     }
 
@@ -278,6 +342,13 @@ export default {
       border: none;
     }
   }
+}
+
+.noResult-text {
+  @extend .text-style-black;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
 }
 </style>
 

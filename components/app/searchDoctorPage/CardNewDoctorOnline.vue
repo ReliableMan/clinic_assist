@@ -15,31 +15,37 @@
         <!-- green icon -->
         <div class="online-doctor-i card__block__icon"></div>
         <div class="card__block__is-online">
-          <span class="card__block__is-online__text">Сейчас онлайн</span>
+          <span class="card__block__is-online__text">
+            {{ $t('common.online_now') }}
+          </span>
         </div>
       </div>
       <!-- bio -->
       <div class="card__block-2">
-        <span class="card__block-2__name"> Собаков Константин Валерьевич </span>
-        <span class="card__block-2__specialist"> Невролог, педиатор </span>
+        <span class="card__block-2__name">
+          {{ $t('placeholder.example_doctor_2') }}
+        </span>
+        <span class="card__block-2__specialist">
+          {{ $t('placeholder.2_doctors') }}
+        </span>
         <div class="card__block-2__experience">
           <span class="green-plus-icon mr-10"></span>
-          Стаж: 5 лет
+          {{ $t('common.experience') }}: 5 лет
         </div>
       </div>
       <!-- schedule -->
       <div class="card__block-3">
-        <p class="card__block-3__text">Доступные даты</p>
+        <p class="card__block-3__text">{{ $t('common.available_dates') }}</p>
 
         <span class="text-style-days-2">
-          Врач ещё не загрузил свое расписание. <br />
-          Как только оно появится вы сможете записаться.
+          {{ $t('common.doctor_not_download_bio') }}<br />
+          {{ $t('common.doctor_not_download_bio2') }}
         </span>
       </div>
     </div>
     <div class="rating">
       <p class="rating__text text-style-days-2">
-        Я недавно на сервисе, поэтому у меня<br />пока нет отзывов.
+        {{ $t('common.have_not_rating') }}
       </p>
       <ui-divider class="divider mt-34" horizontal />
     </div>

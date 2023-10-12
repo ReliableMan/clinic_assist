@@ -11,25 +11,31 @@
         <!-- green icon -->
         <div class="online-doctor-i card__block__icon"></div>
         <div class="card__block__is-online">
-          <span class="card__block__is-online__text">Сейчас онлайн</span>
+          <span class="card__block__is-online__text">
+            {{ $t('common.online_now') }}
+          </span>
         </div>
       </div>
       <!-- bio -->
       <div class="card__block-2">
-        <span class="card__block-2__name"> Коваль Ольга Валентиновна </span>
-        <span class="card__block-2__specialist"> Травматолог </span>
+        <span class="card__block-2__name">
+          {{ $t('placeholder.example_doctor_3') }}
+        </span>
+        <span class="card__block-2__specialist">
+          {{ $t('placeholder.travmatolog') }}
+        </span>
         <div class="card__block-2__degree">
           <span class="green-hat-icon mr-10"></span>
-          Высшая категория, кандидат медицинских наук
+          {{ $t('common.highest_category_candidat_med_science') }}
         </div>
         <div class="card__block-2__experience">
           <span class="green-plus-icon mr-10"></span>
-          Стаж: 5 лет
+          {{ $t('common.experience') }}: 5 лет
         </div>
       </div>
       <!-- schedule -->
       <div class="card__block-3">
-        <p class="card__block-3__text">Доступные даты</p>
+        <p class="card__block-3__text">{{ $t('common.available_dates') }}</p>
 
         <!-- * days swiper with time -->
         <days-swiper-with-time />
@@ -44,7 +50,7 @@
             />
           </ui-button>
           <ui-button class="card__block-3__to-sign" color="warning">
-            Записаться
+            {{ $t('common.make_an_appointment') }}
           </ui-button>
         </div>
       </div>

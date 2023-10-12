@@ -11,26 +11,32 @@
         <!-- offline icon -->
         <div class="offline-doctor-i card__block__icon"></div>
         <div class="card__block__not-online">
-          <span class="card__block__not-online__text">Был(-а) на сайте:</span>
+          <span class="card__block__not-online__text">
+            {{ $t('common.was_on_the_site') }}
+          </span>
           <span class="card__block__not-online__time">16 июн в 22:54</span>
         </div>
       </div>
       <!-- bio -->
       <div class="card__block-2">
-        <span class="card__block-2__name"> Семенова Валерия Андреевна </span>
-        <span class="card__block-2__specialist"> Педиатор </span>
+        <span class="card__block-2__name">
+          {{ $t('placeholder.example_doctor_4') }}
+        </span>
+        <span class="card__block-2__specialist">
+          {{ $t('placeholder.pediator') }}
+        </span>
         <div class="card__block-2__degree">
           <span class="green-hat-icon mr-10"></span>
-          Высшая категория, кандидат медицинских наук
+          {{ $t('common.highest_category_candidat_med_science') }}
         </div>
         <div class="card__block-2__experience">
           <span class="green-plus-icon mr-10"></span>
-          Стаж: 3 года
+          {{ $t('common.experience') }}: 3 года
         </div>
       </div>
       <!-- schedule -->
       <div class="card__block-3">
-        <p class="card__block-3__text">Доступные даты</p>
+        <p class="card__block-3__text">{{ $t('common.available_dates') }}</p>
 
         <!-- * days swiper with time -->
         <days-swiper-with-time />
@@ -45,7 +51,7 @@
             />
           </ui-button>
           <ui-button class="card__block-3__to-sign" color="warning">
-            Записаться
+            {{ $t('common.make_an_appointment') }}
           </ui-button>
         </div>
       </div>

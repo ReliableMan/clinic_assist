@@ -62,7 +62,22 @@
     "account": "Аккаунт",
     "system": "Система",
     "info_about_service": "Информация о сервисе",
-    "all_doctors": "Все врачи"
+    "all_doctors": "Все врачи",
+    "choose_parametrs_search": "Выберите параметры поиска",
+    "your_balance": "Ваш баланс",
+    "specialization": "Специализация",
+    "available_today": "Доступен сегодня",
+    "find": "Найти",
+    "reset_filters": "Сбросить фильтры",
+    "experience": "Стаж",
+    "online_now": "Сейчас онлайн",
+    "available_dates": "Доступные даты",
+    "doctor_not_download_bio": "Врач ещё не загрузил свое расписание.",
+    "doctor_not_download_bio2": "Как только оно появится вы сможете записаться.",
+    "have_not_rating": "Я недавно на сервисе, поэтому у меня пока нет отзывов.",
+    "was_on_the_site": "Был(а) на сайте",
+    "highest_category_candidat_med_science": "Высшая категория, кандидат медицинских наук",
+    "make_an_appointment": "Записаться"
   },
   "system": {
     "auth": {
@@ -161,7 +176,15 @@
     "name": "Укажите имя",
     "last_name": "Укажите отчество",
     "country": "Укажите страну",
-    "town": "Укажите населённый пункт"
+    "town": "Укажите населённый пункт",
+    "pediator": "Педиатор",
+    "travmatolog": "Травматолог",
+    "2_doctors": "Нвролог, педиатор",
+    "3_doctors": "Педиатр, терпевт, невролог",
+    "example_doctor": "Сидоров Иван Петрович",
+    "example_doctor_2": "Собаков Константин Валерьевич",
+    "example_doctor_3": "Коваль Ольга Валентина",
+    "example_doctor_4": "Семёнова Валерия Андреевна"
   },
   "settings": {
     "account": "Аккаунт",
