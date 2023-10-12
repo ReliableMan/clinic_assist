@@ -150,41 +150,6 @@ export default {
         line-height: 16px;
       }
     }
-
-    &__not-online {
-      opacity: 0;
-      cursor: pointer;
-      position: absolute;
-      bottom: 30px;
-      right: 2px;
-      width: 139px;
-      height: 40px;
-      border-radius: 15px;
-      filter: drop-shadow(0px 2px 8px rgba(51, 51, 51, 0.15));
-      background-color: #fff;
-      transition: all 0.5s;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      &:hover {
-        transition: all 0.5s;
-        opacity: 1;
-      }
-
-      &__text {
-        @extend .text-style-days;
-        font-size: 10px;
-      }
-
-      &__time {
-        @extend .text-style-black;
-        font-size: 12px;
-        font-weight: 400;
-        line-height: 16px;
-      }
-    }
   }
 
   &__block-2 {
@@ -286,18 +251,6 @@ export default {
   width: 21px;
   height: 18px;
   background-image: url('@/assets/images/online-doctor-icon.png');
-  background-repeat: no-repeat;
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-.offline-doctor-i {
-  display: inline-block;
-  border-radius: 50%;
-  width: 21px;
-  height: 18px;
-  background-image: url('@/assets/images/offline-doctor-icon.png');
   background-repeat: no-repeat;
 
   &:hover {
