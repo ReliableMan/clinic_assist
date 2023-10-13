@@ -86,7 +86,7 @@
             </ui-input-label>
           </div>
 
-          <!-- Постоянно принимаемые лекартсва -->
+          <!-- Постоянно принимаемые лекарства -->
           <ui-input-label
             :label="$t('common.regularly_medications')"
             black
