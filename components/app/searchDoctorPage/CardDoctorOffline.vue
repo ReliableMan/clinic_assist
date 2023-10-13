@@ -25,11 +25,11 @@
         <span class="card__block-2__specialist">
           {{ $t('placeholder.pediator') }}
         </span>
-        <div class="card__block-2__degree">
+        <div class="card__block-2__degree d-flex">
           <span class="green-hat-icon mr-10"></span>
           {{ $t('common.highest_category_candidat_med_science') }}
         </div>
-        <div class="card__block-2__experience">
+        <div class="card__block-2__experience d-flex">
           <span class="green-plus-icon mr-10"></span>
           {{ $t('common.experience') }}: 3 года
         </div>

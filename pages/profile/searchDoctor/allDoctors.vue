@@ -208,7 +208,7 @@ export default {
           .multiselect__tags {
             min-height: 50px;
             border-radius: 10px;
-            padding: 12px 40px 0 8px;
+            padding: 8px 40px 0 8px;
             position: relative;
             z-index: 2;
           }

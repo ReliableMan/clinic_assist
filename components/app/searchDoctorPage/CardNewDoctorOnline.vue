@@ -28,7 +28,7 @@
         <span class="card__block-2__specialist">
           {{ $t('placeholder.2_doctors') }}
         </span>
-        <div class="card__block-2__experience">
+        <div class="card__block-2__experience d-flex">
           <span class="green-plus-icon mr-10"></span>
           {{ $t('common.experience') }}: 5 лет
         </div>
