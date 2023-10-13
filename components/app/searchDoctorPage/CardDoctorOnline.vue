@@ -1,72 +1,89 @@
 <template>
   <div>
-    <div class="card">
-      <!-- avatar -->
-      <div class="card__block">
-        <img
-          class="card__block__img-avatar"
-          src="@/assets/images/avatar-doctor.png"
-          alt="avatar-doctor"
-        />
-        <!-- green icon -->
-        <div class="online-doctor-i card__block__icon"></div>
-        <div class="card__block__is-online">
-          <span class="card__block__is-online__text">
-            {{ $t('common.online_now') }}
+    <ui-dropdown no-padding trigger="hover" hover-portal>
+      <div class="card">
+        <!-- avatar -->
+        <div class="card__block">
+          <img
+            class="card__block__img-avatar"
+            src="@/assets/images/avatar-doctor.png"
+            alt="avatar-doctor"
+          />
+          <!-- green icon -->
+          <div class="online-doctor-i card__block__icon"></div>
+          <div class="card__block__is-online">
+            <span class="card__block__is-online__text">
+              {{ $t('common.online_now') }}
+            </span>
+          </div>
+        </div>
+        <!-- bio -->
+        <div class="card__block-2">
+          <span class="card__block-2__name">
+            {{ $t('placeholder.example_doctor_3') }}
           </span>
+          <span class="card__block-2__specialist">
+            {{ $t('placeholder.travmatolog') }}
+          </span>
+          <div class="card__block-2__degree">
+            <span class="green-hat-icon mr-10"></span>
+            {{ $t('common.highest_category_candidat_med_science') }}
+          </div>
+          <div class="card__block-2__experience">
+            <span class="green-plus-icon mr-10"></span>
+            {{ $t('common.experience') }}: 5 лет
+          </div>
+        </div>
+        <!-- schedule -->
+        <div class="card__block-3">
+          <p class="card__block-3__text">{{ $t('common.available_dates') }}</p>
+          <!-- * days swiper with time -->
+          <days-swiper-with-time />
+          <!-- </div> -->
+          <div class="card__block-3__price">
+            <ui-button class="card__block-3__price__btn" light-shadow>
+              <span class="rub-number-2">2400</span>
+              <img
+                src="@/assets/images/svg/vector-rub-dark.svg"
+                alt="ru-icon-dark"
+              />
+            </ui-button>
+            <ui-button class="card__block-3__to-sign" color="warning">
+              {{ $t('common.make_an_appointment') }}
+            </ui-button>
+          </div>
         </div>
       </div>
-      <!-- bio -->
-      <div class="card__block-2">
-        <span class="card__block-2__name">
-          {{ $t('placeholder.example_doctor_3') }}
-        </span>
-        <span class="card__block-2__specialist">
-          {{ $t('placeholder.travmatolog') }}
-        </span>
-        <div class="card__block-2__degree">
-          <span class="green-hat-icon mr-10"></span>
-          {{ $t('common.highest_category_candidat_med_science') }}
-        </div>
-        <div class="card__block-2__experience">
-          <span class="green-plus-icon mr-10"></span>
-          {{ $t('common.experience') }}: 5 лет
-        </div>
+      <div class="rating">
+        <button type="button" class="rating-btn">
+          <img
+            width="15px"
+            height="15px"
+            src="@/assets/images/svg/mini-star-icon.svg"
+            alt="mini-star-icon"
+          />
+          <span class="rating-btn__number">5</span>
+        </button>
+        <ui-divider class="divider mt-34" horizontal />
       </div>
-      <!-- schedule -->
-      <div class="card__block-3">
-        <p class="card__block-3__text">{{ $t('common.available_dates') }}</p>
-
-        <!-- * days swiper with time -->
-        <days-swiper-with-time />
-
-        <!-- </div> -->
-        <div class="card__block-3__price">
-          <ui-button class="card__block-3__price__btn" light-shadow>
-            <span class="rub-number-2">2400</span>
-            <img
-              src="@/assets/images/svg/vector-rub-dark.svg"
-              alt="ru-icon-dark"
-            />
-          </ui-button>
-          <ui-button class="card__block-3__to-sign" color="warning">
-            {{ $t('common.make_an_appointment') }}
-          </ui-button>
+      <template #portal>
+        <div class="hover-about-doctor">
+          <ui-icon class="hover-about-doctor__close" name="close" />
+          <span class="hover-about-doctor__text mt-20">О враче</span>
+          <span class="hover-about-doctor__text pl-40 pr-20">
+            Веду приём в медицинском центре по всем вопросам
+            акушерско-гинекологического профиля: подготовка пары к зачатию,
+            ведение беременности, психопрофилактическая подготовка к родам,
+            лактации, обследование по бесплодию, подготовка к ЭКО, в том числе
+            по ОМС, индивидуальный подбор метода контрацепции по стандартам ВОЗ
+            с дополнительными благоприятными эффектами на внешность и либидо,
+            консервативное лечение миомы, эндометриоза, кист яичников,
+            гиперплазии эндометрия, нарушения...
+          </span>
+          <a class="hover-about-doctor__href" href="#">Подробнее</a>
         </div>
-      </div>
-    </div>
-    <div class="rating">
-      <button type="button" class="rating-btn">
-        <img
-          width="15px"
-          height="15px"
-          src="@/assets/images/svg/mini-star-icon.svg"
-          alt="mini-star-icon"
-        />
-        <span class="rating-btn__number">5</span>
-      </button>
-      <ui-divider class="divider mt-34" horizontal />
-    </div>
+      </template>
+    </ui-dropdown>
   </div>
 </template>
 
@@ -79,7 +96,7 @@ export default {
   },
   data() {
     return {
-      default: false,
+      value: true,
     }
   },
 }
@@ -280,7 +297,6 @@ export default {
 .rating-btn {
   width: 81px;
   height: 24px;
-  margin-top: 30px;
   margin-left: 30px;
   border-radius: 50px;
   border: 2px solid #fcb016;
@@ -298,6 +314,50 @@ export default {
     font-style: normal;
     font-weight: 700;
     line-height: 16px;
+  }
+}
+.hover-about-doctor {
+  width: 792px;
+  height: 202px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__close {
+    position: absolute;
+    top: 16px;
+    right: 14px;
+    color: #469c79;
+
+    &:hover {
+      cursor: pointer;
+      transition: all 1s;
+      transform: rotate(0.5turn);
+    }
+  }
+
+  &__href {
+    position: absolute;
+    right: 35px;
+    bottom: 20px;
+    color: #469c79;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.7s;
+
+    &:hover {
+      color: #2ea877;
+      transition: all 0.7s;
+      transform: translateX(10px);
+    }
+  }
+
+  &__text {
+    @extend .text-style-black;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
   }
 }
 </style>

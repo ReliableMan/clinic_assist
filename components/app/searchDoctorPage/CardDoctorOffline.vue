@@ -286,7 +286,6 @@ export default {
 .rating-btn {
   width: 81px;
   height: 24px;
-  margin-top: 30px;
   margin-left: 30px;
   border-radius: 50px;
   border: 2px solid #fcb016;
