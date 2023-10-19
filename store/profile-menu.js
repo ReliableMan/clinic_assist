@@ -2,7 +2,7 @@ export const state = () => ({
   consultations: {
     key: 'consultations',
     route: { name: 'consultations' },
-    children: ['consultation', 'consultation-create', 'consultation-council'],
+    // children: ['consultation', 'consultation-create', 'consultation-council'],
     icon: 'message-circle',
     locale: 'common.consultations',
   },
@@ -88,17 +88,17 @@ export const getters = {
   patient(state) {
     return [
       state.profile,
-      state.searchDoctor,
+      // state.searchDoctor,
       state.consultations,
-      state.settings,
+      // state.settings,
       state.exit,
     ]
   },
   patient_page(state) {
     return [
-      state.searchDoctor,
+      // state.searchDoctor,
       state.consultations,
-      state.settings,
+      // state.settings,
       state.profile,
     ]
   },

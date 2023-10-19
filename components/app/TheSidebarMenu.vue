@@ -35,7 +35,7 @@
 
     <ui-divider class="green-line mv-36" horizontal />
 
-    <ui-button hover-shadow :class="{ 'size-btn': !expanded }">
+    <!-- <ui-button hover-shadow :class="{ 'size-btn': !expanded }">
       <div class="d-flex">
         <img
           src="@/assets/images/svg/notification.svg"
@@ -47,9 +47,9 @@
           </span>
         </transition>
       </div>
-    </ui-button>
+    </ui-button> -->
 
-    <p class="text-style-2">{{ $t('common.not_active_notifications') }}</p>
+    <!-- <p class="text-style-2">{{ $t('common.not_active_notifications') }}</p> -->
   </nav>
 </template>
 

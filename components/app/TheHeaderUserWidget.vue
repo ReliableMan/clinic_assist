@@ -33,7 +33,7 @@
         >
           <ui-menu-link
             v-if="link.exit"
-            class="user-widget__link c-pointer"
+            class="user-widget__link c-pointer custom"
             hovered
             :icon="link.icon"
             :label="$t(link.locale)"
@@ -41,7 +41,7 @@
           />
           <ui-menu-link
             v-else
-            class="user-widget__link"
+            class="user-widget__link custom"
             hovered
             :to="localePath(link.route)"
             :icon="link.icon"
@@ -97,12 +97,21 @@ export default {
     padding-bottom: 9px !important
   &__link:hover
     background-color: #469c79 !important
+
+.menu-link
+  &__icon
+    color: #469c79 !important
+</style>
+
+<style scoped>
+.custom >>> .menu-link__icon {
+  color: #469c79 !important;
+}
 </style>
 
 <style>
-.menu-link__icon {
-  color: #469c79 !important;
-}
+/* .menu-link__icon {
+} */
 .user-widget__link:hover > .menu-link__icon {
   color: #fff !important;
 }

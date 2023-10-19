@@ -65,7 +65,7 @@
       </ui-button>
     </ui-form>
 
-    <i18n
+    <!-- <i18n
       path="system.auth.forgot_password.text1"
       tag="div"
       class="text-grey text-center fs-14 text-style"
@@ -84,7 +84,7 @@
           {{ $t('system.auth.forgot_password.links.0') }}
         </nuxt-link>
       </template>
-    </i18n>
+    </i18n> -->
   </ui-container>
 </template>
 

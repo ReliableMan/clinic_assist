@@ -50,11 +50,11 @@ export const getters = {
   menu(state) {
     return [
       state.medCard,
-      state.scheduledConsultations,
-      state.medDocuments,
-      state.balanceSubscriptions,
-      state.promoCode,
-      state.yourProduct,
+      // state.scheduledConsultations,
+      // state.medDocuments,
+      // state.balanceSubscriptions,
+      // state.promoCode,
+      // state.yourProduct,
     ]
   },
   submenuSettings(state) {
