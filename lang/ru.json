@@ -77,7 +77,11 @@
     "have_not_rating": "Я недавно на сервисе, поэтому у меня пока нет отзывов.",
     "was_on_the_site": "Был(а) на сайте",
     "highest_category_candidat_med_science": "Высшая категория, кандидат медицинских наук",
-    "make_an_appointment": "Записаться"
+    "make_an_appointment": "Записаться",
+    "my_templates": "Мои шаблоны",
+    "traumatology_and_orthopedics": "Травматология и ортопедия",
+    "clinical_surgery": "Клиническая хирургия", 
+    "anesthesiology": "Анастезиология"
   },
   "system": {
     "auth": {

@@ -4,16 +4,37 @@
       <div class="pv-40 ph-36 mb-20">
         <h2>{{ $t('common.profile') }}</h2>
       </div>
-      <div v-for="(link, index) in submenu" :key="index" class="link-style">
-        <NuxtLink
-          class="link-href"
-          :class="{ styleBtn: path.includes(link.route.name) }"
-          :to="localePath(link.route)"
+      <!-- если пациент -->
+      <div v-if="userPatient">
+        <div v-for="(link, index) in submenu" :key="index" class="link-style">
+          <NuxtLink
+            class="link-href"
+            :class="{ styleBtn: path.includes(link.route.name) }"
+            :to="localePath(link.route)"
+          >
+            <span class="text-style">
+              {{ $t(link.locale) }}
+            </span>
+          </NuxtLink>
+        </div>
+      </div>
+      <!-- если доктор -->
+      <div v-if="userDoctor">
+        <div
+          v-for="(link, index) in menuDoctor"
+          :key="index"
+          class="link-style"
         >
-          <span class="text-style">
-            {{ $t(link.locale) }}
-          </span>
-        </NuxtLink>
+          <NuxtLink
+            class="link-href"
+            :class="{ styleBtn: path.includes(link.route.name) }"
+            :to="localePath(link.route)"
+          >
+            <span class="text-style">
+              {{ $t(link.locale) }}
+            </span>
+          </NuxtLink>
+        </div>
       </div>
     </template>
 
@@ -28,12 +49,16 @@ export default {
   layout: 'profile',
   data() {
     return {
-      value: true,
+      userPatient: false,
+      userDoctor: true,
     }
   },
   computed: {
     submenu() {
       return this.$store.getters[`submenu/menu`]
+    },
+    menuDoctor() {
+      return this.$store.getters[`submenu/menuDoctor`]
     },
     path() {
       const url = this.$route.path

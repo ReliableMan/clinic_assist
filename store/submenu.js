@@ -44,6 +44,16 @@ export const state = () => ({
     route: { name: 'all-doctors' },
     locale: 'common.all_doctors',
   },
+  personalData: {
+    key: 'personalData',
+    route: { name: 'personal' },
+    locale: 'common.personal_data',
+  },
+  templates: {
+    key: 'templates',
+    route: { name: 'templates' },
+    locale: 'common.my_templates',
+  },
 })
 
 export const getters = {
@@ -62,5 +72,11 @@ export const getters = {
   },
   submenuSearchDoctor(state) {
     return [state.allDoctors]
+  },
+  menuDoctor(state) {
+    return [
+      state.personalData,
+      // state.templates
+    ]
   },
 }
