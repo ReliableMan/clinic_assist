@@ -121,36 +121,39 @@
     </div>
 
     <!-- medical experience -->
-    <div class="personal-data__medical">
-      <span class="personal-data__medical__title">Врачебный стаж</span>
-      <div class="personal-data__medical__list">
+    <div class="personal-data__info">
+      <span class="personal-data__info__title">Врачебный стаж</span>
+      <div class="personal-data__info__list">
         <div class="d-flex flex-column">
-          <span class="personal-data__medical__list__subtitle">
+          <span class="personal-data__info__list__subtitle">
             Врач-травматолог
           </span>
-          <div class="personal-data__medical__list__item">
+          <div class="personal-data__info__list__item">
             <span class="small-green-square"></span>
-            2018 - н.в. Медицинский холдинг «СМ-Клиника»
+            <strong>2018 - н.в.&nbsp;</strong>
+            Медицинский холдинг «СМ-Клиника»
           </div>
           <div v-if="moreList">
-            <span class="personal-data__medical__list__subtitle">
+            <span class="personal-data__info__list__subtitle">
               Врач-травматолог
             </span>
-            <div class="personal-data__medical__list__item">
+            <div class="personal-data__info__list__item">
               <span class="small-green-square"></span>
-              2018 - н.в. Медицинский холдинг «СМ-Клиника»
+              <strong>2018 - н.в.&nbsp;</strong>
+              Медицинский холдинг «СМ-Клиника»
             </div>
-            <span class="personal-data__medical__list__subtitle">
+            <span class="personal-data__info__list__subtitle">
               Врач-травматолог
             </span>
-            <div class="personal-data__medical__list__item">
+            <div class="personal-data__info__list__item">
               <span class="small-green-square"></span>
-              2018 - н.в. Медицинский холдинг «СМ-Клиника»
+              <strong>2018 - н.в.&nbsp;</strong>
+              Медицинский холдинг «СМ-Клиника»
             </div>
           </div>
           <span
             v-if="!moreList"
-            class="personal-data__medical__list__more-list"
+            class="personal-data__info__list__more-list"
             @click="moreList = true"
           >
             Показать больше
@@ -163,6 +166,97 @@
     <div class="divider-block">
       <ui-divider class="green-line" horizontal />
     </div>
+
+    <!-- education -->
+    <div class="personal-data__info">
+      <span class="personal-data__info__title">Образование</span>
+      <div class="personal-data__info__list">
+        <div class="d-flex flex-column">
+          <span class="personal-data__info__list__subtitle">
+            Базовое — педиатрия
+          </span>
+          <div class="personal-data__info__list__item">
+            <span class="small-green-square"></span>
+            <strong>2000 - 2006&nbsp;</strong>
+            Ростовский государственный медицинский университет
+          </div>
+          <div v-if="moreList2">
+            <span class="personal-data__info__list__subtitle">
+              Базовое — педиатрия
+            </span>
+            <div class="personal-data__info__list__item">
+              <span class="small-green-square"></span>
+              <strong>2000 - 2006&nbsp;</strong>
+              Ростовский государственный медицинский университет
+            </div>
+            <span class="personal-data__info__list__subtitle">
+              Базовое — педиатрия
+            </span>
+            <div class="personal-data__info__list__item">
+              <span class="small-green-square"></span>
+              <strong>2000 - 2006&nbsp;</strong>
+              Ростовский государственный медицинский университет
+            </div>
+          </div>
+          <span
+            v-if="!moreList2"
+            class="personal-data__info__list__more-list"
+            @click="moreList2 = true"
+          >
+            Показать больше
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- documents -->
+    <div class="personal-data__info">
+      <span class="personal-data__info__title">
+        Документы, подтверждающие квалификацию
+      </span>
+      <div class="personal-data__info__documents">
+        <div class="personal-data__info__documents__item">
+          <span class="personal-data__info__documents__item__title">
+            Дипломы
+          </span>
+          <img
+            class="personal-data__info__documents__item__img"
+            src="@/assets/images/thumbnail.png"
+            alt="image-document"
+          />
+          <div class="personal-data__info__documents__item__footer-block">
+            <span
+              class="personal-data__info__documents__item__footer-block__text"
+            >
+              23 файла
+            </span>
+            <div class="cursor">
+              <img src="@/assets/images/edit-icon.png" alt="edit-icon" />
+            </div>
+          </div>
+        </div>
+        <div class="personal-data__info__documents__item">
+          <span class="personal-data__info__documents__item__title">
+            Сертификаты
+          </span>
+          <img
+            class="personal-data__info__documents__item__img"
+            src="@/assets/images/thumbnail2.png"
+            alt="image-document"
+          />
+          <div class="personal-data__info__documents__item__footer-block">
+            <span
+              class="personal-data__info__documents__item__footer-block__text"
+            >
+              23 файла
+            </span>
+            <div class="cursor">
+              <img src="@/assets/images/edit-icon.png" alt="edit-icon" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -173,6 +267,7 @@ export default {
     return {
       moreText: false,
       moreList: false,
+      moreList2: false,
     }
   },
 }
@@ -352,7 +447,7 @@ export default {
         left: 0;
         transform-origin: right;
         transform: scaleX(0);
-        transition: transform 0.7s ease-in-out;
+        transition: transform 0.6s ease-in-out;
         text-decoration: none;
       }
       &:hover:before {
@@ -363,7 +458,7 @@ export default {
     }
   }
 
-  &__medical {
+  &__info {
     width: 797px;
     position: relative;
 
@@ -389,7 +484,6 @@ export default {
       &__item {
         display: flex;
         align-items: center;
-        gap: 12px;
       }
 
       &__more-list {
@@ -402,6 +496,7 @@ export default {
         padding-left: 17px;
         cursor: pointer;
         position: relative;
+        width: 134px;
 
         &::before {
           content: '';
@@ -415,13 +510,65 @@ export default {
           left: 0;
           transform-origin: right;
           transform: scaleX(0);
-          transition: transform 0.7s ease-in-out;
+          transition: transform 0.6s ease-in-out;
           text-decoration: none;
         }
         &:hover:before {
           text-decoration: none;
           transform-origin: left;
           transform: scaleX(1);
+        }
+      }
+    }
+
+    &__documents {
+      padding: 24px 24px 84px 24px;
+      display: flex;
+      gap: 24px;
+
+      &__item {
+        width: 174px;
+        height: 198px;
+        border-radius: 16px;
+        background: #e7f4f1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.5s;
+
+        &:hover {
+          transition: all 0.5s;
+          box-shadow: 0px 2px 8px 0px rgba(51, 51, 51, 0.15);
+        }
+
+        &__title {
+          @extend .text-style-black;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+          margin-top: 22px;
+        }
+
+        &__img {
+          margin-top: 24px;
+          margin-bottom: 16px;
+        }
+
+        &__footer-block {
+          width: 100%;
+          padding-left: 30px;
+          padding-right: 30px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          &__text {
+            @extend .text-style-grey;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 16px;
+          }
         }
       }
     }
@@ -446,6 +593,7 @@ export default {
   width: 4px;
   height: 4px;
   background-image: url('@/assets/images/green-sm-point.png');
+  margin-right: 12px;
 }
 </style>
 
