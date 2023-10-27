@@ -16,9 +16,11 @@
         </ui-input-hidden-file>
         <!-- right text -->
         <div class="d-flex flex-column ml-20">
-          <p class="edit-page__download-text">
-            {{ $t('common.upload_photo') }}
-          </p>
+          <ui-input-hidden-file v-model="image">
+            <p class="edit-page__download-text">
+              {{ $t('common.upload_photo') }}
+            </p>
+          </ui-input-hidden-file>
           <div class="text-style-2">
             <span class="edit-page__download-text-2">
               {{ $t('common.max_size') }}

@@ -49,8 +49,8 @@ export default {
   layout: 'profile',
   data() {
     return {
-      userPatient: false,
-      userDoctor: true,
+      userPatient: true,
+      userDoctor: false,
     }
   },
   computed: {

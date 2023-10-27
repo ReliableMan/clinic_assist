@@ -13,11 +13,16 @@
               />
             </div>
             <div class="med-card__main__bio">
-              <span class="med-card__main__bio__text"> Заполнить профиль </span>
+              <span
+                class="med-card__main__bio__text"
+                @click="$emit('editUser')"
+              >
+                Заполнить профиль
+              </span>
             </div>
           </div>
           <!-- balance -->
-          <div class="d-flex flex-column items-center">
+          <!-- <div class="d-flex flex-column items-center">
             <ui-button class="med-card__main__balance-btn">
               <span class="med-card__main__balance-text">0</span>
               <img
@@ -29,7 +34,7 @@
               <span class="med-card__main__balance-add">Пополнить</span>
               <img src="@/assets/images/svg/plus-icon-sm.svg" alt="plus-icon" />
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div class="med-card__main__personal-info">
@@ -145,6 +150,7 @@ export default {
         font-weight: 600;
         line-height: 30px;
         text-decoration-line: underline;
+        cursor: pointer;
       }
     }
 

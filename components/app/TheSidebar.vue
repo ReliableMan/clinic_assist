@@ -7,7 +7,7 @@
 
       <ui-divider class="green-line mv-36" horizontal />
 
-      <div class="d-flex content-center mb-100">
+      <div class="d-flex content-center mb-50">
         <ui-doctor-avatar :avatar="$store.getters['user/avatar']" />
         <div
           v-if="expanded"

@@ -50,6 +50,7 @@
           <ui-input-label :label="$t('common.allergy')" black bold>
             <multiselect
               v-model="fields.allergy"
+              class="multiselect-custom"
               :placeholder="$t('common.placeholder_allergy')"
               label="name"
               track-by="code"
@@ -94,6 +95,7 @@
           >
             <multiselect
               v-model="fields.medications"
+              class="multiselect-custom"
               :placeholder="$t('common.placeholder_medications')"
               label="name"
               track-by="code"
@@ -113,6 +115,7 @@
             <ui-input-label :label="$t('common.chronic_diseases')" black bold>
               <multiselect
                 v-model="fields.chronicDiseases"
+                class="multiselect-custom"
                 :placeholder="$t('common.placeholder_chronic_diseases')"
                 label="name"
                 track-by="code"
@@ -245,6 +248,7 @@
             <ui-input-label :label="$t('common.family_inheritance')" black bold>
               <multiselect
                 v-model="fields.familyInheritance"
+                class="multiselect-custom"
                 :placeholder="$t('common.placeholder_family_inheritance')"
                 label="name"
                 track-by="code"
@@ -265,6 +269,7 @@
             <ui-input-label :label="$t('common.bad_habits')" black bold>
               <multiselect
                 v-model="fields.badHabits"
+                class="multiselect-custom"
                 :placeholder="$t('common.placeholder_bad_habits')"
                 label="name"
                 track-by="code"
@@ -451,45 +456,7 @@ export default {
 .ui-select-item:hover {
   background-color: #469c79 !important;
 }
-.multiselect__tags {
-  background: #f3f3f3;
-  border: none;
-  padding-left: 18px;
-  padding-right: 16px;
-  font-size: 16px;
-  border-radius: 10px;
-}
-.multiselect__input {
-  background: #f3f3f3;
-}
-.multiselect__placeholder {
-  color: #999 !important;
-}
-.multiselect__select {
-  display: none;
-}
-.multiselect__content-wrapper {
-  margin-top: 10px;
-  border-radius: 10px;
-  filter: drop-shadow(0px 2px 8px rgba(51, 51, 51, 0.15));
-}
-.multiselect__option--selected.multiselect__option--highlight {
-  background: #469c79;
-  color: #fff;
-}
-.multiselect__option--selected {
-  background: #fff;
-  color: #469c79;
-  font-weight: 700;
-}
-.multiselect__option--selected:after {
-  background: #fff;
-  color: #469c79;
-}
-.multiselect__option--selected.multiselect__option--highlight:after {
-  color: #fff;
-  background-color: #469c79;
-}
+
 .ui-select--dense {
   height: 38px;
   width: 74px;
@@ -549,6 +516,52 @@ export default {
   cursor: pointer;
   background: #469c79;
   color: #fff;
+}
+.multiselect-custom {
+  & ::v-deep {
+    .multiselect__tags,
+    .multiselect__input {
+      background: #e7f4f1;
+    }
+    .multiselect__input {
+      border-bottom-left-radius: unset;
+    }
+    .multiselect__tags {
+      border: none;
+      padding-left: 18px;
+      padding-right: 16px;
+      font-size: 16px;
+      border-radius: 10px;
+    }
+    .multiselect__select {
+      display: none;
+    }
+    .multiselect__content-wrapper {
+      margin-top: 12px;
+      border-radius: 10px;
+      filter: drop-shadow(0px 2px 8px rgba(51, 51, 51, 0.15));
+    }
+    .multiselect__placeholder {
+      color: #999 !important;
+    }
+    .multiselect__option--selected.multiselect__option--highlight {
+      background: #469c79;
+      color: #fff;
+    }
+    .multiselect__option--selected {
+      background: #fff;
+      color: #469c79;
+      font-weight: 700;
+    }
+    .multiselect__option--selected:after {
+      background: #fff;
+      color: #469c79;
+    }
+    .multiselect__option--selected.multiselect__option--highlight:after {
+      color: #fff;
+      background-color: #469c79;
+    }
+  }
 }
 </style>
 

@@ -28,7 +28,7 @@
             </div>
           </div>
           <!-- balance  -->
-          <div class="d-flex flex-column items-center">
+          <!-- <div class="d-flex flex-column items-center">
             <ui-button class="med-card__main-info__balance-btn">
               <span class="med-card__main-info__balance-text">2420</span>
               <img
@@ -40,7 +40,7 @@
               <span class="med-card__main-info__balance-add">Пополнить</span>
               <img src="@/assets/images/svg/plus-icon-sm.svg" alt="plus-icon" />
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="med-card__main-info__personal-info">
           <!-- gender -->

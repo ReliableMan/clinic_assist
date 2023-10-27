@@ -52,7 +52,7 @@
         />
         <img
           class="main-page__container__block-2__img-doctor"
-          src="@/assets/images/doctor-mobile.png"
+          src="@/assets/images/doctor-mobile1.png"
           alt="img-doctor-mobile"
         />
       </div>
@@ -325,10 +325,12 @@ export default {
       }
       &__img-doctor {
         position: absolute;
+        height: 600px;
+        width: 300px;
         top: 92px;
         left: 347px;
         border-radius: 52px;
-        transform: rotate(12.743deg) scale(-1, 1);
+        transform: rotate(12.743deg);
 
         @media (max-width: 1400px) {
           height: 500px;
