@@ -1,0 +1,4 @@
+PORT=3000
+API_URL=https://rest.consilium-rheumatology.com
+WAMP_URL=wss://consilium-rheumatology.com:8080
+FILES_URL=https://rest.consilium-rheumatology.com

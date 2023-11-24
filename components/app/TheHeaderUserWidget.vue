@@ -11,8 +11,9 @@
         :class="{ 'user-widget__inner--open': shown }"
       >
         <div class="user-widget__name">
-          <div>{{ $auth.user.profile.name }}</div>
-          <div>{{ $auth.user.profile.surname }}</div>
+          <!-- !! поменять временно -->
+          <div>{{ $auth.user.user.surname }}</div>
+          <div>{{ $auth.user.user.name }}</div>
         </div>
         <div class="user-widget__indicator">
           <ui-icon name="chevron-down" class="user-widget__chevron" />

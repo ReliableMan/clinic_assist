@@ -22,7 +22,7 @@
         :custom-messages="{ required: $t('validation.required_phone') }"
       >
         <ui-input-local-phone
-          v-model="fields.phone"
+          v-model.trim="fields.phone"
           :error="error"
           placeholder="Телефон"
         />
@@ -43,7 +43,7 @@
         <ui-transition-collapse>
           <div v-if="invalid_credentials">
             <ui-error-message>
-              {{ $t('validation.login_or_password') }}
+              {{ $t('validation.email_or_password') }}
             </ui-error-message>
           </div>
           <div v-else-if="not_confirmed_or_block">
@@ -114,6 +114,7 @@ export default {
         this.not_confirmed_or_block = true
       }
     },
+    // eslint-disable-next-line require-await
     async submit() {
       this.invalid_credentials = false
       this.not_confirmed_or_block = false
@@ -125,7 +126,7 @@ export default {
           password: this.fields.password,
         },
       }
-
+      // console.log('request_to_server', options)
       await this.$auth.login(options).catch(this.onError)
 
       this.loading = false
