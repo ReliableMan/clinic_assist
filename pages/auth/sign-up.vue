@@ -218,7 +218,18 @@
         >
           {{ $t('common.next_step') }}
         </ui-button>
+        <!-- <ui-button
+          color="warning"
+          fluid
+          :loading="loading"
+          @click="nextPartRegistr"
+          >
+          {{ $t('common.next_step') }}
+        </ui-button> -->
       </ui-container>
+      <div v-if="!nextPartReg" class="mt-40">
+        <auth-registration-agree />
+      </div>
 
       <div v-if="nextPartReg">
         <ui-container size="xxs" class="mb-8">

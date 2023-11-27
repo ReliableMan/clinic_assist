@@ -1,19 +1,19 @@
 <template>
   <i18n path="system.registration_agree.text" class="agree" tag="div">
     <template #link0>
-      <a href="#" class="text-bold reg-links">{{
-        $t('system.registration_agree.links.0')
-      }}</a>
+      <NuxtLink to="/personal-data-policy" class="text-bold reg-links">
+        {{ $t('system.registration_agree.links.0') }}
+      </NuxtLink>
     </template>
     <template #link1>
-      <a href="#" class="text-bold reg-links">{{
-        $t('system.registration_agree.links.1')
-      }}</a>
+      <NuxtLink to="/personal-data-agree" class="text-bold reg-links">
+        {{ $t('system.registration_agree.links.1') }}
+      </NuxtLink>
     </template>
     <template #link2>
-      <a href="#" class="text-bold reg-links">{{
-        $t('system.registration_agree.links.2')
-      }}</a>
+      <NuxtLink to="/terms-of-use" class="text-bold reg-links">
+        {{ $t('system.registration_agree.links.2') }}
+      </NuxtLink>
     </template>
   </i18n>
 </template>
