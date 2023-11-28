@@ -114,7 +114,6 @@ export default {
         this.not_confirmed_or_block = true
       }
     },
-    // eslint-disable-next-line require-await
     async submit() {
       this.invalid_credentials = false
       this.not_confirmed_or_block = false
@@ -126,9 +125,7 @@ export default {
           password: this.fields.password,
         },
       }
-      // console.log('request_to_server', options)
       await this.$auth.login(options).catch(this.onError)
-
       this.loading = false
     },
   },
@@ -176,4 +173,4 @@ export default {
       path: '/sign-in',
       name: 'sign-in',
     }
-  </router>
+</router>

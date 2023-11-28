@@ -26,6 +26,7 @@
   color: $color-grey;
   font-size: 14px;
   line-height: 20px;
+  padding: 0 20px 0 30px;
 }
 .reg-links {
   color: #469c79;

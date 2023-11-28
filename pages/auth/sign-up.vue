@@ -209,7 +209,7 @@
           />
         </ui-validator>
 
-        <ui-button
+        <!-- <ui-button
           color="warning"
           fluid
           :disabled="buttonNextPartReg"
@@ -217,15 +217,15 @@
           @click="nextPartRegistr"
         >
           {{ $t('common.next_step') }}
-        </ui-button>
-        <!-- <ui-button
+        </ui-button> -->
+        <ui-button
           color="warning"
           fluid
           :loading="loading"
           @click="nextPartRegistr"
-          >
+        >
           {{ $t('common.next_step') }}
-        </ui-button> -->
+        </ui-button>
       </ui-container>
       <div v-if="!nextPartReg" class="mt-40">
         <auth-registration-agree />
@@ -278,11 +278,11 @@
             </ui-validator>
 
             <!-- Аллергии -->
-            <!-- <ui-input-label :label="$t('common.allergy')" black bold>
+            <ui-input-label :label="$t('common.allergy')" black bold>
               <multiselect
-                v-model="fields.allergy"
+                v-model="fields.allergies"
                 class="multiselect-custom"
-                :placeholder="$t('common.placeholder_allergy')"
+                :placeholder="$t('common.placeholder_allergies')"
                 label="name"
                 track-by="code"
                 :options="suggestionsAllergy"
@@ -294,38 +294,38 @@
                 tag-placeholder="добавить"
                 @tag="addTag"
               ></multiselect>
-            </ui-input-label> -->
+            </ui-input-label>
 
-            <!-- Рост и вес -->
+            <!--  Рост и вес -->
             <div class="biological">
               <!-- height -->
-              <!-- <ui-input-label :label="$t('common.bio_height')" black bold>
+              <ui-input-label :label="$t('common.bio_height')" black bold>
                 <ui-input-select
                   v-model="fields.height"
                   :select="1"
                   :options="optionsHeight"
                   placeholder="205"
                 />
-              </ui-input-label> -->
+              </ui-input-label>
               <!-- weight -->
-              <!-- <ui-input-label :label="$t('common.bio_weight')" black bold>
+              <ui-input-label :label="$t('common.bio_weight')" black bold>
                 <ui-input-select
                   v-model="fields.weight"
                   :select="1"
                   :options="optionsWeight"
                   placeholder="90"
                 />
-              </ui-input-label> -->
+              </ui-input-label>
             </div>
 
             <!-- Постоянно принимаемые лекарства -->
-            <!-- <ui-input-label
+            <ui-input-label
               :label="$t('common.regularly_medications')"
               black
               bold
             >
               <multiselect
-                v-model="fields.medications"
+                v-model="fields.drugs"
                 class="multiselect-custom"
                 :placeholder="$t('common.placeholder_medications')"
                 label="name"
@@ -339,10 +339,10 @@
                 tag-placeholder="добавить"
                 @tag="addTagMedications"
               ></multiselect>
-            </ui-input-label> -->
+            </ui-input-label>
 
             <!-- Хронические заболевания -->
-            <!-- <div class="mt-18">
+            <div class="mt-18">
               <ui-input-label :label="$t('common.chronic_diseases')" black bold>
                 <multiselect
                   v-model="fields.chronicDiseases"
@@ -360,123 +360,123 @@
                   @tag="addTagChronicDiseases"
                 ></multiselect>
               </ui-input-label>
-            </div> -->
+            </div>
 
             <!-- Группа крови -->
-            <!-- <div class="mt-18">
+            <div class="mt-18">
               <ui-input-label :label="$t('common.blood_type')" black bold>
                 <div class="checkbox-bloodType">
                   <div class="checkbox-radio-btn2 mt-5">
                     <input
-                      :id="fields.bloodTypes.first"
-                      v-model="fields.bloodType"
+                      :id="bloodTypes.first"
+                      v-model="fields.blood"
                       type="radio"
-                      :value="fields.bloodTypes.first"
+                      :value="bloodTypes.first"
                     />
                     <label
                       class="blood-icon"
                       name="radio"
-                      :for="fields.bloodTypes.first"
+                      :for="bloodTypes.first"
                     >
-                      {{ fields.bloodTypes.first }}
+                      I
                     </label>
                   </div>
                   <div class="checkbox-radio-btn2 mt-5">
                     <input
-                      :id="fields.bloodTypes.second"
-                      v-model="fields.bloodType"
+                      :id="bloodTypes.second"
+                      v-model="fields.blood"
                       type="radio"
-                      :value="fields.bloodTypes.second"
+                      :value="bloodTypes.second"
                     />
                     <label
                       class="blood-icon"
                       name="radio"
-                      :for="fields.bloodTypes.second"
+                      :for="bloodTypes.second"
                     >
-                      {{ fields.bloodTypes.second }}
+                      II
                     </label>
                   </div>
                   <div class="checkbox-radio-btn2 mt-5">
                     <input
-                      :id="fields.bloodTypes.third"
-                      v-model="fields.bloodType"
+                      :id="bloodTypes.third"
+                      v-model="fields.blood"
                       type="radio"
-                      :value="fields.bloodTypes.third"
+                      :value="bloodTypes.third"
                     />
                     <label
                       class="blood-icon"
                       name="radio"
-                      :for="fields.bloodTypes.third"
+                      :for="bloodTypes.third"
                     >
-                      {{ fields.bloodTypes.third }}
+                      III
                     </label>
                   </div>
                   <div class="checkbox-radio-btn2 mt-5">
                     <input
-                      :id="fields.bloodTypes.fourth"
-                      v-model="fields.bloodType"
+                      :id="bloodTypes.fourth"
+                      v-model="fields.blood"
                       type="radio"
-                      :value="fields.bloodTypes.fourth"
+                      :value="bloodTypes.fourth"
                     />
                     <label
                       class="blood-icon"
                       name="radio"
-                      :for="fields.bloodTypes.fourth"
+                      :for="bloodTypes.fourth"
                     >
-                      {{ fields.bloodTypes.fourth }}
+                      IV
                     </label>
                   </div>
                 </div>
               </ui-input-label>
-            </div> -->
+            </div>
 
             <!-- Резус-фактор -->
-            <!-- <div class="mt-18">
+            <div class="mt-18">
               <ui-input-label :label="$t('common.Rh_factor')" black bold>
                 <div class="checkbox-RhFactor">
                   <div class="checkbox-radio-btn2 mt-5">
                     <input
-                      :id="fields.RhFactorTypes.positive"
-                      v-model="fields.RhFactorType"
+                      :id="RhFactorTypes.positive"
+                      v-model="fields.rh"
                       type="radio"
-                      :value="fields.RhFactorTypes.positive"
+                      :value="true"
                     />
                     <label
                       class="blood-icon"
                       name="radio"
-                      :for="fields.RhFactorTypes.positive"
+                      :for="RhFactorTypes.positive"
                     >
-                      {{ fields.RhFactorTypes.positive }}
+                      Rh+
                     </label>
                   </div>
                   <div class="checkbox-radio-btn2 mt-5">
                     <input
-                      :id="fields.RhFactorTypes.negative"
-                      v-model="fields.RhFactorType"
+                      :id="RhFactorTypes.negative"
+                      v-model="fields.rh"
                       type="radio"
-                      :value="fields.RhFactorTypes.negative"
+                      :value="false"
                     />
                     <label
                       class="blood-icon"
                       name="radio"
-                      :for="fields.RhFactorTypes.negative"
+                      :for="RhFactorTypes.negative"
                     >
-                      {{ fields.RhFactorTypes.negative }}
+                      Rh-
                     </label>
                   </div>
                 </div>
               </ui-input-label>
-            </div> -->
+            </div>
 
             <!-- Семейная наследственность -->
-            <!-- <div class="mt-18">
+            <div class="mt-18">
               <ui-input-label
                 :label="$t('common.family_inheritance')"
                 black
                 bold
               >
                 <multiselect
-                  v-model="fields.familyInheritance"
+                  v-model="fields.heredity"
                   class="multiselect-custom"
                   :placeholder="$t('common.placeholder_family_inheritance')"
                   label="name"
@@ -491,10 +491,10 @@
                   @tag="addTagFamilyInheritance"
                 ></multiselect>
               </ui-input-label>
-            </div> -->
+            </div>
 
             <!-- Вредные привычки -->
-            <!-- <div class="mt-18">
+            <div class="mt-18">
               <ui-input-label :label="$t('common.bad_habits')" black bold>
                 <multiselect
                   v-model="fields.badHabits"
@@ -512,7 +512,7 @@
                   @tag="addTagBadHabits"
                 ></multiselect>
               </ui-input-label>
-            </div> -->
+            </div>
           </div>
 
           <!-- кнопка -->
@@ -536,13 +536,13 @@
 
 <script>
 import AuthLabel from '@/components/app/AuthLabel.vue'
-// import Multiselect from 'vue-multiselect'
+import Multiselect from 'vue-multiselect'
 import AuthRegistrationAgree from '@/components/app/AuthRegistrationAgree.vue'
 
 export default {
   components: {
     AuthLabel,
-    // Multiselect,
+    Multiselect,
     AuthRegistrationAgree,
   },
   data() {
@@ -571,40 +571,38 @@ export default {
         man: 1,
         woman: 2,
       },
+      RhFactorTypes: {
+        positive: 'Rh+',
+        negative: 'Rh-',
+      },
+      bloodTypes: {
+        first: 1,
+        second: 2,
+        third: 3,
+        fourth: 4,
+      },
       fields: {
-        surname: '', // фамилия
+        email: '', // почта
+        password: '', // пароль
         name: '', // имя
+        surname: '', // фамилия
         patronymic: '', // отчество
         birthday: '', // дата
-        // location: '', // местоположение
-        // placeOfWork: '',
-        // phone: '', // телефон
-        email: '', // почта
-        // location: 'Location',
-        // placeOfWork: 'Place Of Work',
-        password: '', // пароль
         gender: null,
+        phone: '', // телефон
         country: '', // страна
         city: '', // населённый пункт
-        // allergy: [], // аллергии
-        // height: '', // рост
-        // weight: '', // вес
-        // medications: [], // лекарства
-        // chronicDiseases: [], // хронические заболевания
-        // bloodType: '', // группа крови
-        // bloodTypes: {
-        //   first: 'I',
-        //   second: 'II',
-        //   third: 'III',
-        //   fourth: 'IV',
-        // },
-        // RhFactorType: '', // резус-фактор
-        // RhFactorTypes: {
-        //   positive: 'Rh+',
-        //   negative: 'Rh-',
-        // },
-        // familyInheritance: [], // семейная наследственность
-        // badHabits: [], // вредные привычки
+        allergies: [], // аллергии
+        drugs: [], // лекарства
+        chronicDiseases: [], // хронические заболевания
+        heredity: [], // семейная наследственность
+        badHabits: [], // вредные привычки
+        height: '', // рост
+        heightUnit: 'cm',
+        weight: '', // вес
+        weightUnit: 'kg',
+        blood: null, // группа крови
+        rh: null, // резус-фактор
       },
       // !! списки должны тянуться с бэка
       suggestionsCity: [
@@ -719,7 +717,7 @@ export default {
     // confirm(sms) {
     //   return new Promise((resolve, reject) => {
     //     setTimeout(() => {
-    //       if (+sms % 2) {
+    //       if (+sms % 2) {blood
     //         reject(new Error('error'))
     //       } else {
     //         resolve()
@@ -737,7 +735,7 @@ export default {
         code: newTag.substring(0, 2) + Math.floor(Math.random() * 10000000),
       }
       this.suggestionsAllergy.push(tag)
-      this.fields.allergy.push(tag)
+      this.fields.allergies.push(tag)
     },
     addTagMedications(newTag) {
       const tag = {
@@ -745,7 +743,7 @@ export default {
         code: newTag.substring(0, 2) + Math.floor(Math.random() * 10000000),
       }
       this.suggestionsMedications.push(tag)
-      this.fields.medications.push(tag)
+      this.fields.drugs.push(tag)
     },
     addTagChronicDiseases(newTag) {
       const tag = {
@@ -761,7 +759,7 @@ export default {
         code: newTag.substring(0, 2) + Math.floor(Math.random() * 10000000),
       }
       this.suggestionsFamilyInheritance.push(tag)
-      this.fields.familyInheritance.push(tag)
+      this.fields.heredity.push(tag)
     },
     addTagBadHabits(newTag) {
       const tag = {
