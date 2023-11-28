@@ -14,8 +14,8 @@
           class="pt-4 ml-12 fs-14 lh-20"
           style="min-width: 1px"
         >
-          <div class="text-ellipsis">{{ $auth.user.profile.name }}</div>
-          <div class="text-ellipsis">{{ $auth.user.profile.surname }}</div>
+          <div class="text-ellipsis">{{ $auth.user.user.name }}</div>
+          <div class="text-ellipsis">{{ $auth.user.user.surname }}</div>
         </div>
       </div>
 

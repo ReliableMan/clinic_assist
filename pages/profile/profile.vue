@@ -5,7 +5,7 @@
         <h2>{{ $t('common.profile') }}</h2>
       </div>
       <!-- если пациент -->
-      <div v-if="userPatient">
+      <div v-if="$auth.user.user.type === 2">
         <div v-for="(link, index) in submenu" :key="index" class="link-style">
           <NuxtLink
             class="link-href"
@@ -19,7 +19,7 @@
         </div>
       </div>
       <!-- если доктор -->
-      <div v-if="userDoctor">
+      <div v-if="$auth.user.user.type === 1">
         <div
           v-for="(link, index) in menuDoctor"
           :key="index"
@@ -49,7 +49,7 @@ export default {
   layout: 'profile',
   data() {
     return {
-      userPatient: true,
+      userPatient: false,
       userDoctor: false,
     }
   },

@@ -13,7 +13,9 @@
             <!-- bio -->
             <div class="med-card__main-info__bio">
               <span class="med-card__main-info__bio__text">
-                Марта Александровна Розенбаум
+                {{ name }} {{ patronymic }}
+                <br />
+                {{ surname }}
               </span>
               <div class="d-flex items-center">
                 <ui-icon
@@ -22,7 +24,7 @@
                   :size="[9, 12]"
                 />
                 <span class="med-card__main-info__bio__location-text">
-                  Россия, Москва
+                  {{ country }}, {{ city }}
                 </span>
               </div>
             </div>
@@ -191,6 +193,15 @@
 <script>
 export default {
   name: 'SectionUser',
+  data() {
+    return {
+      surname: this.$auth.user.user.surname,
+      name: this.$auth.user.user.name,
+      patronymic: this.$auth.user.user.patronymic,
+      country: this.$auth.user.user.country,
+      city: this.$auth.user.user.city,
+    }
+  },
 }
 </script>
 

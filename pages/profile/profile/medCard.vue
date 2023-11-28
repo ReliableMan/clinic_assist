@@ -1,34 +1,36 @@
 <template>
   <div>
     <ui-transition-slide>
-      <section-user v-if="sectionUser" @editUser="editUser" />
+      <!-- <section-user v-if="sectionUser" @editUser="editUser" /> -->
+      <!-- ! пока без редактирования юзера -->
+      <section-user v-if="sectionUser" />
     </ui-transition-slide>
 
-    <ui-transition-slide>
+    <!-- <ui-transition-slide>
       <section-no-user v-if="sectionNoUser" @editUser="editUser2" />
-    </ui-transition-slide>
+    </ui-transition-slide> -->
 
-    <ui-transition-slide>
+    <!-- <ui-transition-slide>
       <section-edit-user v-if="sectionEditUser" @closeEdit="noEditUser" />
-    </ui-transition-slide>
+    </ui-transition-slide> -->
   </div>
 </template>
 
 <script>
 import SectionUser from '@/components/app/ProfilePatientPage/SectionUser.vue'
-import SectionNoUser from '@/components/app/ProfilePatientPage/SectionNoUser.vue'
-import SectionEditUser from '@/components/app/ProfilePatientPage/SectionEditUser.vue'
+// import SectionNoUser from '@/components/app/ProfilePatientPage/SectionNoUser.vue'
+// import SectionEditUser from '@/components/app/ProfilePatientPage/SectionEditUser.vue'
 export default {
   name: 'MedCard',
   components: {
     SectionUser,
-    SectionNoUser,
-    SectionEditUser,
+    // SectionNoUser,
+    // SectionEditUser,
   },
   data() {
     return {
-      sectionUser: false,
-      sectionNoUser: true,
+      sectionUser: true,
+      sectionNoUser: false,
       sectionEditUser: false,
     }
   },
