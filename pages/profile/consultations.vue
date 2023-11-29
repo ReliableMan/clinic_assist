@@ -11,9 +11,34 @@
           placeholder="Поиск"
         />
       </div>
-      <div class="mt-30">
+      <!-- если доктор -->
+      <div v-if="$auth.user.user.type === 1" class="mt-30">
         <ui-chat-member
-          v-for="(item, index) in patients"
+          v-for="(item, index) in patience"
+          :key="index"
+          class="custom-chat-member"
+          :active="index === 2"
+          :avatar="item.avatar"
+          :name="item.name"
+          :date="item.date"
+          :message="item.message"
+          :unread-count="item.unreadCount"
+          :online="item.online"
+          :sent="item.sent"
+          :delivered="item.delivered"
+        >
+          <template #prepend-message>
+            <span v-if="item.you" class="text-primary text-bold">Вы:</span>
+            <span v-else-if="item.draft" class="text-warning text-bold"
+              >Черновик:</span
+            >
+          </template>
+        </ui-chat-member>
+      </div>
+      <!-- если пациент -->
+      <div v-if="$auth.user.user.type === 2" class="mt-30">
+        <ui-chat-member
+          v-for="(item, index) in doctors"
           :key="index"
           class="custom-chat-member"
           :active="index === 2"
@@ -36,14 +61,25 @@
       </div>
     </template>
 
+    <!-- если доктор -->
     <template #main>
       <div style="height: 100vh">
         <ui-chat-window class="custom-chat-window">
           <template #header>
-            <ui-chat-header
-              title="Дежурный терпевт"
-              text="Ответ в течении Х минут"
-            ></ui-chat-header>
+            <!-- если доктор -->
+            <div v-if="$auth.user.user.type === 1">
+              <ui-chat-header
+                title="Евгения Савченко"
+                text="был(а) онлайн 16 июня в 22:54"
+              ></ui-chat-header>
+            </div>
+            <!-- если пациент -->
+            <div v-if="$auth.user.user.type === 2">
+              <ui-chat-header
+                title="Дежурный терапевт"
+                text="Ответ в течении ХХ минут"
+              ></ui-chat-header>
+            </div>
           </template>
           <template #body>
             <ui-chat-messages>
@@ -152,8 +188,11 @@ export default {
   },
   // в зависимости от роли переключение на разные layout
   computed: {
-    patients() {
+    doctors() {
       return this.$store.getters[`consultation-default-users/doctors`]
+    },
+    patience() {
+      return this.$store.getters[`consultation-default-users/patience`]
     },
     //   layout() {
     //     const role = this.$store.getters['user/role']

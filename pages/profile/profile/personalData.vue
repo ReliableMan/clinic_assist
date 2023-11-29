@@ -4,6 +4,13 @@
       <div class="d-flex">
         <!-- avatar -->
         <img
+          v-if="$auth.user.user.gender === 1"
+          class="personal-data__card__img-doctor"
+          src="@/assets/images/defaultAvatars/doctors/default-doctor-6.png"
+          alt="avatar-doctor-image"
+        />
+        <img
+          v-if="$auth.user.user.gender === 2"
           class="personal-data__card__img-doctor"
           src="@/assets/images/avatar-doctor.png"
           alt="avatar-doctor-image"
@@ -11,7 +18,7 @@
         <!-- bio -->
         <div class="personal-data__card__bio">
           <span class="personal-data__card__bio__text">
-            {{ $t('placeholder.example_doctor_3') }}
+            {{ surname }} {{ name }} {{ patronymic }}
           </span>
           <div class="d-flex items-center">
             <span class="personal-data__card__bio__text-2">
@@ -42,7 +49,7 @@
               :size="[9, 12]"
             />
             <span class="personal-data__card__bio__location-text">
-              Россия, Москва
+              {{ country }}, {{ city }}
             </span>
           </div>
         </div>
@@ -50,10 +57,18 @@
       <div class="personal-data__card__info">
         <!-- gender -->
         <img
+          v-if="$auth.user.user.gender === 2"
           width="35px"
           height="35px"
           src="@/assets/images/svg/regAndAuth/vector-woman.svg"
           alt="vector-woman-icon"
+        />
+        <img
+          v-if="$auth.user.user.gender === 1"
+          width="35px"
+          height="35px"
+          src="@/assets/images/svg/regAndAuth/vector-man.svg"
+          alt="vector-man-icon"
         />
         <!--  -->
         <div class="d-flex flex-column items-center">
@@ -268,6 +283,11 @@ export default {
       moreText: false,
       moreList: false,
       moreList2: false,
+      surname: this.$auth.user.user.surname,
+      name: this.$auth.user.user.name,
+      patronymic: this.$auth.user.user.patronymic,
+      country: this.$auth.user.user.country,
+      city: this.$auth.user.user.city,
     }
   },
 }

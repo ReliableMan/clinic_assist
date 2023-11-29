@@ -1,30 +1,30 @@
-<template>
-  <!-- <consultation-list :items="items" /> -->
+<!-- <template>
+  <consultation-list :items="items" />
   <consultation-list />
 
-  <!-- <consultation-empty /> -->
+  <consultation-empty />
 </template>
 
 <script>
 import ConsultationList from '@/components/app/ConsultationList'
-// import ConsultationEmpty from '@/components/app/ConsultationEmpty'
+import ConsultationEmpty from '@/components/app/ConsultationEmpty'
 
 export default {
   components: {
     ConsultationList,
-    // ConsultationEmpty,
+    ConsultationEmpty,
   },
-  // computed: {
-  //   default_slug() {
-  //     return this.$store.getters['consultation-list-tabs/default_status_slug']
-  //   },
-  //   slug() {
-  //     return this.$route.params.slug || this.default_slug
-  //   },
-  //   items() {
-  //     return this.$store.getters[`consultation-list/${this.slug}_items`]
-  //   },
-  // },
+  computed: {
+    default_slug() {
+      return this.$store.getters['consultation-list-tabs/default_status_slug']
+    },
+    slug() {
+      return this.$route.params.slug || this.default_slug
+    },
+    items() {
+      return this.$store.getters[`consultation-list/${this.slug}_items`]
+    },
+  },
 }
 </script>
 
@@ -33,4 +33,4 @@ export default {
     path: '/consultations/:slug?',
     name: 'consultations',
   }
-</router>
+</router> -->

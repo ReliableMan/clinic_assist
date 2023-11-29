@@ -47,10 +47,18 @@
         <div class="med-card__main-info__personal-info">
           <!-- gender -->
           <img
+            v-if="$auth.user.user.gender === 2"
             width="35px"
             height="35px"
             src="@/assets/images/svg/regAndAuth/vector-woman.svg"
             alt="vector-woman-icon"
+          />
+          <img
+            v-if="$auth.user.user.gender === 1"
+            width="35px"
+            height="35px"
+            src="@/assets/images/svg/regAndAuth/vector-man.svg"
+            alt="vector-man-icon"
           />
           <!-- age -->
           <div class="d-flex flex-column items-center">
@@ -59,18 +67,26 @@
           </div>
           <!-- height -->
           <div class="d-flex flex-column items-center">
-            <span class="med-card__main-info__personal-info__num">165</span>
+            <span class="med-card__main-info__personal-info__num">
+              {{ height }}
+            </span>
             <span class="med-card__main-info__personal-info__label">см</span>
           </div>
           <!-- weigth -->
           <div class="d-flex flex-column items-center">
-            <span class="med-card__main-info__personal-info__num">56</span>
+            <span class="med-card__main-info__personal-info__num">
+              {{ weight }}
+            </span>
             <span class="med-card__main-info__personal-info__label">кг</span>
           </div>
           <!-- rh factor -->
           <div class="d-flex flex-column items-center">
-            <span class="med-card__main-info__personal-info__num">II</span>
-            <span class="med-card__main-info__personal-info__label">Rh -</span>
+            <span class="med-card__main-info__personal-info__num">
+              {{ bloodType }}
+            </span>
+            <span class="med-card__main-info__personal-info__label">
+              {{ rhType }}
+            </span>
           </div>
           <!-- edit-pensil -->
           <div class="cursor" @click="$emit('editUser')">
@@ -94,17 +110,13 @@
           <div class="med-card__main__block">
             <span class="med-card__main__block__subtitle">Аллергии</span>
             <div class="med-card__main__block__list">
-              <div class="med-card__main__item">
+              <div
+                v-for="allergy in allergies"
+                :key="allergy.code"
+                class="med-card__main__item"
+              >
                 <span class="small-green-square"></span>
-                Пыль
-              </div>
-              <div class="med-card__main__item">
-                <span class="small-green-square"></span>
-                Пыльца
-              </div>
-              <div class="med-card__main__item">
-                <span class="small-green-square"></span>
-                Шерсть
+                {{ allergy.name }}
               </div>
             </div>
           </div>
@@ -115,13 +127,13 @@
                 Постоянно принимаемые лекарства
               </span>
               <div class="med-card__main__block__list-flex">
-                <div class="med-card__main__item-2">
+                <div
+                  v-for="drug in drugs"
+                  :key="drug.code"
+                  class="med-card__main__item-2"
+                >
                   <span class="small-green-square"></span>
-                  Метформин
-                </div>
-                <div class="med-card__main__item-2">
-                  <span class="small-green-square"></span>
-                  Джардинс
+                  {{ drug.name }}
                 </div>
               </div>
             </div>
@@ -131,47 +143,47 @@
                 Хронические заболевания
               </span>
               <div class="med-card__main__block__list-flex">
-                <div class="med-card__main__item-2">
+                <div
+                  v-for="disease in chronicDiseases"
+                  :key="disease.code"
+                  class="med-card__main__item-2"
+                >
                   <span class="small-green-square"></span>
-                  Диабет
-                </div>
-                <div class="med-card__main__item-2">
-                  <span class="small-green-square"></span>
-                  Артроз
+                  {{ disease.name }}
                 </div>
               </div>
             </div>
           </div>
           <div class="d-flex content-space-between">
-            <!-- block taken medications -->
+            <!-- block heredity-->
             <div class="med-card__main__block mt-24">
               <span class="med-card__main__block__subtitle">
                 Семейная наследственность
               </span>
               <div class="med-card__main__block__list-flex">
-                <div class="med-card__main__item-2">
+                <div
+                  v-for="item in heredity"
+                  :key="item.code"
+                  class="med-card__main__item-2"
+                >
                   <span class="small-green-square"></span>
-                  Пример 1
-                </div>
-                <div class="med-card__main__item-2">
-                  <span class="small-green-square"></span>
-                  Пример 2
+                  {{ item.name }}
                 </div>
               </div>
             </div>
-            <!-- block chronic diseases -->
+            <!-- block bad habits -->
             <div class="med-card__main__block mt-24">
               <span class="med-card__main__block__subtitle">
                 Вредные привычки
               </span>
               <div class="med-card__main__block__list-flex">
-                <div class="med-card__main__item-2">
+                <div
+                  v-for="item in badHabits"
+                  :key="item.code"
+                  class="med-card__main__item-2"
+                >
                   <span class="small-green-square"></span>
-                  Алкоголизм
-                </div>
-                <div class="med-card__main__item-2">
-                  <span class="small-green-square"></span>
-                  Курение
+                  {{ item.name }}
                 </div>
               </div>
             </div>
@@ -200,7 +212,48 @@ export default {
       patronymic: this.$auth.user.user.patronymic,
       country: this.$auth.user.user.country,
       city: this.$auth.user.user.city,
+      height: this.$auth.user.profile.height || '',
+      weight: this.$auth.user.profile.weight || '',
+      blood: this.$auth.user.profile.blood || '',
+      rh: this.$auth.user.profile.rh || '',
+      allergies: this.$auth.user.profile.allergies || [],
+      drugs: this.$auth.user.profile.drugs || [],
+      chronicDiseases: this.$auth.user.profile.chronicDiseases || [],
+      heredity: this.$auth.user.profile.heredity || [],
+      badHabits: this.$auth.user.profile.badHabits || [],
     }
+  },
+  computed: {
+    bloodType() {
+      let type
+      switch (this.blood) {
+        case 1:
+          type = 'I'
+          break
+        case 2:
+          type = 'II'
+          break
+        case 3:
+          type = 'III'
+          break
+        case 4:
+          type = 'IV'
+          break
+
+        default:
+          break
+      }
+      return type
+    },
+    rhType() {
+      let type
+      if (this.rh) {
+        type = 'Rh +'
+      } else {
+        type = 'Rh -'
+      }
+      return type
+    },
   },
 }
 </script>
