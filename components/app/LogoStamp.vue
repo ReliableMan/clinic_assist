@@ -1,12 +1,9 @@
 <template>
   <component :is="tag" :to="to" class="logo-stamp" :class="classes">
-    <img
-      src="@/assets/images/svg/clinic-assist-logo.svg"
-      class="logo-stamp__image"
-      alt="clinic-assist-logo"
-      width="141"
-      height="35"
-    />
+    <div class="d-flex flex-column logo-img">
+      <span class="logo-img__title">CLINIC ASSIST</span>
+      <span class="logo-img__subtitle">Professional Medical Assistance</span>
+    </div>
   </component>
 </template>
 
@@ -73,4 +70,30 @@ export default {
       width: 111px
       font-size: 12px
       line-height: 16px
+</style>
+
+<style lang="scss" scoped>
+@import '@/assets/styles/_variables.sass';
+.logo-img {
+  width: 150px;
+  height: 40px;
+  background-color: #fff7fa57;
+
+  &__title {
+    margin-left: 5px;
+    margin-top: 3px;
+    font-family: $head-font-family;
+    font-weight: 500;
+    font-size: 19px;
+    color: #4975aa;
+  }
+  &__subtitle {
+    margin-left: 7px;
+    margin-top: -10px;
+    font-family: $head-font-family;
+    font-weight: 500;
+    font-size: 9px;
+    color: #999;
+  }
+}
 </style>

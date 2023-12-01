@@ -5,16 +5,39 @@
 
       <div class="footer__content__about">
         <span class="text-ftr-1">О нас</span>
-        <span class="text-ftr-2">Правовая информация</span>
+        <!-- <ui-dropdown no-padding class="dropdown-legal"> -->
+        <NuxtLink
+          to="/legal-information"
+          style="color: white; text-decoration: none"
+        >
+          <span class="text-ftr-2">Правовая информация</span>
+        </NuxtLink>
+        <!-- <template #portal>
+            <div
+              class="d-flex flex-column area-link"
+              style="max-width: 400px: height: 150px"
+            >
+              <NuxtLink to="/personal-data-policy" class="text-bold link">
+                Политика обработки персональных данных
+              </NuxtLink>
+              <NuxtLink to="/personal-data-agree" class="text-bold link">
+                Согласие на обработку персональных данных
+              </NuxtLink>
+              <NuxtLink to="/terms-of-use" class="text-bold link">
+                Пользовательское соглашение
+              </NuxtLink>
+            </div>
+          </template> -->
+        <!-- </ui-dropdown> -->
       </div>
-      <div class="footer__content__patience">
+      <!-- <div class="footer__content__patience">
         <span class="text-ftr-1">Пациентам</span>
         <span class="text-ftr-2">Обратная связь</span>
       </div>
       <div class="footer__content__doctors">
         <span class="text-ftr-1">Врачам</span>
         <span class="text-ftr-2">Обратная связь</span>
-      </div>
+      </div> -->
 
       <div class="footer__content__contacts">
         <div class="d-flex-al-it-center">
@@ -45,7 +68,7 @@
         </ui-expansion>
       </div>
       <!-- 2 -->
-      <div class="pt-30">
+      <!-- <div class="pt-30">
         <ui-expansion v-model="value2" class="white-color trigger-center">
           <template #trigger>
             <div class="text-ftr-mob-1">Пациентам</div>
@@ -54,9 +77,9 @@
             <p class="text-ftr-mob-2">Обратная связь</p>
           </template>
         </ui-expansion>
-      </div>
+      </div> -->
       <!-- 3 -->
-      <div class="pt-30">
+      <!-- <div class="pt-30">
         <ui-expansion v-model="value3" class="white-color trigger-center">
           <template #trigger>
             <div class="text-ftr-mob-1">Врачам</div>
@@ -65,7 +88,7 @@
             <p class="text-ftr-mob-2">Обратная связь</p>
           </template>
         </ui-expansion>
-      </div>
+      </div> -->
       <!-- 4 -->
       <div class="pt-80 d-none">
         <ui-expansion v-model="value4" class="white-color trigger-center">
@@ -142,7 +165,7 @@ export default {
 .footer {
   display: block;
   width: 100vw;
-  height: 241px;
+  height: 245px;
   background: #333;
 
   @media (max-width: 800px) {
@@ -291,12 +314,10 @@ export default {
   font-weight: 700;
   line-height: 20px;
 }
-
 .text-ftr-mob-2 {
   @extend .text-ftr-mob-1;
   font-size: 16px;
 }
-
 .text-ftr-mob-3 {
   color: var(--white, #fff);
   font-family: $base-font-family;
@@ -305,16 +326,31 @@ export default {
   font-weight: 400;
   line-height: 16px;
 }
-
 .white-color {
   color: white;
   text-align: center;
 }
-
 .trigger-center {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.dropdown-legal {
+  & ::v-deep {
+    .ui-dropdown-portal__layout {
+      box-shadow: none;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+  }
+}
+.area-link {
+  padding: 8px;
+  background: #333;
+}
+.link {
+  @extend .white-color;
+  text-decoration: none;
 }
 </style>

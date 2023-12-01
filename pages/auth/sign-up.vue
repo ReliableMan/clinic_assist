@@ -17,6 +17,7 @@
               class="small_star_after_text"
             ></i18n>
           </div>
+
           <!-- Фамилия -->
           <ui-validator
             v-slot="{ error }"
@@ -121,6 +122,7 @@
               </ui-input-label>
             </ui-validator>
           </div>
+
           <!-- Данные для входа -->
           <div class="d-flex-row">
             <auth-label
@@ -209,7 +211,7 @@
           />
         </ui-validator>
 
-        <!-- <ui-button
+        <ui-button
           color="warning"
           fluid
           :disabled="buttonNextPartReg"
@@ -217,19 +219,16 @@
           @click="nextPartRegistr"
         >
           {{ $t('common.next_step') }}
-        </ui-button> -->
-        <ui-button
+        </ui-button>
+        <!-- <ui-button
           color="warning"
           fluid
           :loading="loading"
           @click="nextPartRegistr"
         >
           {{ $t('common.next_step') }}
-        </ui-button>
+        </ui-button> -->
       </ui-container>
-      <div v-if="!nextPartReg" class="mt-40">
-        <auth-registration-agree />
-      </div>
 
       <div v-if="nextPartReg">
         <ui-container size="xxs" class="mb-8">

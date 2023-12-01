@@ -30,7 +30,7 @@
             alt="img-doctor-mobile"
           />
         </div>
-        <div class="main-page__container__block-1__group-btns">
+        <!-- <div class="main-page__container__block-1__group-btns">
           <ui-button color="warning">
             <span class="text-btn-1">
               {{ $t('common.urgent_consultation') }}
@@ -41,7 +41,7 @@
               {{ $t('common.scheduled_consultation') }}
             </span>
           </ui-button>
-        </div>
+        </div> -->
         <main-slider v-if="isActiveSlider" />
       </div>
       <div class="main-page__container__block-2">
@@ -59,7 +59,7 @@
     </div>
     <div class="main-page__container-2">
       <!-- 1 карточка orange block-->
-      <div class="main-page__container-2__block">
+      <!-- <div class="main-page__container-2__block">
         <p class="main-page__container-2__block__title">Срочная консультация</p>
         <ul class="main-page__container-2__block__list" type="disc">
           <li>подробный отчет после консультации</li>
@@ -70,9 +70,9 @@
           <p class="main-page__container-2__block__href-text">Подробнее</p>
           <p class="right-vect-i-orange"></p>
         </a>
-      </div>
+      </div> -->
       <!-- 2 карточка green block-->
-      <div class="main-page__container-2__block-2">
+      <!-- <div class="main-page__container-2__block-2">
         <p class="main-page__container-2__block__title">
           Плановая консультация
         </p>
@@ -85,38 +85,38 @@
           <p class="main-page__container-2__block__href-text">Подробнее</p>
           <p class="right-vect-i-green"></p>
         </a>
-      </div>
+      </div> -->
     </div>
 
-    <search-doctor-desktop class="desktop" />
-    <search-doctor-mobile class="mobile" />
+    <!-- <search-doctor-desktop class="desktop" /> -->
+    <!-- <search-doctor-mobile class="mobile" /> -->
 
-    <select-doctor-mobile class="mobile-sm" />
-    <sort-doctor-parametrs class="mobile-sm" />
+    <!-- <select-doctor-mobile class="mobile-sm" /> -->
+    <!-- <sort-doctor-parametrs class="mobile-sm" /> -->
 
-    <card-doctor-desktop class="desktop" />
-    <card-doctor-mobile class="mobile" />
+    <!-- <card-doctor-desktop class="desktop" /> -->
+    <!-- <card-doctor-mobile class="mobile" /> -->
   </div>
 </template>
 
 <script>
 import MainSlider from '@/components/app/MainSlider.vue'
-import CardDoctorDesktop from '@/components/app/CardDoctorDesktop.vue'
-import CardDoctorMobile from '@/components/app/CardDoctorMobile.vue'
-import SearchDoctorDesktop from '@/components/app/SearchDoctorDesktop.vue'
-import SearchDoctorMobile from '@/components/app/SearchDoctorMobile.vue'
-import SelectDoctorMobile from '@/components/app/SelectDoctorMobile.vue'
-import SortDoctorParametrs from '@/components/app/SortDoctorParametrs.vue'
+// import CardDoctorDesktop from '@/components/app/CardDoctorDesktop.vue'
+// import CardDoctorMobile from '@/components/app/CardDoctorMobile.vue'
+// import SearchDoctorDesktop from '@/components/app/SearchDoctorDesktop.vue'
+// import SearchDoctorMobile from '@/components/app/SearchDoctorMobile.vue'
+// import SelectDoctorMobile from '@/components/app/SelectDoctorMobile.vue'
+// import SortDoctorParametrs from '@/components/app/SortDoctorParametrs.vue'
 
 export default {
   components: {
     MainSlider,
-    CardDoctorDesktop,
-    CardDoctorMobile,
-    SearchDoctorDesktop,
-    SearchDoctorMobile,
-    SelectDoctorMobile,
-    SortDoctorParametrs,
+    // CardDoctorDesktop,
+    // CardDoctorMobile,
+    // SearchDoctorDesktop,
+    // SearchDoctorMobile,
+    // SelectDoctorMobile,
+    // SortDoctorParametrs,
   },
   layout: 'public',
   data() {
@@ -194,7 +194,7 @@ export default {
         font-style: normal;
         font-weight: 500;
         line-height: 50px;
-        margin-left: 18px;
+        margin-left: 70px;
         transition: all 1s;
 
         @media (max-width: 1100px) {
