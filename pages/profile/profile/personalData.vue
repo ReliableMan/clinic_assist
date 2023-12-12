@@ -72,6 +72,11 @@
         />
         <!--  -->
         <div class="d-flex flex-column items-center">
+          <span class="personal-data__card__info__num">{{ age }}</span>
+          <span class="personal-data__card__info__label">лет</span>
+        </div>
+        <!--  -->
+        <div class="d-flex flex-column items-center">
           <span class="personal-data__card__info__num">6</span>
           <span class="personal-data__card__info__label">лет стаж</span>
         </div>
@@ -288,6 +293,7 @@ export default {
       patronymic: this.$auth.user.user.patronymic,
       country: this.$auth.user.user.country,
       city: this.$auth.user.user.city,
+      age: this.$auth.user.user.age,
     }
   },
 }

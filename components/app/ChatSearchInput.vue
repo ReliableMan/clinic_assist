@@ -1,0 +1,9 @@
+<template>
+  <ui-input-search
+    v-bind="$attrs"
+    :button="false"
+    white
+    :placeholder="$t('common.search')"
+    v-on="$listeners"
+  />
+</template>

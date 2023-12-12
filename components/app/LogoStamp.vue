@@ -75,24 +75,24 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/styles/_variables.sass';
 .logo-img {
-  width: 150px;
+  width: 140px;
   height: 40px;
   background-color: #fff7fa57;
 
   &__title {
-    margin-left: 5px;
+    margin-left: 11px;
     margin-top: 3px;
     font-family: $head-font-family;
     font-weight: 500;
-    font-size: 19px;
+    font-size: 16px;
     color: #4975aa;
   }
   &__subtitle {
-    margin-left: 7px;
+    margin-left: 9px;
     margin-top: -10px;
     font-family: $head-font-family;
     font-weight: 500;
-    font-size: 9px;
+    font-size: 8px;
     color: #999;
   }
 }

@@ -90,6 +90,7 @@ export const getters = {
       state.profile,
       // state.searchDoctor,
       state.consultations,
+      // state.dialogues,
       // state.settings,
       state.exit,
     ]
@@ -100,6 +101,7 @@ export const getters = {
       state.consultations,
       // state.settings,
       state.profile,
+      // state.dialogues,
     ]
   },
 }

@@ -46,7 +46,7 @@ export default {
   buildModules: [
     '@qapsula-frontend/qapsula-ui/nuxt-module',
     '@qapsula-frontend/qapsula-any/nuxt-module',
-    // '@qapsula-frontend/qapsula-wamp/nuxt-module',
+    '@qapsula-frontend/qapsula-wamp/nuxt-module',
     '@nuxtjs/eslint-module',
     '@nuxtjs/style-resources',
     'nuxt-i18n',

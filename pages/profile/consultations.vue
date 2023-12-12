@@ -82,7 +82,20 @@
             </div>
           </template>
           <template #body>
-            <ui-chat-messages>
+            <!-- если доктор -->
+            <ui-chat-messages v-if="$auth.user.user.type === 1">
+              <ui-chat-message
+                v-for="(msg, index) in messages"
+                :key="index"
+                :text="msg.message"
+                :time="msg.time"
+                :self="msg.self"
+                :sent="msg.sent"
+                :delivered="msg.delivered"
+              />
+            </ui-chat-messages>
+            <!-- если пациент -->
+            <ui-chat-messages v-if="$auth.user.user.type === 2">
               <ui-chat-message
                 v-for="(msg, index) in messages"
                 :key="index"
@@ -95,10 +108,43 @@
             </ui-chat-messages>
           </template>
           <template #footer>
+            <!-- если доктор -->
             <ui-chat-form
-              v-model="message"
+              v-if="$auth.user.user.type === 1"
+              v-model.lazy="message"
               class="custom-chat-form"
               placeholder="Введите сообщение"
+            >
+              <template #prepend>
+                <ui-chat-attach>
+                  <ui-menu-link
+                    class="custom-link-hover"
+                    icon="file-picture"
+                    label="Изображение"
+                    hovered
+                  />
+                  <ui-menu-link
+                    class="custom-link-hover"
+                    icon="file-video"
+                    label="Видео"
+                    hovered
+                  />
+                  <ui-menu-link
+                    class="custom-link-hover"
+                    icon="file"
+                    label="Документ"
+                    hovered
+                  />
+                </ui-chat-attach>
+              </template>
+            </ui-chat-form>
+            <!-- если пациент -->
+            <ui-chat-form
+              v-if="$auth.user.user.type === 2"
+              v-model.lazy="message"
+              class="custom-chat-form"
+              placeholder="Введите сообщение"
+              @input="sendMessageFromPatient"
             >
               <template #prepend>
                 <ui-chat-attach>
@@ -136,6 +182,10 @@ export default {
   layout: 'profile',
   data() {
     return {
+      currentDoctor: null,
+      currentChatId: 2,
+      messageFromPatient: '',
+      messageFromDoctor: '',
       searchField: '',
       message: '',
       messages: [
@@ -199,6 +249,35 @@ export default {
 
     //     return `consultation-list-layout-${role}`
     //   },
+  },
+  // диспатчим в стор асинхронный запрос на получение доктора
+  mounted() {
+    // this.currentDoctor = this.getCurrentChat()
+  },
+  methods: {
+    //   async getCurrentChat() {
+    //     const payload = {
+    //       get: {
+    //         chat: {
+    //           filter: { id: 2 },
+    //         },
+    //       },
+    //     }
+    //     const response = await this.$axios.post('/any', payload)
+    //     console.log('getCurrentChat', response)
+    //   },
+    async getChatListAuthorizedUser() {
+      const response = await this.$axios.get('/chat/chats')
+      console.log(response)
+    },
+    async sendMessageFromPatient() {
+      const payload = {
+        chatId: 2,
+        message: this.message,
+      }
+      const response = await this.$axios.post('/chat/send-message', payload)
+      console.log(response)
+    },
   },
 }
 </script>

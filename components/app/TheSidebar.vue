@@ -20,6 +20,21 @@
       </div>
 
       <the-sidebar-menu :expanded="expanded" @collapse="$emit('collapse')">
+        <template v-if="dialogues_notify_count" #dialogues>
+          <ui-circle-notify bg="primary">
+            {{ dialogues_notify_count }}
+          </ui-circle-notify>
+        </template>
+        <template v-if="councils_notify_count" #councils>
+          <ui-circle-notify bg="primary">
+            {{ councils_notify_count }}
+          </ui-circle-notify>
+        </template>
+        <template v-if="consultations_notify_count" #consultations>
+          <ui-circle-notify bg="primary">
+            {{ consultations_notify_count }}
+          </ui-circle-notify>
+        </template>
       </the-sidebar-menu>
     </div>
   </div>
