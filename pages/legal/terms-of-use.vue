@@ -5,7 +5,7 @@
     </template>
     <template #body>
       <div class="d-flex flex-column items-center content-center">
-        <div style="width: 50%; text-align: left">
+        <div class="terms-of-use">
           <div class="mt-20">
             <h1>Пользовательское соглашение</h1>
             <h4 class="mt-20">1.ПРЕДМЕТ СОГЛАШЕНИЯ И ВСТУПЛЕНИЕ В СИЛУ</h4>
@@ -1052,9 +1052,17 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .points {
   margin: 24px 0 24px;
+}
+.terms-of-use {
+  width: 50%;
+  text-align: left;
+
+  @media (max-width: 600px) {
+    width: 90%;
+  }
 }
 </style>
 

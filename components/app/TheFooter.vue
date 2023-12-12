@@ -63,7 +63,12 @@
             <div class="text-ftr-mob-1">О нас</div>
           </template>
           <template #content>
-            <p class="text-ftr-mob-2">Правовая информация</p>
+            <NuxtLink
+              to="/legal-information"
+              style="color: white; text-decoration: none"
+            >
+              <span class="text-ftr-2">Правовая информация</span>
+            </NuxtLink>
           </template>
         </ui-expansion>
       </div>

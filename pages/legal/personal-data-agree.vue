@@ -5,7 +5,7 @@
     </template>
     <template #body>
       <div class="d-flex flex-column items-center content-center">
-        <div style="width: 50%; text-align: left">
+        <div class="personal-data-agree">
           <div class="mt-20">
             <h3>
               Согласие на обработку персональных данных Пользователя сайта
@@ -126,6 +126,17 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.personal-data-agree {
+  width: 50%;
+  text-align: left;
+
+  @media (max-width: 600px) {
+    width: 90%;
+  }
+}
+</style>
 
 <router>
   {
