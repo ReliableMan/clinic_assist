@@ -93,10 +93,10 @@ export const state = () => ({
      *
      */
     {
-      avatar: require('@/assets/images/defaultAvatars/patient/avatar-1.png'),
-      name: 'Евгения Савченко',
+      avatar: require('@/assets/images/defaultAvatars/patient/avatar-3.png'),
+      name: 'Пациент',
       date: '',
-      message: 'Если есть другие проявления, т...',
+      message: '',
       unreadCount: 0,
       online: true,
       sent: false,

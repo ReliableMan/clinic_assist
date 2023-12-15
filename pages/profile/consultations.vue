@@ -5,14 +5,14 @@
         <h2>{{ $t('common.consultations') }}</h2>
       </div>
       <div class="ph-24">
-        <ui-input-search
+        <!-- <ui-input-search
           v-model="searchField"
           :button="false"
           placeholder="Поиск"
-        />
+        /> -->
       </div>
-      <!-- если доктор -->
-      <div v-if="$auth.user.user.type === 1" class="mt-30">
+      <!-- если дежурный доктор -->
+      <div v-if="$auth.user.user.type === 4" class="mt-30">
         <ui-chat-member
           v-for="(item, index) in patience"
           :key="index"
@@ -61,17 +61,13 @@
       </div>
     </template>
 
-    <!-- если доктор -->
     <template #main>
       <div style="height: 100vh">
         <ui-chat-window class="custom-chat-window">
           <template #header>
-            <!-- если доктор -->
-            <div v-if="$auth.user.user.type === 1">
-              <ui-chat-header
-                title="Евгения Савченко"
-                text="был(а) онлайн 16 июня в 22:54"
-              ></ui-chat-header>
+            <!-- если дежурный доктор -->
+            <div v-if="$auth.user.user.type === 4">
+              <ui-chat-header title="Пациент" text=""></ui-chat-header>
             </div>
             <!-- если пациент -->
             <div v-if="$auth.user.user.type === 2">
@@ -82,93 +78,59 @@
             </div>
           </template>
           <template #body>
-            <!-- если доктор -->
-            <ui-chat-messages v-if="$auth.user.user.type === 1">
+            <ui-chat-messages>
               <ui-chat-message
-                v-for="(msg, index) in messages"
-                :key="index"
-                :text="msg.message"
-                :time="msg.time"
-                :self="msg.self"
-                :sent="msg.sent"
-                :delivered="msg.delivered"
-              />
-            </ui-chat-messages>
-            <!-- если пациент -->
-            <ui-chat-messages v-if="$auth.user.user.type === 2">
-              <ui-chat-message
-                v-for="(msg, index) in messages"
-                :key="index"
-                :text="msg.message"
-                :time="msg.time"
-                :self="msg.self"
-                :sent="msg.sent"
-                :delivered="msg.delivered"
+                v-for="msg in allMessages"
+                :key="msg.id"
+                :text="msg.body"
+                :time="$date.toTime($date.fromSeconds(msg.createdAt))"
+                :self="msg.userId === idUser"
               />
             </ui-chat-messages>
           </template>
           <template #footer>
-            <!-- если доктор -->
             <ui-chat-form
-              v-if="$auth.user.user.type === 1"
-              v-model.lazy="message"
+              v-model="message"
               class="custom-chat-form"
               placeholder="Введите сообщение"
+              @submit="send"
             >
               <template #prepend>
                 <ui-chat-attach>
-                  <ui-menu-link
-                    class="custom-link-hover"
-                    icon="file-picture"
-                    label="Изображение"
-                    hovered
-                  />
-                  <ui-menu-link
-                    class="custom-link-hover"
-                    icon="file-video"
-                    label="Видео"
-                    hovered
-                  />
-                  <ui-menu-link
-                    class="custom-link-hover"
-                    icon="file"
-                    label="Документ"
-                    hovered
-                  />
+                  <ui-input-hidden-file
+                    ref="file"
+                    v-model="file"
+                    @change="sendFile"
+                  >
+                    <ui-menu-link
+                      class="custom-link-hover"
+                      icon="file-picture"
+                      label="Изображение"
+                      hovered
+                    />
+                    <ui-menu-link
+                      class="custom-link-hover"
+                      icon="file-video"
+                      label="Видео"
+                      hovered
+                    />
+                    <ui-menu-link
+                      class="custom-link-hover"
+                      icon="file"
+                      label="Документ"
+                      hovered
+                    />
+                  </ui-input-hidden-file>
                 </ui-chat-attach>
               </template>
             </ui-chat-form>
-            <!-- если пациент -->
-            <ui-chat-form
-              v-if="$auth.user.user.type === 2"
-              v-model.lazy="message"
-              class="custom-chat-form"
-              placeholder="Введите сообщение"
-              @input="sendMessageFromPatient"
-            >
-              <template #prepend>
-                <ui-chat-attach>
-                  <ui-menu-link
-                    class="custom-link-hover"
-                    icon="file-picture"
-                    label="Изображение"
-                    hovered
-                  />
-                  <ui-menu-link
-                    class="custom-link-hover"
-                    icon="file-video"
-                    label="Видео"
-                    hovered
-                  />
-                  <ui-menu-link
-                    class="custom-link-hover"
-                    icon="file"
-                    label="Документ"
-                    hovered
-                  />
-                </ui-chat-attach>
-              </template>
-            </ui-chat-form>
+            <!-- <div class="d-flex">
+              <button @click="doChat">doChat</button>
+              <button @click="doChatForDoctor">doChatForDoctor</button>
+              <button @click="doChatForPatient">doChatForPatient</button>
+              <button @click="getDoctor">getDoctor</button>
+              <button @click="getPatient">getPatient</button>
+            </div> -->
           </template>
         </ui-chat-window>
       </div>
@@ -183,58 +145,28 @@ export default {
   data() {
     return {
       currentDoctor: null,
-      currentChatId: 2,
+      currentChatId: 3,
       messageFromPatient: '',
       messageFromDoctor: '',
       searchField: '',
       message: '',
-      messages: [
-        {
-          message: [
-            'Добрый день! <br /> Если ребёнок беспокойный, у него температура и красные набухшие дёсны, то используйте нурофен на ночь. Также есть разные гели и капли. Кому что помогает (вибуркол беби, калгель, камистад, капли беби норм).',
-          ],
-          time: '11:59',
-          self: false,
-        },
-        {
-          message: ['Хорошо'],
-          time: '',
-          self: true,
-        },
-        {
-          message: ['А что, если это не поможет?'],
-          time: '12:05',
-          self: true,
-          delivered: true,
-        },
-        {
-          message: [
-            'Если есть другие проявления, то обратитесь к педиатру на осмотр, обследование и сдачу анализов. Возможно потребуется коррекция лечения. Чаще прикладывайте к груди. Дайте ему холодные грызунки.',
-          ],
-          time: '12:08',
-          self: false,
-        },
-        {
-          message: [
-            'По поводу приёма - можно прямо с Вами или придётся обращаться в местную поликлинику?',
-          ],
-          time: '12:10',
-          self: true,
-          delivered: true,
-        },
-        {
-          message: ['Тогда не знаю, что делать'],
-          time: '12:11',
-          self: false,
-        },
-        {
-          message: ['Большое спасибо!'],
-          time: '12:12',
-          self: true,
-          sent: true,
-        },
-      ],
+      file: null,
+      item: [],
+      idUser: null,
+      typeUser: null,
     }
+  },
+  wamp: {
+    subscribe: [
+      {
+        type: 'message',
+        subscriber: 'push-message',
+      },
+      {
+        type: 'read',
+        subscriber: 'chat-dialog-read-message',
+      },
+    ],
   },
   // в зависимости от роли переключение на разные layout
   computed: {
@@ -244,40 +176,125 @@ export default {
     patience() {
       return this.$store.getters[`consultation-default-users/patience`]
     },
+    messagesDoctor() {
+      return this.$store.getters[`messages/getMessagesFromDoctor`]
+    },
+    allMessages() {
+      return this.$store.getters[`messages/getAllMessages`]
+    },
     //   layout() {
     //     const role = this.$store.getters['user/role']
 
     //     return `consultation-list-layout-${role}`
     //   },
   },
-  // диспатчим в стор асинхронный запрос на получение доктора
   mounted() {
-    // this.currentDoctor = this.getCurrentChat()
+    this.checkMessages()
+    this.userSettings()
   },
   methods: {
-    //   async getCurrentChat() {
-    //     const payload = {
-    //       get: {
-    //         chat: {
-    //           filter: { id: 2 },
-    //         },
-    //       },
-    //     }
-    //     const response = await this.$axios.post('/any', payload)
-    //     console.log('getCurrentChat', response)
-    //   },
-    async getChatListAuthorizedUser() {
-      const response = await this.$axios.get('/chat/chats')
-      console.log(response)
+    checkMessages() {
+      this.$store.dispatch('messages/saveMessage', this.currentChatId)
     },
-    async sendMessageFromPatient() {
-      const payload = {
-        chatId: 2,
+    send() {
+      this.$store.dispatch('chat/sendMessage', {
+        chatId: 3,
         message: this.message,
+      })
+      setTimeout(() => {
+        this.$store.dispatch('messages/saveMessage', this.currentChatId)
+      }, 1000)
+    },
+    sendFile(file) {
+      this.$store.dispatch('chat/sendFile', {
+        chatId: this.chat_id,
+        file,
+      })
+      this.file = null
+      this.$refs.file.$refs.input.value = null
+    },
+    async userSettings() {
+      const user = await this.$axios.get('/me')
+      const { id, type } = user.data.user
+      this.idUser = id
+      console.log('id', id)
+      this.typeUser = type
+    },
+    async getCurrentChat() {
+      const payload = {
+        get: {
+          chat: {
+            filter: { id: this.currentChatId },
+            fields: ['chatMessages', 'chatUsers'],
+          },
+        },
       }
-      const response = await this.$axios.post('/chat/send-message', payload)
+      const response = await this.$axios.post('/any', payload)
       console.log(response)
     },
+    // async doChat() {
+    //   const payload = {
+    //     put: {
+    //       chat: {
+    //         return: ['id'],
+    //       },
+    //     },
+    //   }
+    //   const response = await this.$axios.post('/any', payload)
+    //   console.log(response)
+    // },
+    // async doChatForDoctor() {
+    //   const payload = {
+    //     put: {
+    //       chatUser: {
+    //         values: { chatId: 3, userId: 24 },
+    //       },
+    //     },
+    //   }
+    //   const response = await this.$axios.post('/any', payload)
+    //   console.log(response)
+    // },
+    // async doChatForPatient() {
+    //   const payload = {
+    //     put: {
+    //       chatUser: {
+    //         values: { chatId: 3, userId: 23 },
+    //       },
+    //     },
+    //   }
+    //   const response = await this.$axios.post('/any', payload)
+    //   console.log(response)
+    // },
+    // async getDoctor() {
+    //   const payload = {
+    //     get: {
+    //       doctor: {
+    //         fields: [
+    //           'user',
+    //           'userId',
+    //           'specialization',
+    //           'specializationAdditional',
+    //           'aboutMe',
+    //           'qualificationCategory',
+    //           'academicDegree',
+    //         ],
+    //       },
+    //     },
+    //   }
+    //   const response = await this.$axios.post('/any', payload)
+    //   console.log(response)
+    // },
+    // async getPatient() {
+    //   const payload = {
+    //     get: {
+    //       patient: {
+    //         fields: ['user', 'userId'],
+    //       },
+    //     },
+    //   }
+    //   const response = await this.$axios.post('/any', payload)
+    //   console.log(response)
+    // },
   },
 }
 </script>

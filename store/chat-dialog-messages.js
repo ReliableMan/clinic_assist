@@ -23,8 +23,8 @@ export const mutations = {
 }
 
 export const actions = {
-  // async get({ commit }, chatIds) {
-  //   const { messages } = await this.$any.get('chat-message/get', chatIds)
-  //   commit('SET', messages || [])
-  // },
+  async get({ commit }, chatIds) {
+    const { messages } = await this.$any.get('chat-message/get', chatIds)
+    commit('SET', messages || [])
+  },
 }

@@ -18,8 +18,8 @@
           </NuxtLink>
         </div>
       </div>
-      <!-- если доктор -->
-      <div v-if="$auth.user.user.type === 1">
+      <!-- если дежурный доктор -->
+      <div v-if="$auth.user.user.type === 4">
         <div
           v-for="(link, index) in menuDoctor"
           :key="index"
