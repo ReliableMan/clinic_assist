@@ -17,17 +17,17 @@ export function dialogChats(items) {
 //   return items.filter((item) => item.typeId === types.COUNCIL)
 // }
 
-export function dialogMessages(items) {
-  return items.filter((item) => item.chat.typeId === types.DIALOG)
-}
+// export function dialogMessages(items) {
+//   return items.filter((item) => item.chat.typeId === types.DIALOG)
+// }
 
 // export function councilMessages(items) {
 //   return items.filter((item) => item.chat.typeId === types.COUNCIL)
 // }
 
-export function messagesByChatId(items, chat_id) {
-  return items.filter((item) => item.chat.id === chat_id)
-}
+// export function messagesByChatId(items, chat_id) {
+//   return items.filter((item) => item.chat.id === chat_id)
+// }
 
 export function incomingMessages(items, auth) {
   return items.filter(({ userId }) => userId !== auth.user.user.id)

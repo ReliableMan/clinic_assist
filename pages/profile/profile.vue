@@ -53,6 +53,9 @@ export default {
       userDoctor: false,
     }
   },
+  wamp: {
+    initialize: true,
+  },
   computed: {
     submenu() {
       return this.$store.getters[`submenu/menu`]

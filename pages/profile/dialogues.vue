@@ -38,18 +38,18 @@ export default {
   async asyncData({ store }) {
     await store.dispatch('chat/setupDialogues')
   },
-  wamp: {
-    subscribe: [
-      {
-        type: 'message',
-        subscriber: 'chat-dialog-push-message',
-      },
-      {
-        type: 'read',
-        subscriber: 'chat-dialog-read-message',
-      },
-    ],
-  },
+  // wamp: {
+  //   subscribe: [
+  //     {
+  //       type: 'message',
+  //       subscriber: 'chat-dialog-push-message',
+  //     },
+  //     {
+  //       type: 'read',
+  //       subscriber: 'chat-dialog-read-message',
+  //     },
+  //   ],
+  // },
 }
 </script>
 

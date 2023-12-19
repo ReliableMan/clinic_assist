@@ -145,7 +145,7 @@ export default {
   data() {
     return {
       currentDoctor: null,
-      currentChatId: 3,
+      currentChatId: null,
       messageFromPatient: '',
       messageFromDoctor: '',
       searchField: '',
@@ -154,18 +154,20 @@ export default {
       item: [],
       idUser: null,
       typeUser: null,
+      isPatient: '',
     }
   },
   wamp: {
+    initialize: true,
     subscribe: [
       {
         type: 'message',
         subscriber: 'push-message',
       },
-      {
-        type: 'read',
-        subscriber: 'chat-dialog-read-message',
-      },
+      // {
+      //   type: 'read',
+      //   subscriber: 'chat-dialog-read-message',
+      // },
     ],
   },
   // в зависимости от роли переключение на разные layout
@@ -188,9 +190,18 @@ export default {
     //     return `consultation-list-layout-${role}`
     //   },
   },
+  watch: {
+    currentChatId() {
+      this.checkMessages()
+    },
+  },
   mounted() {
-    this.checkMessages()
+    if (this.currentChatId) {
+      // console.log('я здесь')
+      this.checkMessages()
+    }
     this.userSettings()
+    // this.getCurrentChat()
   },
   methods: {
     checkMessages() {
@@ -198,16 +209,16 @@ export default {
     },
     send() {
       this.$store.dispatch('chat/sendMessage', {
-        chatId: 3,
+        chatId: this.currentChatId,
         message: this.message,
       })
       setTimeout(() => {
         this.$store.dispatch('messages/saveMessage', this.currentChatId)
-      }, 1000)
+      }, 500)
     },
     sendFile(file) {
       this.$store.dispatch('chat/sendFile', {
-        chatId: this.chat_id,
+        chatId: this.currentChatId,
         file,
       })
       this.file = null
@@ -217,83 +228,98 @@ export default {
       const user = await this.$axios.get('/me')
       const { id, type } = user.data.user
       this.idUser = id
-      console.log('id', id)
+      // console.log('userId', id)
       this.typeUser = type
-    },
-    async getCurrentChat() {
-      const payload = {
-        get: {
-          chat: {
-            filter: { id: this.currentChatId },
-            fields: ['chatMessages', 'chatUsers'],
-          },
-        },
+      const response2 = await this.$axios.get('/chat/chats')
+      // console.log('response2', response2.data)
+      const { length } = response2.data
+      // проверяем является ли юзер пациентом
+      if (type === 2) {
+        this.isPatient = true
+        if (length) {
+          // console.log('чат есть')
+          this.currentChatId = response2.data[0].id
+          // const payload = {
+          //   get: {
+          //     chat: {
+          //       filter: { id: this.currentChatId },
+          //     },
+          //   },
+          // }
+          // const response = await this.$axios.post('/any', payload)
+          // console.log(
+          //   'инфа о чате - response на получение чата по айдишнику',
+          //   response
+          // )
+        } else {
+          // console.log('чата нету ща сделаем')
+          // получаем айдишник
+          const payload = {
+            put: {
+              chat: {
+                return: ['id'],
+              },
+            },
+          }
+          const response3 = await this.$axios.post('/any', payload)
+          const { id } = response3.data.put.chat
+          // записываем его в переменную currentChatId
+          this.currentChatId = id
+          // делаем первый запрос в базу на запись (ID чата и ID врача)
+          const payloadForDoctor = {
+            put: {
+              chatUser: {
+                values: { chatId: this.currentChatId, userId: 24 },
+              },
+            },
+          }
+          await this.$axios.post('/any', payloadForDoctor)
+          // делаем второй запрос в базу на запись (ID чата и ID пациента)
+          const payloadForPatient = {
+            put: {
+              chatUser: {
+                values: { chatId: this.currentChatId, userId: this.idUser },
+              },
+            },
+          }
+          await this.$axios.post('/any', payloadForPatient)
+        }
       }
-      const response = await this.$axios.post('/any', payload)
-      console.log(response)
+      // проверяем является ли юзер доктором
+      if (type === 4) {
+        // console.log('i am a doctor')
+        // const payload = {
+        //   get: {
+        //     chat: {
+        //       fields: [
+        //         'chatMessages',
+        //         'chatUsers',
+        //         'id',
+        //         'createdAt',
+        //         'status',
+        //       ],
+        //     },
+        //   },
+        // }
+        // const response = await this.$axios.post('/any', payload)
+        // const { chat } = response.data.get
+        // const filteredElements = Object.keys(response2.data)
+        // console.log('resp.data', chat)
+        // console.log('filteredElememts', filteredElements)
+        // console.log('response2.data', response2.data)
+      }
     },
-    // async doChat() {
+    // async getCurrentChat() {
     //   const payload = {
-    //     put: {
+    //     get: {
     //       chat: {
-    //         return: ['id'],
+    //         filter: { id: 9 },
+    //         fields: ['chatMessages', 'chatUsers'],
     //       },
     //     },
     //   }
     //   const response = await this.$axios.post('/any', payload)
-    //   console.log(response)
-    // },
-    // async doChatForDoctor() {
-    //   const payload = {
-    //     put: {
-    //       chatUser: {
-    //         values: { chatId: 3, userId: 24 },
-    //       },
-    //     },
-    //   }
-    //   const response = await this.$axios.post('/any', payload)
-    //   console.log(response)
-    // },
-    // async doChatForPatient() {
-    //   const payload = {
-    //     put: {
-    //       chatUser: {
-    //         values: { chatId: 3, userId: 23 },
-    //       },
-    //     },
-    //   }
-    //   const response = await this.$axios.post('/any', payload)
-    //   console.log(response)
-    // },
-    // async getDoctor() {
-    //   const payload = {
-    //     get: {
-    //       doctor: {
-    //         fields: [
-    //           'user',
-    //           'userId',
-    //           'specialization',
-    //           'specializationAdditional',
-    //           'aboutMe',
-    //           'qualificationCategory',
-    //           'academicDegree',
-    //         ],
-    //       },
-    //     },
-    //   }
-    //   const response = await this.$axios.post('/any', payload)
-    //   console.log(response)
-    // },
-    // async getPatient() {
-    //   const payload = {
-    //     get: {
-    //       patient: {
-    //         fields: ['user', 'userId'],
-    //       },
-    //     },
-    //   }
-    //   const response = await this.$axios.post('/any', payload)
-    //   console.log(response)
+    //   console.log('response3', response.data.get.chat.length)
     // },
   },
 }

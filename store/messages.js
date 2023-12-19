@@ -26,9 +26,9 @@ export const mutations = {
   SET(state, items) {
     state.items = items
   },
-  PUSH_MESSAGE(state, message) {
-    state.items = [...state.items, message]
-  },
+  // PUSH_MESSAGE(state, message) {
+  //   state.items = [message, ...state.items]
+  // },
   // MARK_READ_MESSAGE(state, id) {
   //   state.items = markAsReadMessage(state.items, id)
   // },

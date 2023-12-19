@@ -1,8 +1,6 @@
 export default async function ({ $axios, $config, $auth }) {
   const userId = $auth.user.user.id
-  console.log('userId', userId)
   const { data } = await $axios('/chat/get-ticket')
-  console.log('datA', data)
 
   return {
     url: $config.wampUrl,
