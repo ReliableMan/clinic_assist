@@ -145,7 +145,7 @@ export default {
   data() {
     return {
       currentDoctor: null,
-      currentChatId: null,
+      currentChatId: 3,
       messageFromPatient: '',
       messageFromDoctor: '',
       searchField: '',
