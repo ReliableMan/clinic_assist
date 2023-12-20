@@ -93,7 +93,7 @@ export const actions = {
   },
 
   async sendFile(store, { chatId, file }) {
-    await this.$any.upload('/chat/upload-chat-message-file', {
+    await this.$axios.post('/chat/upload-chat-message-file', {
       chatId,
       'ChatMessage[nameFile]': file,
     })

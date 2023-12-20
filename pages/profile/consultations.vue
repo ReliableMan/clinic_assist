@@ -14,6 +14,16 @@
       <!-- если дежурный доктор -->
       <div v-if="$auth.user.user.type === 4" class="mt-30">
         <ui-chat-member
+          v-for="item in patience"
+          :key="item.id"
+          class="custom-chat-member"
+          :name="item.surname"
+          :message="message"
+          :active="isActiveInterlocator === item.id"
+          @click="startTalking(item)"
+        >
+          <!-- ! позже настроить атрибуты и прочее -->
+          <!-- <ui-chat-member
           v-for="(item, index) in patience"
           :key="index"
           class="custom-chat-member"
@@ -26,7 +36,7 @@
           :online="item.online"
           :sent="item.sent"
           :delivered="item.delivered"
-        >
+        > -->
           <template #prepend-message>
             <span v-if="item.you" class="text-primary text-bold">Вы:</span>
             <span v-else-if="item.draft" class="text-warning text-bold"
@@ -67,7 +77,7 @@
           <template #header>
             <!-- если дежурный доктор -->
             <div v-if="$auth.user.user.type === 4">
-              <ui-chat-header title="Пациент" text=""></ui-chat-header>
+              <ui-chat-header title="Пациент" :text="fullName"></ui-chat-header>
             </div>
             <!-- если пациент -->
             <div v-if="$auth.user.user.type === 2">
@@ -145,7 +155,7 @@ export default {
   data() {
     return {
       currentDoctor: null,
-      currentChatId: 3,
+      currentChatId: null,
       messageFromPatient: '',
       messageFromDoctor: '',
       searchField: '',
@@ -155,6 +165,12 @@ export default {
       idUser: null,
       typeUser: null,
       isPatient: '',
+      // фамилия, имя и отчество пациента с кем ведется беседа
+      surnamePatient: '',
+      namePatient: '',
+      lastNamePatient: '',
+      // текущий активный собеседник
+      isActiveInterlocator: null,
     }
   },
   wamp: {
@@ -183,6 +199,10 @@ export default {
     },
     allMessages() {
       return this.$store.getters[`messages/getAllMessages`]
+    },
+    fullName() {
+      const name = `${this.surnamePatient} ${this.namePatient} ${this.lastNamePatient}`
+      return name
     },
     //   layout() {
     //     const role = this.$store.getters['user/role']
@@ -288,39 +308,44 @@ export default {
       // проверяем является ли юзер доктором
       if (type === 4) {
         // console.log('i am a doctor')
-        // const payload = {
-        //   get: {
-        //     chat: {
-        //       fields: [
-        //         'chatMessages',
-        //         'chatUsers',
-        //         'id',
-        //         'createdAt',
-        //         'status',
-        //       ],
-        //     },
-        //   },
-        // }
-        // const response = await this.$axios.post('/any', payload)
-        // const { chat } = response.data.get
-        // const filteredElements = Object.keys(response2.data)
-        // console.log('resp.data', chat)
-        // console.log('filteredElememts', filteredElements)
+        const payload = {
+          get: {
+            chat: {
+              fields: ['chatMessages', 'chatUsers', 'id'],
+            },
+          },
+        }
+        const response = await this.$axios.post('/any', payload)
+        const { chat } = response.data.get
+        const elements = response2.data.reduce(
+          (acc, { id }) => ({ id: [...acc.id, id] }),
+          { id: [] }
+        )
+        const elements2 = Object.values(elements)
+        const filteredChat = chat.filter((i) => elements2[0].includes(i.id))
+        filteredChat.forEach((elem) =>
+          this.$store.dispatch(
+            'consultation-default-users/fetchUser',
+            elem.chatUsers[1]
+          )
+        )
+        // const responseUser = await this.$axios.get('/any/doc?object=chat')
+        // console.log('responseUser', responseUser.data)
+        // console.log('chat', chat)
+        // console.log('filteredElememts', elements)
         // console.log('response2.data', response2.data)
       }
     },
-    // async getCurrentChat() {
-    //   const payload = {
-    //     get: {
-    //       chat: {
-    //         filter: { id: 9 },
-    //         fields: ['chatMessages', 'chatUsers'],
-    //       },
-    //     },
-    //   }
-    //   const response = await this.$axios.post('/any', payload)
-    //   console.log('response3', response.data.get.chat.length)
-    // },
+    startTalking(value) {
+      if (this.typeUser === 4) {
+        // console.log(value)
+        this.currentChatId = value.chatId
+        this.surnamePatient = value.surname
+        this.namePatient = value.name
+        this.lastNamePatient = value.patronymic
+        this.isActiveInterlocator = value.id
+      }
+    },
   },
 }
 </script>

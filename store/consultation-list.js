@@ -1,11 +1,10 @@
-import {
-  roleItems,
-  newItems,
-  progressItems,
-  completedItems,
-  rejectedItems,
-  createCouncilItems,
-} from '@/services/consultation-list'
+import // roleItems,
+// newItems,
+// progressItems,
+// completedItems,
+// rejectedItems,
+// createCouncilItems,
+'@/services/consultation-list'
 
 export const state = () => ({
   items: [],
@@ -18,26 +17,24 @@ export const mutations = {
 }
 
 export const getters = {
-  all_items({ items }, getters, { auth }) {
-    return roleItems(items, auth)
-  },
-
-  new_items({ items }, getters, { auth }) {
-    return newItems(roleItems(items, auth), auth)
-  },
-  progress_items({ items }, getters, { auth }) {
-    return progressItems(roleItems(items, auth))
-  },
-  completed_items({ items }, getters, { auth }) {
-    return completedItems(roleItems(items, auth))
-  },
-  rejected_items({ items }, getters, { auth }) {
-    return rejectedItems(roleItems(items, auth), auth)
-  },
-
-  create_council_items({ items }, getters, { auth }) {
-    return createCouncilItems(roleItems(items, auth))
-  },
+  // all_items({ items }, getters, { auth }) {
+  //   return roleItems(items, auth)
+  // },
+  // new_items({ items }, getters, { auth }) {
+  //   return newItems(roleItems(items, auth), auth)
+  // },
+  // progress_items({ items }, getters, { auth }) {
+  //   return progressItems(roleItems(items, auth))
+  // },
+  // completed_items({ items }, getters, { auth }) {
+  //   return completedItems(roleItems(items, auth))
+  // },
+  // rejected_items({ items }, getters, { auth }) {
+  //   return rejectedItems(roleItems(items, auth), auth)
+  // },
+  // create_council_items({ items }, getters, { auth }) {
+  //   return createCouncilItems(roleItems(items, auth))
+  // },
 }
 
 export const actions = {
